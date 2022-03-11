@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- CreateMessageActivity -->
+    <string name="app_name">messenger</string>
+    <string name="send">Отправить (Явный Intent))</string>
+    <string name="sendActive">Отправить (Неявный Intent - Действие))</string>
+    <string name="send_hint">Введите сообщение</string>
+    <string name="ToSpinnerActivity">К спиннеру цвета</string>
+
+    <!-- ColorSpinnerActivity-->
+    <string name="buttonColorDescr">Применить</string>
+    <string-array name="spinnerColorChange">
+        <item>Черный</item>
+        <item>Синий</item>
+        <item>Белый</item>
+        <item>Зеленый</item>
+    </string-array>
+    <string-array name="textViewColorChange">
+        <item>Описание черного цвета</item>
+        <item>Описание синего цвета</item>
+        <item>Описание белого цвета</item>
+        <item>Описание зеленого цвета</item>
+    </string-array>
+</resources>
