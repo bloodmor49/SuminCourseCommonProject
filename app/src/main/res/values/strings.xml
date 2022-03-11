@@ -1,7 +1,12 @@
 <resources>
+    <!-- Main -->
+    <string name="app_name">SuminCourseCommonProject</string>
+
+    <!-- MainActivity -->
+    <string name="lesson1">Урок 1 - XML, кнопки, методы - спиннер цвета</string>
+    <string name="lesson2">Урок 2 - 2 активности, намерения, действия - отправка сообщений</string>
 
     <!-- CreateMessageActivity -->
-    <string name="app_name">messenger</string>
     <string name="send">Отправить (Явный Intent))</string>
     <string name="sendActive">Отправить (Неявный Intent - Действие))</string>
     <string name="send_hint">Введите сообщение</string>

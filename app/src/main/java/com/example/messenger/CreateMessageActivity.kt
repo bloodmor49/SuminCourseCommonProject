@@ -32,9 +32,4 @@ class CreateMessageActivity : AppCompatActivity() {
         startActivity(sendIntentAction)
 
     }
-
-    fun toColorSpinnerIntent(view: View) {
-        var colorSpinnerIntent = Intent(this,ColorSpinnerActivity::class.java)
-        startActivity(colorSpinnerIntent)
-    }
 }
