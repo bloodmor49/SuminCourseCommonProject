@@ -15,6 +15,8 @@ class TimerActivity : AppCompatActivity() {
     //переменная для контроля работы таймера. (Триггер)
     private var isRunning:Boolean = false
 
+    private var wasRunning: Boolean = false
+
     private lateinit var timerTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +29,11 @@ class TimerActivity : AppCompatActivity() {
     //Сохранение данных при повороте экрана - происходит изменение конфигурации OnDestroied
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("seconds", seconds)
-        outState.putBoolean("isRunning", isRunning)
+        with(outState) {
+            putInt("seconds", seconds)
+            putBoolean("isRunning", isRunning)
+            putBoolean("wasRunning", wasRunning)
+        }
     }
 
     //Пересоздается экран с перезаписью всех переменных
@@ -36,7 +41,33 @@ class TimerActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         seconds = savedInstanceState.getInt("seconds")
         isRunning = savedInstanceState.getBoolean("isRunning")
+        wasRunning = savedInstanceState.getBoolean("wasRunning")
     }
+
+    /* Не нужно, заменяется onPause, onResume в соответствии с условиями задачи.
+    override fun onStop() {
+        super.onStop()
+        wasRunning = isRunning
+        isRunning = false
+    }
+
+    override fun onStart() {
+        super.onStart()
+        isRunning = wasRunning
+    }
+*/
+    override fun onPause() {
+        super.onPause()
+        wasRunning = isRunning
+        isRunning = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isRunning = wasRunning
+    }
+
+
 
     fun startTimer(view: View) {
         isRunning = true
