@@ -12,11 +12,8 @@ import kotlinx.coroutines.Runnable
 class TimerActivity : AppCompatActivity() {
 
     private var seconds:Int = 0
-    //переменная для контроля работы таймера. (Триггер)
     private var isRunning:Boolean = false
-
     private var wasRunning: Boolean = false
-
     private lateinit var timerTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +22,6 @@ class TimerActivity : AppCompatActivity() {
         timerTextView = findViewById(R.id.TextViewTimer)
         runTimer()
     }
-
     //Сохранение данных при повороте экрана - происходит изменение конфигурации OnDestroied
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -35,7 +31,6 @@ class TimerActivity : AppCompatActivity() {
             putBoolean("wasRunning", wasRunning)
         }
     }
-
     //Пересоздается экран с перезаписью всех переменных
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
@@ -61,13 +56,10 @@ class TimerActivity : AppCompatActivity() {
         wasRunning = isRunning
         isRunning = false
     }
-
     override fun onResume() {
         super.onResume()
         isRunning = wasRunning
     }
-
-
 
     fun startTimer(view: View) {
         isRunning = true
@@ -79,6 +71,7 @@ class TimerActivity : AppCompatActivity() {
         isRunning = false
         seconds = 0
     }
+
     private fun runTimer(){
         //Создаем объект класса Handler
         val timeHandler = Handler()
