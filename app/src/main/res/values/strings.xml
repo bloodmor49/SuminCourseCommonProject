@@ -5,6 +5,8 @@
     <!-- MainActivity -->
     <string name="lesson1">Урок 1 - XML, кнопки, методы - спиннер цвета</string>
     <string name="lesson2">Урок 2 - 2 активности, намерения, действия - отправка сообщений</string>
+    <string name="lesson3">
+        Урок 3 - Жизенный цикл активностей (видимость, рождение, смерть), HANDLER (Runnable, run) - таймер</string>
 
     <!-- CreateMessageActivity -->
     <string name="send">Отправить (Явный Intent))</string>
@@ -26,4 +28,10 @@
         <item>Описание белого цвета</item>
         <item>Описание зеленого цвета</item>
     </string-array>
+
+    <!-- TimerActivity -->
+    <string name="timerInit">00:00:00</string>
+    <string name="timerStart">Пуск</string>
+    <string name="timerStop">Стоп</string>
+    <string name="timerReset">Сброс</string>
 </resources>

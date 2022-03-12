@@ -20,4 +20,9 @@ class MainActivity : AppCompatActivity() {
         intent = Intent(this,CreateMessageActivity::class.java)
         startActivity(intent)
     }
+
+    fun lesson3intent(view: View) {
+        intent = Intent(this,TimerActivity::class.java)
+        startActivity(intent)
+    }
 }
