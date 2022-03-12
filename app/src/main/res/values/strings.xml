@@ -7,6 +7,7 @@
     <string name="lesson2">Урок 2 - 2 активности, намерения, действия - отправка сообщений</string>
     <string name="lesson3">
         Урок 3 - Жизенный цикл активностей (видимость, рождение, смерть), HANDLER (Runnable, run) - таймер</string>
+    <string name="lesson4">Урок 4 - Форма логина, выьбор заказа, результат с прокручиванием - заказ кофе</string>
 
     <!-- CreateMessageActivity -->
     <string name="send">Отправить (Явный Intent))</string>
@@ -34,4 +35,11 @@
     <string name="timerStart">Пуск</string>
     <string name="timerStop">Стоп</string>
     <string name="timerReset">Сброс</string>
+
+    <!-- LoginActivity -->
+    <string name="logo_Disc">Логотип кафе</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="hint_name">Введите Ваше имя:</string>
+    <string name="hint_password">Введите Ваш пароль:</string>
+    <string name="button_create_order">Создать заказ</string>
 </resources>

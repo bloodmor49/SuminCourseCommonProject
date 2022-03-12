@@ -38,7 +38,18 @@
             tools:layout_editor_absoluteX="156dp"
             tools:layout_editor_absoluteY="508dp" />
 
+        <Button
+            android:id="@+id/lesson4btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lesson4"
+            android:onClick="lesson4intent"
+            tools:layout_editor_absoluteX="83dp"
+            tools:layout_editor_absoluteY="467dp" />
+
     </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
