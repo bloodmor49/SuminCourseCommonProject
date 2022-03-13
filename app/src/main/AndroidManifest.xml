@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Messenger">
         <activity
+            android:name=".OrderDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateOrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity

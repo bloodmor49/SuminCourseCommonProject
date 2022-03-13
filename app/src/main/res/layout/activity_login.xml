@@ -9,17 +9,20 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogoCafe"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
         app:srcCompat="@drawable/logo"
-        android:layout_weight="1"/>
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="TODO" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewHello"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
+        android:textStyle="bold"
         android:gravity="center"
         android:textSize="20sp"
 />
@@ -29,21 +32,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="@string/hint_name"
-/>
+        android:minHeight="48dp"
+        android:text="Fallen"
+        android:hint="@string/hint_name" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:hint="@string/hint_password"
-/>
+        android:minHeight="48dp"
+        android:text="Fallen"
+        android:hint="@string/hint_password" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonCreateOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_create_order"
+        android:onClick="onClickCreateOrder"
 />
 </LinearLayout>

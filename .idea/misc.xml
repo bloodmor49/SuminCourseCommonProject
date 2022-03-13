@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_color_spinner.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_create_message.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_create_order.xml" value="0.25" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_login.xml" value="0.1644021739130435" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_order_details.xml" value="0.15443840579710144" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_recieved_message.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_timer.xml" value="0.20416666666666666" />
       </map>

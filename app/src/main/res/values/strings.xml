@@ -7,7 +7,8 @@
     <string name="lesson2">Урок 2 - 2 активности, намерения, действия - отправка сообщений</string>
     <string name="lesson3">
         Урок 3 - Жизенный цикл активностей (видимость, рождение, смерть), HANDLER (Runnable, run) - таймер</string>
-    <string name="lesson4">Урок 4 - Форма логина, выьбор заказа, результат с прокручиванием - заказ кофе</string>
+    <string name="lesson4">Урок 4 - Работа с XML - LinearLayout,RadioGroup,CheckBox,ScrollView,
+        а также StringBuilder и View.Visible  - Заказ кофе</string>
 
     <!-- CreateMessageActivity -->
     <string name="send">Отправить (Явный Intent))</string>
@@ -42,4 +43,30 @@
     <string name="hint_name">Введите Ваше имя:</string>
     <string name="hint_password">Введите Ваш пароль:</string>
     <string name="button_create_order">Создать заказ</string>
+    <string name="toast_not_filled">Все полня необходимо заполнить.</string>
+    <string name="SendDescription">Отправить заказ</string>
+
+
+    <!-- CreateOrderActivity -->
+    <string name="ChooseDrink">Выберите вид напитка?</string>
+    <string name="LemonCheckBox">Лемон</string>
+    <string name="SugarTextBox">Сахар</string>
+    <string name="MilkCheckBox">Молоко</string>
+    <string name="WhatToAddText">"Что добавить в ваш %s?"</string>
+    <string name="TeaRadioButton">Чай</string>
+    <string name="CoffeeRadioButton">Кофе</string>
+    <string name="ClientWelcomeText">"Привет, %s! Что закажите?"</string>
+
+    <string-array name="Options_of_coffee">
+        <item>Латте</item>
+        <item>Эспрессо</item>
+        <item>Американо</item>
+    </string-array>
+
+    <string-array name="Options_of_tea">
+        <item>Черный</item>
+        <item>Зеленый</item>
+        <item>Красный</item>
+    </string-array>
+
 </resources>

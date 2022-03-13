@@ -25,5 +25,6 @@ class MainActivity : AppCompatActivity() {
     }
     fun lesson4intent(view: View) {
         intent = Intent(this,LoginActivity::class.java)
+        startActivity(intent)
     }
 }
