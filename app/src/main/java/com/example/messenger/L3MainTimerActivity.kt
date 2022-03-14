@@ -9,7 +9,7 @@ import android.os.Handler
 import android.os.PersistableBundle
 import kotlinx.coroutines.Runnable
 
-class TimerActivity : AppCompatActivity() {
+class L3MainTimerActivity : AppCompatActivity() {
 
     private var seconds:Int = 0
     private var isRunning:Boolean = false

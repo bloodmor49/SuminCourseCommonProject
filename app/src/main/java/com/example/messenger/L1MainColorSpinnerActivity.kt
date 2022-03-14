@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Spinner
 import android.widget.TextView
 
-class ColorSpinnerActivity : AppCompatActivity() {
+class L1MainColorSpinnerActivity : AppCompatActivity() {
 
     lateinit var textColor : TextView
     lateinit var spinnerColor : Spinner

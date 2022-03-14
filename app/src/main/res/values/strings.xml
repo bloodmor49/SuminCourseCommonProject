@@ -4,11 +4,13 @@
 
     <!-- MainActivity -->
     <string name="lesson1">Урок 1 - XML, кнопки, методы - спиннер цвета</string>
-    <string name="lesson2">Урок 2 - 2 активности, намерения, действия - отправка сообщений</string>
+    <string name="lesson2">Урок 2 – 2 активности, намерения, действия - отправка сообщений</string>
     <string name="lesson3">
         Урок 3 - Жизенный цикл активностей (видимость, рождение, смерть), HANDLER (Runnable, run) - таймер</string>
     <string name="lesson4">Урок 4 - Работа с XML - LinearLayout,RadioGroup,CheckBox,ScrollView,
         а также StringBuilder и View.Visible  - Заказ кофе</string>
+    <string name="lesson5">Урок 5 - Работа с Toast, listView, слушателем SetOnItemClickListener,
+        адаптером (string -> listView), классом и отправкой данных на экран - Магазин кружен</string>
 
     <!-- CreateMessageActivity -->
     <string name="send">Отправить (Явный Intent))</string>
@@ -38,7 +40,7 @@
     <string name="timerReset">Сброс</string>
 
     <!-- LoginActivity -->
-    <string name="logo_Disc">Логотип кафе</string>
+    <string name="logo_Disc">Логотип</string>
     <string name="welcome">Добро пожаловать!</string>
     <string name="hint_name">Введите Ваше имя:</string>
     <string name="hint_password">Введите Ваш пароль:</string>
@@ -56,6 +58,7 @@
     <string name="TeaRadioButton">Чай</string>
     <string name="CoffeeRadioButton">Кофе</string>
     <string name="ClientWelcomeText">"Привет, %s! Что закажите?"</string>
+    <string name="logoCup">тип кружки</string>
 
     <string-array name="Options_of_coffee">
         <item>Латте</item>
@@ -68,5 +71,22 @@
         <item>Зеленый</item>
         <item>Красный</item>
     </string-array>
+
+    <!-- L5ShopMainActivity -->
+    <string-array name="ShopItems">
+        <item>Кружка</item>
+        <item>Стакан</item>
+        <item>Бокал</item>
+    </string-array>
+
+    <string name="titleCupGradient">Градиентная кружка</string>
+    <string name="titleCupRed">Красная кружка</string>
+    <string name="titleCupBlack">Черная кружка</string>
+
+    <string name="infoCupGradient">Разноцветный оттенок.</string>
+    <string name="infoCupRed">Ярко - красный цвет.</string>
+    <string name="infoCupBlack">Чернее некуда.</string>
+
+
 
 </resources>

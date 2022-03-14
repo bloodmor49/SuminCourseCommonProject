@@ -10,28 +10,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Messenger">
         <activity
-            android:name=".OrderDetailsActivity"
+            android:name=".L5CupDescriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L5CupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L5ShopMainActivity"
             android:exported="true" />
         <activity
-            android:name=".CreateOrderActivity"
+            android:name=".L4OrderDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".L4CreateOrderActivity"
             android:exported="true" />
         <activity
-            android:name=".TimerActivity"
+            android:name=".L4MainLoginActivity"
             android:exported="true" />
         <activity
-            android:name=".CreateMessageActivity"
+            android:name=".L3MainTimerActivity"
             android:exported="true" />
         <activity
-            android:name=".ColorSpinnerActivity"
+            android:name=".L2MainCreateMessageActivity"
             android:exported="true" />
         <activity
-            android:name=".ActivityRecievedMessage"
+            android:name=".L1MainColorSpinnerActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".L2ActivityRecievedMessage"
+            android:exported="true" />
+        <activity
+            android:name=".L0MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

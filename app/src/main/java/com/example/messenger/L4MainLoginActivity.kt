@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 
-class LoginActivity : AppCompatActivity() {
+class L4MainLoginActivity : AppCompatActivity() {
 
     private lateinit var editTextName:EditText
     private lateinit var editTextPassword:EditText
@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
         var stringPassword = editTextPassword.text.toString().trim()
 
         if (stringName.isNotEmpty() && stringPassword.isNotEmpty()){
-            var intent = Intent(this,CreateOrderActivity::class.java)
+            var intent = Intent(this,L4CreateOrderActivity::class.java)
             intent.putExtra("stringName",stringName)
             intent.putExtra("stringPassword",stringPassword)
             startActivity(intent)

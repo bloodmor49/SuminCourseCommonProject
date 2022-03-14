@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 
-class CreateMessageActivity : AppCompatActivity() {
+class L2MainCreateMessageActivity : AppCompatActivity() {
 
     private lateinit var editText: EditText
 
@@ -18,7 +18,7 @@ class CreateMessageActivity : AppCompatActivity() {
 
     fun sendMessage(view: View) {
         var tts = editText.text.toString()
-        var sendIntent = Intent(this,ActivityRecievedMessage::class.java)
+        var sendIntent = Intent(this,L2ActivityRecievedMessage::class.java)
         sendIntent.putExtra("tts",tts)
         startActivity(sendIntent)
 
