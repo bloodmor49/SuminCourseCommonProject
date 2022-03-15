@@ -75,8 +75,9 @@
     <!-- L5ShopMainActivity -->
     <string-array name="ShopItems">
         <item>Кружка</item>
-        <item>Стакан</item>
-        <item>Бокал</item>
+        <item>Стакан (Пусто)</item>
+        <item>Бокал (Пусто)</item>
+        <item>SeekBar</item>
     </string-array>
 
     <string name="titleCupGradient">Градиентная кружка</string>
@@ -86,7 +87,6 @@
     <string name="infoCupGradient">Разноцветный оттенок.</string>
     <string name="infoCupRed">Ярко - красный цвет.</string>
     <string name="infoCupBlack">Чернее некуда.</string>
-
 
 
 </resources>

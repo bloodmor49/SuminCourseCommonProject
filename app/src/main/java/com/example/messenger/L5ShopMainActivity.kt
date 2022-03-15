@@ -23,6 +23,7 @@ class L5ShopMainActivity : AppCompatActivity() {
                 0 -> startActivity(Intent(applicationContext,L5CupActivity::class.java))
                 1 -> toast
                 2 -> toast
+                3 -> startActivity(Intent(applicationContext,L5addSeekBarActivity::class.java))
             }
         }
     }

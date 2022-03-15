@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Messenger">
         <activity
+            android:name=".L5addSeekBarActivity"
+            android:exported="false" />
+        <activity
             android:name=".L5CupDescriptionActivity"
             android:exported="false" />
         <activity
