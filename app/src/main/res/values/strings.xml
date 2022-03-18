@@ -3,14 +3,25 @@
     <string name="app_name">SuminCourseCommonProject</string>
 
     <!-- MainActivity -->
-    <string name="lesson1">Урок 1 - XML, кнопки, методы - спиннер цвета</string>
-    <string name="lesson2">Урок 2 – 2 активности, намерения, действия - отправка сообщений</string>
-    <string name="lesson3">
-        Урок 3 - Жизенный цикл активностей (видимость, рождение, смерть), HANDLER (Runnable, run) - таймер</string>
-    <string name="lesson4">Урок 4 - Работа с XML - LinearLayout,RadioGroup,CheckBox,ScrollView,
-        а также StringBuilder и View.Visible  - Заказ кофе</string>
-    <string name="lesson5">Урок 5 - Работа с Toast, listView, слушателем SetOnItemClickListener,
-        адаптером (string -> listView), классом и отправкой данных на экран - Магазин кружен</string>
+
+    <string-array name="mainLessons">
+        <item>Урок 1
+            <subitem>XML, кнопки, методы - спиннер цвета</subitem></item>
+        <item>Урок 2
+            <subitem>2 активности, намерения, действия - отправка сообщений </subitem></item>
+        <item>Урок 3
+            <subitem>Жизенный цикл активностей (видимость, рождение, смерть),
+            HANDLER (Runnable, run) - таймер</subitem></item>
+        <item>Урок 4
+            <subitem>Работа с XML - LinearLayout,RadioGroup,CheckBox,ScrollView,
+            а также StringBuilder и View.Visible  - Заказ кофе</subitem></item>
+        <item>Урок 5
+            <subitem>Работа с Toast, listView, слушателем SetOnItemClickListener,
+            адаптером (string -> listView), SeekBar - Магазин кружен</subitem></item>
+        <item>Урок 6
+            <subitem>JSON (данные из интернета) - </subitem></item>
+
+    </string-array>
 
     <!-- CreateMessageActivity -->
     <string name="send">Отправить (Явный Intent))</string>
@@ -87,6 +98,13 @@
     <string name="infoCupGradient">Разноцветный оттенок.</string>
     <string name="infoCupRed">Ярко - красный цвет.</string>
     <string name="infoCupBlack">Чернее некуда.</string>
+    <string name="buttonDownload">Загрузка картинки</string>
+
+    <!-- activity_l6_json_weather -->
+    <string name="CityWeather">Погода в городе</string>
+    <string name="printCity">Введите название города</string>
+    <string name="ExampleMoscow">Пример: Москва</string>
+    <string name="Start">Поиск</string>
 
 
 </resources>

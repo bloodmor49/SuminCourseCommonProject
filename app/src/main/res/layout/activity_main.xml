@@ -6,55 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".L0MainActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <ListView
+        android:id="@+id/mainListView"
+        style="@style/Widget.AppCompat.ListView.Menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:divider="@color/blue"
+        android:dividerHeight="1dp"
+        android:entries="@array/mainLessons"
+        android:fadeScrollbars="true"
+        app:barrierMargin="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/lesson1btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="lesson1intent"
-            android:text="@string/lesson1" />
-
-        <Button
-            android:id="@+id/lesson2btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="lesson2intent"
-            android:text="@string/lesson2" />
-
-        <Button
-            android:id="@+id/lesson3btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lesson3"
-            android:onClick="lesson3intent"
-            tools:layout_editor_absoluteX="156dp"
-            tools:layout_editor_absoluteY="508dp" />
-
-        <Button
-            android:id="@+id/lesson4btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lesson4"
-            android:onClick="lesson4intent"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="467dp" />
-
-        <Button
-            android:id="@+id/lesson5btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="lesson5intent"
-            android:text="@string/lesson5" />
-
-    </LinearLayout>
-
-
+        app:layout_constraintTop_toTopOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

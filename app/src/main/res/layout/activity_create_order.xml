@@ -135,7 +135,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
-        android:backgroundTint="#1E56B6"
+        android:backgroundTint="@color/blue"
         android:contentDescription="@string/SendDescription"
         android:text="@string/SendDescription"
         android:textSize="48sp"
