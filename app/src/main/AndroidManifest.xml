@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Messenger">
         <activity
+            android:name=".L7GameResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L7DataStoreMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".L6GuessStarActivity"
             android:exported="false" />
         <activity

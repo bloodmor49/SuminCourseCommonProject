@@ -24,7 +24,7 @@ class L0MainActivity : AppCompatActivity() {
                 3 -> startActivity(Intent(this,L4MainLoginActivity::class.java))
                 4 -> startActivity(Intent(this,L5ShopMainActivity::class.java))
                 5 -> startActivity(Intent(this,L6JSONProjectActivity::class.java))
-
+                6 -> startActivity(Intent(this,L7DataStoreMainActivity::class.java))
             }
 
         }

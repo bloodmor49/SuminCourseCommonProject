@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".L7GameResultActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+        <TextView
+            android:id="@+id/textViewResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="24sp"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/buttonNewGameStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/NewGameStart"
+            android:onClick="buttonNewGameStart"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/buttonResetHighScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ResetHighScore"
+            android:onClick="buttonResetHighScore"
+            android:layout_margin="10dp"/>
+</LinearLayout>

@@ -19,7 +19,11 @@
             <subitem>Работа с Toast, listView, слушателем SetOnItemClickListener,
             адаптером (string -> listView), SeekBar - Магазин кружен</subitem></item>
         <item>Урок 6
-            <subitem>JSON (данные из интернета) - </subitem></item>
+            <subitem>Загрузка данных из интернета, JSON, LogCat - Погода в городе </subitem></item>
+        <item>Урок 7
+            <subitem>Хранение данных
+                (Shared References, RecyclerView, ViewHolder, SQLite, AAC, Singleton, LiveData)
+                - ? </subitem></item>
 
     </string-array>
 
@@ -105,6 +109,8 @@
     <string name="printCity">Введите название города</string>
     <string name="ExampleMoscow">Пример: Москва</string>
     <string name="Start">Поиск</string>
+    <string name="ResetHighScore">Сброс всех результатов</string>
+    <string name="NewGameStart">Новая игра</string>
 
 
 </resources>
