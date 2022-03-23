@@ -1,6 +1,5 @@
-package com.example.messenger
+package com.example.messenger.L71
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import java.text.Format
+import com.example.messenger.R
 import java.util.*
 import kotlin.random.Random
 

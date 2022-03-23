@@ -1,13 +1,13 @@
-package com.example.messenger
+package com.example.messenger.L5
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SeekBar
 import androidx.annotation.RequiresApi
+import com.example.messenger.R
 
 class L5addSeekBarActivity : AppCompatActivity() {
 

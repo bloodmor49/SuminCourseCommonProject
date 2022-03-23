@@ -1,9 +1,10 @@
-package com.example.messenger
+package com.example.messenger.L4
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.example.messenger.R
 
 class L4OrderDetailsActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class L4OrderDetailsActivity : AppCompatActivity() {
             var order = intentMy.getStringExtra("stringFullOrder")
             textViewOrderFull.text = order
         } else {
-            var backIntent = Intent(this,L4CreateOrderActivity::class.java)
+            var backIntent = Intent(this, L4CreateOrderActivity::class.java)
             startActivity(backIntent)
         }
     }

@@ -1,4 +1,4 @@
-package com.example.messenger
+package com.example.messenger.L6
 
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.messenger.R
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.BufferedReader

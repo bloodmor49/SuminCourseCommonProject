@@ -1,3 +1,5 @@
+package com.example.messenger.L5
+
 class L5cup(val title: String = "Пусто",
             val info:String = "Пусто",
             val imageResourcesId:Int = -1) {

@@ -1,14 +1,14 @@
-package com.example.messenger
+package com.example.messenger.L71
 
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.example.messenger.R
 
 class L7GameResultActivity : AppCompatActivity() {
 
@@ -42,7 +42,7 @@ class L7GameResultActivity : AppCompatActivity() {
             "Результат игры\nПравильных ответов: $rightAnswers\nЛучший результат - $bestResult"
     }
     fun buttonNewGameStart(view: View) {
-    startActivity(Intent(this,L7DataStoreMainActivity::class.java))
+    startActivity(Intent(this, L7DataStoreMainActivity::class.java))
     }
 
     private fun getResult(){

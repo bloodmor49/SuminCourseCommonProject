@@ -1,10 +1,11 @@
-package com.example.messenger
+package com.example.messenger.L2
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import com.example.messenger.R
 
 class L2MainCreateMessageActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class L2MainCreateMessageActivity : AppCompatActivity() {
 
     fun sendMessage(view: View) {
         var tts = editText.text.toString()
-        var sendIntent = Intent(this,L2ActivityRecievedMessage::class.java)
+        var sendIntent = Intent(this, L2ActivityRecievedMessage::class.java)
         sendIntent.putExtra("tts",tts)
         startActivity(sendIntent)
 

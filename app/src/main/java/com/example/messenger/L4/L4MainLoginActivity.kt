@@ -1,4 +1,4 @@
-package com.example.messenger
+package com.example.messenger.L4
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.messenger.R
 
 class L4MainLoginActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class L4MainLoginActivity : AppCompatActivity() {
         var stringPassword = editTextPassword.text.toString().trim()
 
         if (stringName.isNotEmpty() && stringPassword.isNotEmpty()){
-            var intent = Intent(this,L4CreateOrderActivity::class.java)
+            var intent = Intent(this, L4CreateOrderActivity::class.java)
             intent.putExtra("stringName",stringName)
             intent.putExtra("stringPassword",stringPassword)
             startActivity(intent)

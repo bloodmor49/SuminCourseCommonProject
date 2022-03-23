@@ -13,6 +13,8 @@
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l6_guiess_star.xml" value="0.125" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l6_json_weather.xml" value="0.2" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l6_jsonproject.xml" value="0.12907608695652173" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l71_add_note.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l71_views_main.xml" value="0.25" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l7_data_store_main.xml" value="0.21" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l7_game_result.xml" value="0.25" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_login.xml" value="0.1644021739130435" />
@@ -20,6 +22,8 @@
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_order_details.xml" value="0.15443840579710144" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_recieved_message.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_timer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/note_item.xml" value="0.59375" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/note_item_l71.xml" value="0.33" />
       </map>
     </option>
   </component>

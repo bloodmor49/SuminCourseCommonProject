@@ -1,10 +1,10 @@
-package com.example.messenger
+package com.example.messenger.L5
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.messenger.R
 
 class L5CupDescriptionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

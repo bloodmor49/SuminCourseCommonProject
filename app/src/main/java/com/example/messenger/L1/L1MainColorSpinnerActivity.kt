@@ -1,10 +1,11 @@
-package com.example.messenger
+package com.example.messenger.L1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Spinner
 import android.widget.TextView
+import com.example.messenger.R
 
 class L1MainColorSpinnerActivity : AppCompatActivity() {
 

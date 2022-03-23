@@ -1,4 +1,4 @@
-package com.example.messenger
+package com.example.messenger.L6
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import com.example.messenger.R
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -134,7 +135,7 @@ class L6JSONProjectActivity : AppCompatActivity() {
     }
 
     fun cityWeather(view: View) {
-        startActivity(Intent(this,L6GuessStarActivity::class.java))
+        startActivity(Intent(this, L6GuessStarActivity::class.java))
     }
 }
 

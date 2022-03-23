@@ -1,12 +1,11 @@
-package com.example.messenger
+package com.example.messenger.L3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import java.util.*
 import android.os.Handler
-import android.os.PersistableBundle
+import com.example.messenger.R
 import kotlinx.coroutines.Runnable
 
 class L3MainTimerActivity : AppCompatActivity() {

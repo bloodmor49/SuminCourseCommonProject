@@ -1,4 +1,4 @@
-package com.example.messenger
+package com.example.messenger.L4
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.Spinner
 import android.widget.TextView
+import com.example.messenger.R
 
 class L4CreateOrderActivity : AppCompatActivity() {
 
@@ -94,7 +95,7 @@ class L4CreateOrderActivity : AppCompatActivity() {
 
         var fullOrder = order + additions
 
-        var intent = Intent(this,L4OrderDetailsActivity::class.java)
+        var intent = Intent(this, L4OrderDetailsActivity::class.java)
         intent.putExtra("stringFullOrder",fullOrder)
         startActivity(intent)
     }

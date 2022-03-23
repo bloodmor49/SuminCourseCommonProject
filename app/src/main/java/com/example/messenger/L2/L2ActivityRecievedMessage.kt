@@ -1,8 +1,9 @@
-package com.example.messenger
+package com.example.messenger.L2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.example.messenger.R
 
 class L2ActivityRecievedMessage : AppCompatActivity() {
 

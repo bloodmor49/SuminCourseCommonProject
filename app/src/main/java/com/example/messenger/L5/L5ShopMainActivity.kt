@@ -1,10 +1,11 @@
-package com.example.messenger
+package com.example.messenger.L5
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
 import android.widget.Toast
+import com.example.messenger.R
 
 class L5ShopMainActivity : AppCompatActivity() {
     
@@ -20,10 +21,10 @@ class L5ShopMainActivity : AppCompatActivity() {
            var toast = Toast.makeText(applicationContext, "Нажата $position", Toast.LENGTH_SHORT).show()
 
             when (position){
-                0 -> startActivity(Intent(applicationContext,L5CupActivity::class.java))
+                0 -> startActivity(Intent(applicationContext, L5CupActivity::class.java))
                 1 -> toast
                 2 -> toast
-                3 -> startActivity(Intent(applicationContext,L5addSeekBarActivity::class.java))
+                3 -> startActivity(Intent(applicationContext, L5addSeekBarActivity::class.java))
             }
         }
     }

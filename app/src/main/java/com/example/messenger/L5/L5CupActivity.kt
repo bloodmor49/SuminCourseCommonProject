@@ -1,12 +1,11 @@
-package com.example.messenger
+package com.example.messenger.L5
 
-import L5cup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.ListAdapter
 import android.widget.ListView
+import com.example.messenger.R
 
 class L5CupActivity : AppCompatActivity() {
 
@@ -20,16 +19,19 @@ class L5CupActivity : AppCompatActivity() {
         actionBar?.hide()
 
         listOfCups = mutableListOf()
-        listOfCups.add(L5cup(getString(R.string.titleCupGradient),getString(R.string.infoCupGradient),R.drawable.cup1))
-        listOfCups.add(L5cup(getString(R.string.titleCupRed),getString(R.string.infoCupRed),R.drawable.cup2))
-        listOfCups.add(L5cup(getString(R.string.titleCupBlack),getString(R.string.infoCupBlack),R.drawable.cup3))
+        listOfCups.add(L5cup(getString(R.string.titleCupGradient),getString(R.string.infoCupGradient),
+            R.drawable.cup1))
+        listOfCups.add(L5cup(getString(R.string.titleCupRed),getString(R.string.infoCupRed),
+            R.drawable.cup2))
+        listOfCups.add(L5cup(getString(R.string.titleCupBlack),getString(R.string.infoCupBlack),
+            R.drawable.cup3))
 
         var listAdapter = ArrayAdapter(applicationContext,android.R.layout.simple_list_item_1, listOfCups)
         listViewCupsType.adapter = listAdapter
         
         listViewCupsType.setOnItemClickListener { parent, view, position, id ->
             var cup = listOfCups[position]
-            var intent = Intent(applicationContext,L5CupDescriptionActivity::class.java)
+            var intent = Intent(applicationContext, L5CupDescriptionActivity::class.java)
             intent.putExtra("title",cup.title)
             intent.putExtra("info",cup.info)
             intent.putExtra("imageResourcesId",cup.imageResourcesId)

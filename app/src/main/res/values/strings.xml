@@ -20,10 +20,11 @@
             адаптером (string -> listView), SeekBar - Магазин кружен</subitem></item>
         <item>Урок 6
             <subitem>Загрузка данных из интернета, JSON, LogCat - Погода в городе </subitem></item>
-        <item>Урок 7
-            <subitem>Хранение данных
-                (Shared References, RecyclerView, ViewHolder, SQLite, AAC, Singleton, LiveData)
-                - ? </subitem></item>
+        <item>Урок 7.1
+            <subitem>Хранение данных (Shared References) - Brain Trainer </subitem></item>
+        <item>Урок 7.2
+            <subitem>RecyclerView(ViewHolder, CardView, Adapter),
+                DB SQLite (Contact,DBHelper,Add,Remove) - Приложение заметок c SQLite </subitem></item>
 
     </string-array>
 
@@ -109,8 +110,29 @@
     <string name="printCity">Введите название города</string>
     <string name="ExampleMoscow">Пример: Москва</string>
     <string name="Start">Поиск</string>
+
+    <!-- activity_l7_data_store_main -->
     <string name="ResetHighScore">Сброс всех результатов</string>
     <string name="NewGameStart">Новая игра</string>
 
+
+    <!-- activity_l71_notes -->
+
+    <string name="DayOfWeek">День недели -</string>
+    <string name="hint_title">Заголовок заметки</string>
+    <string name="hint_description">Описание заметки</string>
+    <string name="AddNote">Добавить заметку</string>
+    <string name="priority1">1</string>
+    <string name="priority2">2</string>
+    <string name="priority3">3</string>
+    <string-array name="day_Of_week">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
+    </string-array>
 
 </resources>
