@@ -1,4 +1,4 @@
-package com.example.messenger.L72.db
+package com.example.messenger.L72.dbSQL
 
 import android.provider.BaseColumns
 

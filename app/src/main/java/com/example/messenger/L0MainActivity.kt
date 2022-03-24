@@ -24,7 +24,6 @@ class L0MainActivity : AppCompatActivity() {
         mainListView.setOnItemClickListener { parent, view, position, id ->
 
             when (position) {
-
                 0 -> startActivity(Intent(this, L1MainColorSpinnerActivity::class.java))
                 1 -> startActivity(Intent(this, L2MainCreateMessageActivity::class.java))
                 2 -> startActivity(Intent(this, L3MainTimerActivity::class.java))

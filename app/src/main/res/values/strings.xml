@@ -25,7 +25,6 @@
         <item>Урок 7.2
             <subitem>RecyclerView(ViewHolder, CardView, Adapter),
                 DB SQLite (Contact,DBHelper,Add,Remove) - Приложение заметок c SQLite </subitem></item>
-
     </string-array>
 
     <!-- CreateMessageActivity -->

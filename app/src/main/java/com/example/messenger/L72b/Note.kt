@@ -1,4 +1,4 @@
-package com.example.messenger.L72
+package com.example.messenger.L72b
 
 /**
  * Класс, содержащий информацию о заметках.
