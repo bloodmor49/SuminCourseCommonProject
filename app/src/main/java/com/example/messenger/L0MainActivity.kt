@@ -12,6 +12,8 @@ import com.example.messenger.L5.L5ShopMainActivity
 import com.example.messenger.L6.L6JSONProjectActivity
 import com.example.messenger.L71.L7DataStoreMainActivity
 import com.example.messenger.L72.ViewsMainActivity
+import com.example.messenger.L81.EmployersMainActivity
+import com.example.messenger.L82.screens.employers.EmployerListActivity
 
 class L0MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +23,7 @@ class L0MainActivity : AppCompatActivity() {
 
         var mainListView = findViewById<ListView>(R.id.mainListView)
 
-        mainListView.setOnItemClickListener { parent, view, position, id ->
+        mainListView.setOnItemClickListener { _, _, position, _ ->
 
             when (position) {
                 0 -> startActivity(Intent(this, L1MainColorSpinnerActivity::class.java))
@@ -32,6 +34,11 @@ class L0MainActivity : AppCompatActivity() {
                 5 -> startActivity(Intent(this, L6JSONProjectActivity::class.java))
                 6 -> startActivity(Intent(this, L7DataStoreMainActivity::class.java))
                 7 -> startActivity(Intent(this, ViewsMainActivity::class.java))
+                8 -> startActivity(Intent(this, EmployersMainActivity::class.java))
+                9 -> startActivity(Intent(this,
+                    com.example.messenger.L82.screens.employers.EmployerListActivity::class.java))
+                10 -> startActivity(Intent(this,
+                    com.example.messenger.L83.screens.employers.EmployerListActivity::class.java))
             }
 
         }

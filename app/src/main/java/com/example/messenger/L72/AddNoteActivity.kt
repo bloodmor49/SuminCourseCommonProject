@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.lifecycle.ViewModelProvider
 import com.example.messenger.L72.RoomDB.Note
 import com.example.messenger.L72.RoomDB.NotesDatabase
+import com.example.messenger.L72.ViewModel.MainViewModel
 import com.example.messenger.R
 
 /**
@@ -19,7 +21,9 @@ class AddNoteActivity : AppCompatActivity() {
     lateinit var editTextDescription: EditText
     lateinit var spinnerDaysOfWeek: Spinner
     lateinit var radioGroupPriority: RadioGroup
-    lateinit var database: NotesDatabase
+
+
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +34,7 @@ class AddNoteActivity : AppCompatActivity() {
         spinnerDaysOfWeek = findViewById(R.id.spinnerDaysOfWeek)
         radioGroupPriority = findViewById(R.id.radioGroupPriority)
 
-        database = NotesDatabase.getInstance(this)!!
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
     }
 
@@ -46,7 +50,7 @@ class AddNoteActivity : AppCompatActivity() {
             startActivity(Intent(this, ViewsMainActivity::class.java))
         if (isFilled(title,description)) {
             var note = Note(title= title, description = description, dayOfWeek = dayOfWeek, priority = priority)
-            database.notesDao().insertNote(note)
+            viewModel.insertNote(note)
             startActivity(Intent(this,ViewsMainActivity::class.java))
         } else Toast.makeText(this,"Заполни поля",Toast.LENGTH_LONG).show()
     }

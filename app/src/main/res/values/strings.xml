@@ -25,6 +25,12 @@
         <item>Урок 7.2
             <subitem>RecyclerView(ViewHolder, CardView, Adapter),
                 DB SQLite (Contact,DBHelper,Add,Remove) - Приложение заметок c SQLite </subitem></item>
+        <item>Урок 8.1
+            <subitem>Json->Gson->Retrofit2->RXJAVA3 - Список сотрудников </subitem></item>
+        <item>Урок 8.2
+            <subitem>MVP - Список сотрудников </subitem></item>
+        <item>Урок 8.3
+            <subitem>MVVM - Список сотрудников (+ ROOM, LIVEDATA)</subitem></item>
     </string-array>
 
     <!-- CreateMessageActivity -->
@@ -124,6 +130,8 @@
     <string name="priority1">1</string>
     <string name="priority2">2</string>
     <string name="priority3">3</string>
+    <string name="Surname">Фамилия:</string>
+    <string name="Name">Имя:</string>
     <string-array name="day_Of_week">
         <item>Понедельник</item>
         <item>Вторник</item>

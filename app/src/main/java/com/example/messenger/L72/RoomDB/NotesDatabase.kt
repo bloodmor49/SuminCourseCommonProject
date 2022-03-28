@@ -25,7 +25,7 @@ abstract class NotesDatabase : RoomDatabase() {
             synchronized(LOCK) {
                 db?.let { return it }
                 val instance = Room.databaseBuilder(context, NotesDatabase::class.java, DB_NAME)
-                    .allowMainThreadQueries()
+                    //.allowMainThreadQueries()
                     .build()
                 db = instance
                 return instance

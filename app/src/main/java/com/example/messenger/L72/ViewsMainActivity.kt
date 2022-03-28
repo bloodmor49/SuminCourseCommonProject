@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.messenger.L72.ViewsMainActivity.Notes.listOfNotes
 import com.example.messenger.L72.RoomDB.Note
 import com.example.messenger.L72.RoomDB.NotesDatabase
+import com.example.messenger.L72.ViewModel.MainViewModel
 import com.example.messenger.L72.recyclerViewAdapter.NotesAdapter
 import com.example.messenger.R
 
@@ -23,13 +26,14 @@ open class ViewsMainActivity : AppCompatActivity() {
 
     private lateinit var recyclerViewNotes: RecyclerView
     private lateinit var adapter: NotesAdapter
-
-    private var database: NotesDatabase? = null
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_l71_views_main)
         recyclerViewNotes = findViewById(R.id.recyclerViewNotes)
+
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         //Создаем адаптер
         adapter = NotesAdapter(listOfNotes)
@@ -40,7 +44,7 @@ open class ViewsMainActivity : AppCompatActivity() {
         recyclerViewNotes.adapter = adapter
 
         //получаем базу данных с помощью синглтона
-        database = NotesDatabase.getInstance(this)
+
         //вызываем метод получить данные из дб.
         getData()
 
@@ -86,7 +90,7 @@ open class ViewsMainActivity : AppCompatActivity() {
         //берем выбранную записку
         var note = listOfNotes[position]
         //вызываем метод удаления записки из интерфейса DBDAO
-        database?.notesDao()?.deleteNote(note)
+        viewModel.deleteNote(note)
         //заного получаем данные
         getData()
         //обновляем информацию для адаптера.
@@ -94,15 +98,18 @@ open class ViewsMainActivity : AppCompatActivity() {
     }
 
     //получение данных из дб
-    private fun getData(){
+    private fun getData() {
         //выгружаем из ДБ все записки с помощью интерфейса DAO (содержит методы работы)
-        var noteFromDB = database?.notesDao()?.getAllNotes()
-        //очищаем лист с записками
-        listOfNotes.clear()
-        //добавляем в лист данные из дб, если они есть.
-        if (noteFromDB != null) {
-            listOfNotes.addAll(noteFromDB)
+        var noteFromDB = viewModel.getNotes()
+
+        var observer = Observer<List<Note>>{
+            listOfNotes.clear()
+            listOfNotes.addAll(it)
+            adapter.notifyDataSetChanged()
         }
+
+        noteFromDB?.observe(this,observer)
+
     }
 
 }

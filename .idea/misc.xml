@@ -6,6 +6,9 @@
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_color_spinner.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_create_message.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_create_order.xml" value="0.25" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_employers_list_activity.xml" value="0.11114532019704433" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_employers_list_activity_MVVM.xml" value="0.11114532019704433" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_employers_main.xml" value="0.11114532019704433" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l5_cup.xml" value="0.22" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l5_cup_description.xml" value="0.12907608695652173" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_l5_shop_main.xml" value="0.16032608695652173" />
@@ -22,6 +25,7 @@
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_order_details.xml" value="0.15443840579710144" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_recieved_message.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_timer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/employer_item.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/note_item.xml" value="0.59375" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/note_item_l71.xml" value="0.33" />
       </map>
