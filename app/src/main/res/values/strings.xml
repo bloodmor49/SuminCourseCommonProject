@@ -1,37 +1,8 @@
 <resources>
     <!-- Main -->
-    <string name="app_name">SuminCourseCommonProject</string>
+    <string name="app_name">MorozovHints</string>
 
     <!-- MainActivity -->
-
-    <string-array name="mainLessons">
-        <item>Урок 1
-            <subitem>XML, кнопки, методы - спиннер цвета</subitem></item>
-        <item>Урок 2
-            <subitem>2 активности, намерения, действия - отправка сообщений </subitem></item>
-        <item>Урок 3
-            <subitem>Жизенный цикл активностей (видимость, рождение, смерть),
-            HANDLER (Runnable, run) - таймер</subitem></item>
-        <item>Урок 4
-            <subitem>Работа с XML - LinearLayout,RadioGroup,CheckBox,ScrollView,
-            а также StringBuilder и View.Visible  - Заказ кофе</subitem></item>
-        <item>Урок 5
-            <subitem>Работа с Toast, listView, слушателем SetOnItemClickListener,
-            адаптером (string -> listView), SeekBar - Магазин кружен</subitem></item>
-        <item>Урок 6
-            <subitem>Загрузка данных из интернета, JSON, LogCat - Погода в городе </subitem></item>
-        <item>Урок 7.1
-            <subitem>Хранение данных (Shared References) - Brain Trainer </subitem></item>
-        <item>Урок 7.2
-            <subitem>RecyclerView(ViewHolder, CardView, Adapter),
-                DB SQLite (Contact,DBHelper,Add,Remove) - Приложение заметок c SQLite </subitem></item>
-        <item>Урок 8.1
-            <subitem>Json->Gson->Retrofit2->RXJAVA3 - Список сотрудников </subitem></item>
-        <item>Урок 8.2
-            <subitem>MVP - Список сотрудников </subitem></item>
-        <item>Урок 8.3
-            <subitem>MVVM - Список сотрудников (+ ROOM, LIVEDATA)</subitem></item>
-    </string-array>
 
     <!-- CreateMessageActivity -->
     <string name="send">Отправить (Явный Intent))</string>
