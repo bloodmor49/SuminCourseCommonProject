@@ -6,77 +6,81 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_okabe"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo_okabe"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Messenger"
+        android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.example.MorozovHints.L83.screens.employers.EmployerListActivity"
+            android:name=".L9.FirebaseMainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L82.screens.employers.EmployerListActivity"
+            android:name=".L83.screens.employers.EmployerListActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L81.EmployersMainActivity"
+            android:name=".L82.screens.employers.EmployerListActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L72.AddNoteActivity"
+            android:name=".L81.EmployersMainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L72.ViewsMainActivity"
+            android:name=".L72.AddNoteActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L71.L7GameResultActivity"
+            android:name=".L72.ViewsMainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L71.L7DataStoreMainActivity"
+            android:name=".L71.L7GameResultActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L6.L6GuessStarActivity"
+            android:name=".L71.L7DataStoreMainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L6.L6JSONProjectActivity"
+            android:name=".L6.L6GuessStarActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L5.L5addSeekBarActivity"
+            android:name=".L6.L6JSONProjectActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L5.L5CupDescriptionActivity"
+            android:name=".L5.L5addSeekBarActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L5.L5CupActivity"
+            android:name=".L5.L5CupDescriptionActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MorozovHints.L5.L5ShopMainActivity"
+            android:name=".L5.L5CupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L5.L5ShopMainActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L4.L4OrderDetailsActivity"
+            android:name=".L4.L4OrderDetailsActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L4.L4CreateOrderActivity"
+            android:name=".L4.L4CreateOrderActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L4.L4MainLoginActivity"
+            android:name=".L4.L4MainLoginActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L3.L3MainTimerActivity"
+            android:name=".L3.L3MainTimerActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L2.L2MainCreateMessageActivity"
+            android:name=".L2.L2MainCreateMessageActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L1.L1MainColorSpinnerActivity"
+            android:name=".L1.L1MainColorSpinnerActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L2.L2ActivityRecievedMessage"
+            android:name=".L2.L2ActivityRecievedMessage"
             android:exported="true" />
         <activity
-            android:name="com.example.MorozovHints.L0MainActivity"
+            android:name=".L0MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "208156399571",
+    "project_id": "morozovhintsl9",
+    "storage_bucket": "morozovhintsl9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208156399571:android:4163fb19f995c11de40126",
+        "android_client_info": {
+          "package_name": "com.example.MorozovHints"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208156399571-ebndotn65tl2d5o62jnf6v3u7at8skj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEsFbvhzu6dkFyPupZj9adXqhmcSFrcWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208156399571-ebndotn65tl2d5o62jnf6v3u7at8skj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

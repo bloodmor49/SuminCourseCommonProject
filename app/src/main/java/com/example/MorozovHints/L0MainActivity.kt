@@ -15,6 +15,7 @@ import com.example.MorozovHints.L71.L7DataStoreMainActivity
 import com.example.MorozovHints.L72.ViewsMainActivity
 import com.example.MorozovHints.L81.EmployersMainActivity
 import com.example.MorozovHints.L82.screens.employers.EmployerListActivity
+import com.example.MorozovHints.L9.FirebaseMainActivity
 
 class L0MainActivity : AppCompatActivity() {
 
@@ -55,8 +56,7 @@ class L0MainActivity : AppCompatActivity() {
             9 -> startActivity(Intent(this, EmployerListActivity::class.java))
             10 -> startActivity(Intent(this,
                 com.example.MorozovHints.L83.screens.employers.EmployerListActivity::class.java))
-            11 -> startActivity(Intent(this,
-                com.example.MorozovHints.L83.screens.employers.EmployerListActivity::class.java))
+            11 -> startActivity(Intent(this, FirebaseMainActivity::class.java))
         }
     }
 
