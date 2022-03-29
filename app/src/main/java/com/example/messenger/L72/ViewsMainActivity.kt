@@ -11,18 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.messenger.L72.ViewsMainActivity.Notes.listOfNotes
 import com.example.messenger.L72.RoomDB.Note
-import com.example.messenger.L72.RoomDB.NotesDatabase
 import com.example.messenger.L72.ViewModel.MainViewModel
 import com.example.messenger.L72.recyclerViewAdapter.NotesAdapter
 import com.example.messenger.R
 
 open class ViewsMainActivity : AppCompatActivity() {
 
-    object Notes {
-        var listOfNotes = mutableListOf<Note>()
-    }
+    var listOfNotes = mutableListOf<Note>()
 
     private lateinit var recyclerViewNotes: RecyclerView
     private lateinit var adapter: NotesAdapter

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Spinner
 import android.widget.TextView
+import com.example.messenger.LessonInfo
 import com.example.messenger.R
 
 class L1MainColorSpinnerActivity : AppCompatActivity() {
