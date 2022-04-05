@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_firebase_main.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_l71_views_main.xml" value="0.1614497528830313" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_main_recycler.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_register.xml" value="0.1614497528830313" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_shop_list_main.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_test_zone.xml" value="0.1614497528830313" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/main_lessons_item.xml" value="0.1" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/shop_item_enabled.xml" value="0.5" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/shop_item_unenabled.xml" value="0.5" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/user_item.xml" value="0.5" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1925" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_color_spinner.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/messenger/app/src/main/res/layout/activity_create_message.xml" value="0.20416666666666666" />

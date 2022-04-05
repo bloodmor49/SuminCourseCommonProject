@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".L091.AddNewUserActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editTextTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_margin="8dp"
+        android:hint="@string/EnterName" />
+
+    <EditText
+        android:id="@+id/editTextTextSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_margin="8dp"
+        android:hint="@string/EnterSurname" />
+
+    <EditText
+        android:id="@+id/editTextTextAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_margin="8dp"
+        android:hint="@string/EnterAge" />
+
+    <EditText
+        android:id="@+id/editTextTextGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_margin="8dp"
+        android:hint="@string/EnterGender" />
+
+    <Button
+        android:id="@+id/buttonDownloadToFireCloud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:layout_margin="8dp"
+        android:text="@string/DownloadToFireCloud"
+        android:onClick="downloadToFireCloud"/>
+</LinearLayout>

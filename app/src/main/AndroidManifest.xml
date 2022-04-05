@@ -13,70 +13,82 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".L9.FirebaseMainActivity"
+            android:name=".L10.presentation.EditShopItemActivity"
             android:exported="false" />
         <activity
-            android:name=".L83.screens.employers.EmployerListActivity"
+            android:name=".main.TestZoneActivity"
             android:exported="false" />
         <activity
-            android:name=".L82.screens.employers.EmployerListActivity"
+            android:name=".L10.presentation.ShopListMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L81.EmployersMainActivity"
+            android:name=".L091.AddNewUserActivity"
             android:exported="false" />
         <activity
-            android:name=".L72.AddNoteActivity"
+            android:name=".L091.ListOfUsersMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L72.ViewsMainActivity"
+            android:name=".L083.screens.employers.EmployerListActivity"
             android:exported="false" />
         <activity
-            android:name=".L71.L7GameResultActivity"
+            android:name=".L082.screens.employers.EmployerListActivity"
             android:exported="false" />
         <activity
-            android:name=".L71.L7DataStoreMainActivity"
+            android:name=".L081.EmployersMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L6.L6GuessStarActivity"
+            android:name=".L072.AddNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".L6.L6JSONProjectActivity"
+            android:name=".L072.ViewsMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L5.L5addSeekBarActivity"
+            android:name=".L071.L7GameResultActivity"
             android:exported="false" />
         <activity
-            android:name=".L5.L5CupDescriptionActivity"
+            android:name=".L071.L7DataStoreMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L5.L5CupActivity"
+            android:name=".L06.L6GuessStarActivity"
             android:exported="false" />
         <activity
-            android:name=".L5.L5ShopMainActivity"
+            android:name=".L06.L6JSONProjectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L05.L5addSeekBarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L05.L5CupDescriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L05.L5CupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".L05.L5ShopMainActivity"
             android:exported="true" />
         <activity
-            android:name=".L4.L4OrderDetailsActivity"
+            android:name=".L04.L4OrderDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".L4.L4CreateOrderActivity"
+            android:name=".L04.L4CreateOrderActivity"
             android:exported="true" />
         <activity
-            android:name=".L4.L4MainLoginActivity"
+            android:name=".L04.L4MainLoginActivity"
             android:exported="true" />
         <activity
-            android:name=".L3.L3MainTimerActivity"
+            android:name=".L03.L3MainTimerActivity"
             android:exported="true" />
         <activity
-            android:name=".L2.L2MainCreateMessageActivity"
+            android:name=".L02.L2MainCreateMessageActivity"
             android:exported="true" />
         <activity
-            android:name=".L1.L1MainColorSpinnerActivity"
+            android:name=".L01.L1MainColorSpinnerActivity"
             android:exported="true" />
         <activity
-            android:name=".L2.L2ActivityRecievedMessage"
+            android:name=".L02.L2ActivityRecievedMessage"
             android:exported="true" />
         <activity
-            android:name=".L0MainActivity"
+            android:name=".main.L0MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

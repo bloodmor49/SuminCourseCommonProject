@@ -113,4 +113,18 @@
         <item>Воскресенье</item>
     </string-array>
 
+    <!-- activity_l9 -->
+
+    <string name="addUser">Добавить пользователя</string>
+    <string name="userName">Имя: </string>
+    <string name="userSurname">Фамилия: </string>
+    <string name="userAge">Возраст: </string>
+    <string name="userGender">Пол: </string>
+    <string name="EnterGender">Введите пол:</string>
+    <string name="EnterAge">Введите возраст</string>
+    <string name="EnterSurname">Введите Фамилию:</string>
+    <string name="EnterName">Введите имя:</string>
+    <string name="DownloadToFireCloud">Загрузить в FireCloud</string>
+    <string name="MainTestZone">Тестовая зона</string>
+
 </resources>
