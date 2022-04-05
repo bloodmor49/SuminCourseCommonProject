@@ -95,7 +95,7 @@ class L0MainActivity : AppCompatActivity() {
             "Firebase FireCloud (загрузка,выгрузка,observable) - список пользователей"))
         listOfLessons.add(LessonInfo("L10",
             "Clean Architecture - Data,Domain,Presentation, " +
-                    "RecyclerView Advanced - список товаров"))
+                    "RecyclerView Advanced (DiffUtil, ListAdapter, Pool) - список товаров с firebase"))
     }
 
     fun testZoneActivity(view: View) {

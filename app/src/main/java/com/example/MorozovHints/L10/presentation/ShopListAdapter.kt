@@ -1,28 +1,37 @@
 package com.example.MorozovHints.L10.presentation
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import com.example.MorozovHints.L10.domain.ShopItem
 import com.example.MorozovHints.R
 
-class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>() {
+class ShopListAdapter : ListAdapter<ShopItem,ShopItemViewHolder>(ShopItemDiffCallback()) {
 
-    var shopList = listOf<ShopItem>()
-        set(value) {
-            field = value
+    /*var shopList = listOf<ShopItem>()
+      //  set(value) {
+
+            /*
+            проблема NDSC в том, что при изменении списка весь bind переопределяется и
+            увеличивается пул viewholder-ов. Для решени проблемы используется [ShopListDiffCallback]
+
             notifyDataSetChanged()
+            */
+
+            /* 2 вариант - ShopListDiffCallback. Минут в том, что пул все же обновляется.
+            val callback = ShopListDiffCallback(shopList, value)
+            val diffresult = DiffUtil.calculateDiff(callback)
+            diffresult.dispatchUpdatesTo(this)
+            */
+
+       //     field = value
         }
+        */
 
     var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
     var onShopItemClickListener: ((ShopItem) -> Unit)? = null
 
-    class ShopItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewShopItemName = itemView.findViewById<TextView>(R.id.textViewShopItemName)
-        val textViewShopItemCount = itemView.findViewById<TextView>(R.id.textViewShopItemCount)
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
         val layout =
@@ -37,9 +46,9 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
     }
 
     override fun onBindViewHolder(holder: ShopItemViewHolder, position: Int) {
-        val shopItem = shopList[position]
+        val shopItem = getItem(position)
         with(holder) {
-            itemView.setOnLongClickListener{
+            itemView.setOnLongClickListener {
                 onShopItemLongClickListener?.invoke(shopItem)
                 true
             }
@@ -55,25 +64,18 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
     //Метод для определения какой макет используется для каждого элемента элемента.
     //В нашем случае активировано или не активировано.
     override fun getItemViewType(position: Int): Int {
-        val item = shopList[position]
+        val item = getItem(position)
         return if (item.enabled) VIEW_TYPE_ENABLED
         else VIEW_TYPE_DISABLED
     }
 
-    override fun getItemCount(): Int = shopList.size
+    //не нужно для ShopItemDiffCallback
+    //override fun getItemCount(): Int = .size
 
-    interface OnShopItemLongClickListener{
-        fun onShopItemLongClick(shopItem: ShopItem)
-    }
-
-    interface OnShopItemClickListener{
-        fun onShopItemClick(shopItem: ShopItem)
-    }
 
     companion object {
         const val VIEW_TYPE_ENABLED = 1
         const val VIEW_TYPE_DISABLED = 0
-
         //скрытые экраны уходят в пул, размера пула
         const val MAX_POOL_SIZE = 15
 
