@@ -13,13 +13,17 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".L10.presentation.EditShopItemActivity"
+            android:name=".L102.FragmentStudyMainActivity"
             android:exported="false" />
+        <activity
+            android:name=".L101.presentation.shopItemActivity.ShopItemActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".main.TestZoneActivity"
             android:exported="false" />
         <activity
-            android:name=".L10.presentation.ShopListMainActivity"
+            android:name=".L101.presentation.mainActivity.ShopListMainActivity"
             android:exported="false" />
         <activity
             android:name=".L091.AddNewUserActivity"
@@ -28,7 +32,7 @@
             android:name=".L091.ListOfUsersMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L083.screens.employers.EmployerListActivity"
+            android:name=".L083.VIEW.screens.EmployerListActivity"
             android:exported="false" />
         <activity
             android:name=".L082.screens.employers.EmployerListActivity"

@@ -126,5 +126,12 @@
     <string name="EnterName">Введите имя:</string>
     <string name="DownloadToFireCloud">Загрузить в FireCloud</string>
     <string name="MainTestZone">Тестовая зона</string>
+    <string name="count">Count:</string>
+    <string name="name">Name:</string>
+    <string name="Save">Сохранить</string>
+    <string name="ErrorInput">Ошибка ввода</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

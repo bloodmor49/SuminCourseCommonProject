@@ -17,12 +17,13 @@ import com.example.MorozovHints.L072.ViewsMainActivity
 import com.example.MorozovHints.L081.EmployersMainActivity
 import com.example.MorozovHints.L082.screens.employers.EmployerListActivity
 import com.example.MorozovHints.L091.ListOfUsersMainActivity
-import com.example.MorozovHints.L10.presentation.ShopListMainActivity
+import com.example.MorozovHints.L101.presentation.mainActivity.ShopListMainActivity
+import com.example.MorozovHints.L102.FragmentStudyMainActivity
 import com.example.MorozovHints.R
 
 class L0MainActivity : AppCompatActivity() {
 
-    var listOfLessons = mutableListOf<LessonInfo>()
+    private var listOfLessons = mutableListOf<LessonInfo>()
 
     private lateinit var recyclerViewLessons: RecyclerView
     private lateinit var lessonsAdapter: MainRecyclerAdapter
@@ -31,6 +32,10 @@ class L0MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_recycler)
         actionBar?.show()
+        setUpRecyclerView()
+    }
+
+    private fun setUpRecyclerView() {
         recyclerViewLessons = findViewById(R.id.RecyclerViewLessons)
         addLessons(listOfLessons)
         lessonsAdapter = MainRecyclerAdapter(listOfLessons)
@@ -45,6 +50,8 @@ class L0MainActivity : AppCompatActivity() {
         }
     }
 
+    //TODO() - пока что переход по активити сделан кастыльно, потом изменю после прохождения курсов
+
     private fun startActivityById(id: Int) {
         when (id) {
             0 -> startActivity(Intent(this, L1MainColorSpinnerActivity::class.java))
@@ -58,15 +65,16 @@ class L0MainActivity : AppCompatActivity() {
             8 -> startActivity(Intent(this, EmployersMainActivity::class.java))
             9 -> startActivity(Intent(this, EmployerListActivity::class.java))
             10 -> startActivity(Intent(this,
-                com.example.MorozovHints.L083.screens.employers.EmployerListActivity::class.java))
+                com.example.MorozovHints.L083.VIEW.screens.EmployerListActivity::class.java))
             11 -> startActivity(Intent(this, ListOfUsersMainActivity::class.java))
             12 -> startActivity(Intent(this, ShopListMainActivity::class.java))
+            13 -> startActivity(Intent(this, FragmentStudyMainActivity::class.java))
         }
     }
 
     private fun addLessons(listOfLessons: MutableList<LessonInfo>) {
         listOfLessons.add(LessonInfo("L1",
-            "XML, кнопки, методы - спиннер цвета" ))
+            "XML, кнопки, методы - спиннер цвета"))
         listOfLessons.add(LessonInfo("L2",
             "2 активности, намерения, действия - отправка сообщений"))
         listOfLessons.add(LessonInfo("L3",
@@ -95,7 +103,9 @@ class L0MainActivity : AppCompatActivity() {
             "Firebase FireCloud (загрузка,выгрузка,observable) - список пользователей"))
         listOfLessons.add(LessonInfo("L10",
             "Clean Architecture - Data,Domain,Presentation, " +
-                    "RecyclerView Advanced (DiffUtil, ListAdapter, Pool) - список товаров с firebase"))
+                    "RecyclerView Advanced (DiffUtil, ListAdapter, Pool), Fragments, MVVM - список товаров с firebase"))
+        listOfLessons.add(LessonInfo("L10",
+            "Fragments simple, тренировка, простая активити"))
     }
 
     fun testZoneActivity(view: View) {
