@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,7 +75,6 @@ class ShopItemFragment() : Fragment() {
         launchRightMode()
         observeViewModel()
     }
-
 
     // СОБЕСЕДОВАНИЕ - ВАЖНО.
     // observe(viewLifecycleOwner) т.к. фрагмент и активность обладают разными жизн. циклами,
@@ -220,7 +220,8 @@ class ShopItemFragment() : Fragment() {
         fun onEditingFinished()
     }
 
-    //Содержит все константы фрагмента
+    //Содержит все константы фрагмента,
+    //А также методы запуска.
     companion object {
         private const val SCREEN_MODE = "extra_mode"
         private const val MODE_EDIT = "mode_edit"

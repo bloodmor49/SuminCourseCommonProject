@@ -25,11 +25,8 @@ class ShopListMainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFini
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_list_main)
         shopItemContainer = findViewById(R.id.shop_item_container)
-
-
         setUpRecyclerView()
         setUpViewModel()
-
         val buttonAddItem = findViewById<FloatingActionButton>(R.id.floatingActionButtonAddShopItem)
         buttonAddItem.setOnClickListener {
             if (isOnePaneMode()) {

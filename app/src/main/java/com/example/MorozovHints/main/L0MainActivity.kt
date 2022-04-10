@@ -18,7 +18,7 @@ import com.example.MorozovHints.L081.EmployersMainActivity
 import com.example.MorozovHints.L082.screens.employers.EmployerListActivity
 import com.example.MorozovHints.L091.ListOfUsersMainActivity
 import com.example.MorozovHints.L101.presentation.mainActivity.ShopListMainActivity
-import com.example.MorozovHints.L102.FragmentStudyMainActivity
+import com.example.MorozovHints.L102.presentation.FragmentStudyMainActivity
 import com.example.MorozovHints.R
 
 class L0MainActivity : AppCompatActivity() {
@@ -101,11 +101,11 @@ class L0MainActivity : AppCompatActivity() {
             "MVVM - Список сотрудников (+ ROOM, LIVEDATA)"))
         listOfLessons.add(LessonInfo("L91",
             "Firebase FireCloud (загрузка,выгрузка,observable) - список пользователей"))
-        listOfLessons.add(LessonInfo("L10",
+        listOfLessons.add(LessonInfo("L101",
             "Clean Architecture - Data,Domain,Presentation, " +
                     "RecyclerView Advanced (DiffUtil, ListAdapter, Pool), Fragments, MVVM - список товаров с firebase"))
-        listOfLessons.add(LessonInfo("L10",
-            "Fragments simple, тренировка, простая активити"))
+        listOfLessons.add(LessonInfo("L102",
+            "Fragments simple, тренировка, простая активити и простая работа с фрагментом"))
     }
 
     fun testZoneActivity(view: View) {

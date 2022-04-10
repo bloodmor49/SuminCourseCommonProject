@@ -20,6 +20,7 @@ class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_shop_item)
+        //проверяем, что пришли не нули.
         parseIntent()
         //нужно чтобы onCreate создавалась 1 раз.
         if (savedInstanceState==null) {
@@ -44,6 +45,7 @@ class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishLi
             .commit()
     }
 
+    //проверка на получение данных
     private fun parseIntent() {
         if (!intent.hasExtra(EXTRA_SCREEN_MODE)) {
             throw RuntimeException("Param screen mode is absent")

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".L102.FragmentStudyMainActivity"
+            android:name=".L102.presentation.FragmentStudyMainActivity"
             android:exported="false" />
         <activity
             android:name=".L101.presentation.shopItemActivity.ShopItemActivity"
