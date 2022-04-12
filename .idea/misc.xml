@@ -5,20 +5,28 @@
       <map>
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout-land/activity_fragment_study_main.xml" value="0.1728395061728395" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout-land/activity_shop_list_main.xml" value="0.22" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout-v26/fragment_choose_level.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout-v28/fragment_welcome.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_edit_shop_item.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_firebase_main.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_fragment_study_main.xml" value="0.22" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_l71_views_main.xml" value="0.1614497528830313" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_main_game.xml" value="0.1614497528830313" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_main_recycler.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_order_details.xml" value="0.1614497528830313" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_register.xml" value="0.1614497528830313" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_shop_list_main.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/activity_test_zone.xml" value="0.1614497528830313" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_blank.xml" value="0.1" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_blank_fragment.xml" value="0.1614497528830313" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_choose_level.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_game.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_game_finished.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_second.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_shop_item.xml" value="0.33" />
+        <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/fragment_welcome.xml" value="0.33" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/main_lessons_item.xml" value="0.1" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/shop_item_enabled.xml" value="0.5" />
         <entry key="..\:/Users/Artem/AndroidStudioProjects/MorozovHints/app/src/main/res/layout/shop_item_unenabled.xml" value="0.5" />

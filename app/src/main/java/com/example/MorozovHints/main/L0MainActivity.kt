@@ -19,6 +19,7 @@ import com.example.MorozovHints.L082.screens.employers.EmployerListActivity
 import com.example.MorozovHints.L091.ListOfUsersMainActivity
 import com.example.MorozovHints.L101.presentation.mainActivity.ShopListMainActivity
 import com.example.MorozovHints.L102.presentation.FragmentStudyMainActivity
+import com.example.MorozovHints.L110.presentation.MainActivityGame
 import com.example.MorozovHints.R
 
 class L0MainActivity : AppCompatActivity() {
@@ -69,6 +70,7 @@ class L0MainActivity : AppCompatActivity() {
             11 -> startActivity(Intent(this, ListOfUsersMainActivity::class.java))
             12 -> startActivity(Intent(this, ShopListMainActivity::class.java))
             13 -> startActivity(Intent(this, FragmentStudyMainActivity::class.java))
+            14 -> startActivity(Intent(this, MainActivityGame::class.java))
         }
     }
 
@@ -106,6 +108,8 @@ class L0MainActivity : AppCompatActivity() {
                     "RecyclerView Advanced (DiffUtil, ListAdapter, Pool), Fragments, MVVM - список товаров с firebase"))
         listOfLessons.add(LessonInfo("L102",
             "Fragments simple, тренировка, простая активити и простая работа с фрагментом"))
+        listOfLessons.add(LessonInfo("L11",
+            "Android JETPACK: ViewBinding, Fragments Advanced - мат.игра"))
     }
 
     fun testZoneActivity(view: View) {

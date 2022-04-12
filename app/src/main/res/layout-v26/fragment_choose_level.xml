@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".L110.presentation.ChooseLevelFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_weight="1"
+            android:autoSizeMaxTextSize="48sp"
+            android:id="@+id/textViewChooseDifficult"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="@string/ChooseDifficult" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/buttonTestLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/TestLevel" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/buttonEasyLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/EasyLevel" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/buttonNormalLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/NormalLevel" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/buttonHardLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/HardLevel" />
+    </LinearLayout>
+</FrameLayout>

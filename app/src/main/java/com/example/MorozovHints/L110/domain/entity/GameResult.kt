@@ -1,8 +1,13 @@
 package com.example.MorozovHints.L110.domain.entity
 
-data class GameResult (
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import java.io.Serializable
+
+@Parcelize
+data class GameResult(
     val winner: Boolean,
     val countOfRightAnswers: Int,
     val countOfQuestions: Int,
-    val gameSettings: GameSettings
-        )
+    val gameSettings: GameSettings,
+) : Parcelable

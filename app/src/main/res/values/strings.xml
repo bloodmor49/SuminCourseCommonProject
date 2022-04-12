@@ -131,9 +131,29 @@
     <string name="Save">Сохранить</string>
     <string name="ErrorInput">Ошибка ввода</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="game_rules"><![CDATA[
+Перед вами будет три фигуры, две снизу, одна сверху. В двух из них будут числа.
+Необходимо, чтобы сумма чисел из нижних фигур была равна числу в верхней фигуре,
+для чего нужно вставить недостающее число.
+Удачи!]]></string>
     <string name="LoadItem">Загрузить предмет</string>
     <string name="inputID">Введите id</string>
-
+    <string name="RulesAccepted">Понятно</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ChooseDifficult">Выберите уровень сложности:</string>
+    <string name="TestLevel">Тестовый</string>
+    <string name="EasyLevel">Легкий</string>
+    <string name="NormalLevel">Средний</string>
+    <string name="HardLevel">Сложный</string>
+    <string name="game_over">Game Over</string>
+    <string name="score_answers">Ваш счет: %s</string>
+    <string name="score_percentage">Процент правильных ответов: %s</string>
+    <string name="retry">Попробовать снова</string>
+    <string name="right_answers">Правильных ответов %s из %s необходимых</string>
+    <string name="required_percentage">Необходимый процент правильных ответов: %s</string>
+    <string name="required_score">Необходимое количество правильных ответов: %s</string>
+    <string name="progress_answers">Правильных ответов %s (минимум %s)</string>
+    <string name="question_mark">\?</string>
 
 </resources>

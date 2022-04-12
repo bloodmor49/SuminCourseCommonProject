@@ -13,6 +13,10 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".L110.presentation.MainActivityGame"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
             android:name=".L102.presentation.FragmentStudyMainActivity"
             android:exported="false" />
         <activity
