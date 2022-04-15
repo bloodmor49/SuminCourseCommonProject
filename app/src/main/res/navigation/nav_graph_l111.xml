@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_l111"
+    app:startDestination="@id/l111Fragment1">
+
+    <fragment
+        android:id="@+id/l111Fragment1"
+        android:name="com.example.morozovhints.l111.L111Fragment1"
+        android:label="L111Fragment1" >
+        <action
+            android:id="@+id/action_l111Fragment1_to_l111Fragment2"
+            app:destination="@id/l111Fragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/l111Fragment2"
+        android:name="com.example.morozovhints.l111.L111Fragment2"
+        android:label="L111Fragment2" >
+        <argument
+            android:name="stringArgFromF1"
+            app:argType="string" />
+        <argument
+            android:name="intArgFromF1"
+            app:argType="integer" />
+        <argument
+            android:name="L111Data"
+            app:argType="com.example.morozovhints.l111.L111Data" />
+    </fragment>
+</navigation>

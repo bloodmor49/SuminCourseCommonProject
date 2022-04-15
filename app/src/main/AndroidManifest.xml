@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.MorozovHints">
+    package="com.example.morozovhints">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,9 +13,15 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".L110.presentation.MainActivityGame"
-            android:screenOrientation="portrait"
+            android:name=".l120.MainActivityAsync"
             android:exported="false" />
+        <activity
+            android:name=".l111.MainActivityDBinTr"
+            android:exported="false" />
+        <activity
+            android:name=".l110.presentation.MainActivityGame"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".L102.presentation.FragmentStudyMainActivity"
             android:exported="false" />

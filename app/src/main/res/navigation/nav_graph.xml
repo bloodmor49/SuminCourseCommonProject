@@ -2,4 +2,47 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"/>
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.morozovhints.l110.presentation.fragments.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_chooseLevelFragment22"
+            app:destination="@id/chooseLevelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseLevelFragment"
+        android:name="com.example.morozovhints.l110.presentation.fragments.ChooseLevelFragment"
+        android:label="fragment_choose_level"
+        tools:layout="@layout/fragment_choose_level" >
+        <action
+            android:id="@+id/action_chooseLevelFragment2_to_gameFragment2"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.morozovhints.l110.presentation.fragments.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment2_to_gameFinishedFragment"
+            app:destination="@id/gameFinishedFragment"
+            app:popUpTo="@id/gameFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="level"
+            app:argType="com.example.morozovhints.l110.domain.entity.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFinishedFragment"
+        android:name="com.example.morozovhints.l110.presentation.fragments.GameFinishedFragment"
+        android:label="fragment_game_finished"
+        tools:layout="@layout/fragment_game_finished" >
+        <argument
+            android:name="gameResult"
+            app:argType="com.example.morozovhints.l110.domain.entity.GameResult" />
+    </fragment>
+</navigation>

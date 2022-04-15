@@ -155,5 +155,10 @@
     <string name="required_score">Необходимое количество правильных ответов: %s</string>
     <string name="progress_answers">Правильных ответов %s (минимум %s)</string>
     <string name="question_mark">\?</string>
+    <string name="data_from_fragment1">data_from_Fragment1</string>
+    <string name="to_fragment_2">To Fragment 2</string>
+    <string name="city">Город:</string>
+    <string name="weather">Погода:</string>
+    <string name="Download">Загрузить</string>
 
 </resources>
