@@ -1,4 +1,4 @@
-package com.example.morozovhints.L101.presentation.mainActivity
+package com.example.morozovhints.L101_itemlist_pg.presentation.mainActivity
 
 import android.os.Bundle
 import android.widget.Toast
@@ -8,8 +8,8 @@ import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.morozovhints.L101.presentation.ShopItemFragment
-import com.example.morozovhints.L101.presentation.shopItemActivity.ShopItemActivity
+import com.example.morozovhints.L101_itemlist_pg.presentation.ShopItemFragment
+import com.example.morozovhints.L101_itemlist_pg.presentation.shopItemActivity.ShopItemActivity
 import com.example.morozovhints.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 

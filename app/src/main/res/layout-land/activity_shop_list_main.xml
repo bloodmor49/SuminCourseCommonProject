@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L101.presentation.mainActivity.ShopListMainActivity"
+    tools:context=".L101_itemlist_pg.presentation.mainActivity.ShopListMainActivity"
     >
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,7 +38,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/shop_item_container"
-        android:name="com.example.morozovhints.L101.presentation.ShopItemFragment"
+        android:name="com.example.morozovhints.L101_itemlist_pg.presentation.ShopItemFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

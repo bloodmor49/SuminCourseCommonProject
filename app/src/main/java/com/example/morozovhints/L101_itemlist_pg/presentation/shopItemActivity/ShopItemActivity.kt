@@ -1,11 +1,11 @@
-package com.example.morozovhints.L101.presentation.shopItemActivity
+package com.example.morozovhints.L101_itemlist_pg.presentation.shopItemActivity
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.morozovhints.L101.domain.ShopItem
-import com.example.morozovhints.L101.presentation.ShopItemFragment
+import com.example.morozovhints.L101_itemlist_pg.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_pg.presentation.ShopItemFragment
 import com.example.morozovhints.R
 
 class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListener {

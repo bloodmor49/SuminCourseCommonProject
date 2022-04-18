@@ -1,26 +1,31 @@
-package com.example.morozovhints.L101.presentation.shopItemActivity
+package com.example.morozovhints.L101_itemlist_pg.presentation.shopItemActivity
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.morozovhints.L101.data.ShopListRepositoryImpl
-import com.example.morozovhints.L101.domain.AddShopItemUseCase
-import com.example.morozovhints.L101.domain.EditShopItemUseCase
-import com.example.morozovhints.L101.domain.GetShopItemUseCase
-import com.example.morozovhints.L101.domain.ShopItem
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.morozovhints.L101_itemlist_pg.data.ShopListRepositoryImpl
+import com.example.morozovhints.L101_itemlist_pg.domain.AddShopItemUseCase
+import com.example.morozovhints.L101_itemlist_pg.domain.EditShopItemUseCase
+import com.example.morozovhints.L101_itemlist_pg.domain.GetShopItemUseCase
+import com.example.morozovhints.L101_itemlist_pg.domain.ShopItem
+import kotlinx.coroutines.launch
 
 /**
- * ViewModel экрана настройки элементов списка.
+ * ViewModel экрана настройки элементов списка. (MVVM)
  * Вся работа по загрузке элементов и их обработке происходит ЗДЕСЬ.
- * Активити ТУПО мониторит ОТСЮДА значения.
+ * Активити ТУПО мониторит ОТСЮДА значения через livedata.
  */
-class ShopItemViewModel : ViewModel() {
+class ShopItemViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = ShopListRepositoryImpl
+    private val repository = ShopListRepositoryImpl(application)
 
     private val getShopItemUseCase = GetShopItemUseCase(repository)
     private val editShopItemUseCase = EditShopItemUseCase(repository)
     private val addShopItemUseCase = AddShopItemUseCase(repository)
+
+//    вместо создания скоупа вручную можно использовать viewModelScope
+//    val scope = CoroutineScope(Dispatchers.IO)
+//        он не требует очистки
+
 
     //_ нужно для того, чтобы был доступ из ViewModel, но не из activity, т.к. та не должна задавать
     //значения, а только считывать их. Короче это инфиксная нотация.
@@ -41,30 +46,38 @@ class ShopItemViewModel : ViewModel() {
         get() = _shouldCloseScreen
 
     fun getShopItem(shopItemId: Int) {
-        val item = getShopItemUseCase.getShopItem(shopItemId)
-        _shopItem.value = item
+        viewModelScope.launch {
+            val item = getShopItemUseCase.getShopItem(shopItemId)
+            _shopItem.value = item
+        }
+
     }
 
     fun addShopItem(inputName: String?, inputCount: String?) {
-        val name = parseName(inputName)
-        val count = parseCount(inputCount)
-        val fieldsValid = validateInput(name, count)
-        if (fieldsValid) {
-            val shopItem = ShopItem(name = name, count = count, enabled = true)
-            addShopItemUseCase.addShopItem(shopItem)
-            finishWork()
+        viewModelScope.launch {
+            val name = parseName(inputName)
+            val count = parseCount(inputCount)
+            val fieldsValid = validateInput(name, count)
+            if (fieldsValid) {
+                val shopItem = ShopItem(name = name, count = count, enabled = true)
+                addShopItemUseCase.addShopItem(shopItem)
+                finishWork()
+            }
         }
+
     }
 
     fun editShopItem(inputName: String?, inputCount: String) {
-        val name = parseName(inputName)
-        val count = parseCount(inputCount)
-        val fieldsValid = validateInput(name, count)
-        if (fieldsValid) {
-            _shopItem.value?.let {
-                val item = it.copy(name=name,count=count)
-                editShopItemUseCase.editShopItem(item)
-                finishWork()
+        viewModelScope.launch {
+            val name = parseName(inputName)
+            val count = parseCount(inputCount)
+            val fieldsValid = validateInput(name, count)
+            if (fieldsValid) {
+                _shopItem.value?.let {
+                    val item = it.copy(name = name, count = count)
+                    editShopItemUseCase.editShopItem(item)
+                    finishWork()
+                }
             }
         }
     }
@@ -105,4 +118,9 @@ class ShopItemViewModel : ViewModel() {
     private fun finishWork() {
         _shouldCloseScreen.value = Unit
     }
+
+//    override fun onCleared() {
+//        super.onCleared()
+//        scope.cancel()
+//    }
 }

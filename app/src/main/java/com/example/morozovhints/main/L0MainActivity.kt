@@ -17,12 +17,13 @@ import com.example.morozovhints.L072.ViewsMainActivity
 import com.example.morozovhints.L081.EmployersMainActivity
 import com.example.morozovhints.L082.screens.employers.EmployerListActivity
 import com.example.morozovhints.L091.ListOfUsersMainActivity
-import com.example.morozovhints.L101.presentation.mainActivity.ShopListMainActivity
+import com.example.morozovhints.L101_itemlist_pg.presentation.mainActivity.ShopListMainActivity
 import com.example.morozovhints.L102.presentation.FragmentStudyMainActivity
 import com.example.morozovhints.l111.MainActivityDBinTr
 import com.example.morozovhints.R
 import com.example.morozovhints.l110.presentation.MainActivityGame
 import com.example.morozovhints.l120.MainActivityAsync
+import com.example.morozovhints.l130.MainActivityService
 
 class L0MainActivity : AppCompatActivity() {
 
@@ -76,6 +77,7 @@ class L0MainActivity : AppCompatActivity() {
             14 -> startActivity(Intent(this, MainActivityGame::class.java))
             15 -> startActivity(Intent(this, MainActivityDBinTr::class.java))
             16 -> startActivity(Intent(this, MainActivityAsync::class.java))
+            17 -> startActivity(Intent(this, MainActivityService::class.java))
         }
     }
 
@@ -95,30 +97,33 @@ class L0MainActivity : AppCompatActivity() {
                     "адаптером (string -> listView), SeekBar - Магазин кружен"))
         listOfLessons.add(LessonInfo("L6",
             "Загрузка данных из интернета, JSON, LogCat - Погода в городе"))
-        listOfLessons.add(LessonInfo("L71",
+        listOfLessons.add(LessonInfo("L7.1",
             "Хранение данных (Shared References) - Brain Trainer"))
-        listOfLessons.add(LessonInfo("L72",
+        listOfLessons.add(LessonInfo("L7.2",
             "RecyclerView(ViewHolder, CardView, Adapter), " +
                     "DB SQLite (Contact,DBHelper,Add,Remove) - Приложение заметок c SQLite"))
-        listOfLessons.add(LessonInfo("L81",
+        listOfLessons.add(LessonInfo("L8.1",
             "Json->Gson->Retrofit2->RXJAVA3 - Список сотрудников"))
-        listOfLessons.add(LessonInfo("L82",
+        listOfLessons.add(LessonInfo("L8.2",
             "MVP - Список сотрудников"))
-        listOfLessons.add(LessonInfo("L83",
+        listOfLessons.add(LessonInfo("L8.3",
             "MVVM - Список сотрудников (+ ROOM, LIVEDATA)"))
-        listOfLessons.add(LessonInfo("L91",
+        listOfLessons.add(LessonInfo("L9.1",
             "Firebase FireCloud (загрузка,выгрузка,observable) - список пользователей"))
-        listOfLessons.add(LessonInfo("L101",
+        listOfLessons.add(LessonInfo("L10.1",
             "Clean Architecture - Data,Domain,Presentation, " +
                     "RecyclerView Advanced (DiffUtil, ListAdapter, Pool), Fragments, MVVM - список товаров с firebase"))
-        listOfLessons.add(LessonInfo("L102",
+        listOfLessons.add(LessonInfo("L10.2",
             "Fragments simple - тренировка."))
-        listOfLessons.add(LessonInfo("L110",
+        listOfLessons.add(LessonInfo("L11.0",
             "Android JETPACK: ViewBinding, Fragments Advanced," +
                     "dataBinding, JPNav,Bin Adapters, lazy, Parceble, Serialize," +
                     "safeArgs - мат. игра"))
-        listOfLessons.add(LessonInfo("L111", "Android JETPACK Navigation - тренировка."))
-        listOfLessons.add(LessonInfo("L120", "Многопоточноесть - AsyncTask,Handler,Looper."))
+        listOfLessons.add(LessonInfo("L11.1", "Android JETPACK Navigation - тренировка."))
+        listOfLessons.add(LessonInfo("L12.0",
+            "Многопоточноесть - Callback, AsyncTask,Handler,Looper,Coroutines,Scope."))
+        listOfLessons.add(LessonInfo("L13.0",
+            "Сервисы - Service."))
     }
 
     fun testZoneActivity(view: View) {

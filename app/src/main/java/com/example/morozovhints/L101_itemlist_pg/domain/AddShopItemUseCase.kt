@@ -1,4 +1,4 @@
-package com.example.morozovhints.L101.domain
+package com.example.morozovhints.L101_itemlist_pg.domain
 
 /**
  * USECASE - принцип SOLID - 1 класс = 1 задача бизнес логики.
@@ -6,7 +6,7 @@ package com.example.morozovhints.L101.domain
  * Для PRESENTATION слоя вводится IMPL класс даты.
  */
 class AddShopItemUseCase(private val shopListRepository: ShopListRepository) {
-    fun addShopItem(shopItem: ShopItem) {
+    suspend fun addShopItem(shopItem: ShopItem) {
         shopListRepository.addShopItem(shopItem)
     }
 }

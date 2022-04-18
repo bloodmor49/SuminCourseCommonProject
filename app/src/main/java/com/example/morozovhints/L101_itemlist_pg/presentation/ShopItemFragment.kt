@@ -1,4 +1,4 @@
-package com.example.morozovhints.L101.presentation
+package com.example.morozovhints.L101_itemlist_pg.presentation
 
 import android.content.Context
 import android.os.Bundle
@@ -11,9 +11,9 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.morozovhints.L101.domain.ShopItem
-import com.example.morozovhints.L101.presentation.mainActivity.ShopListMainActivity
-import com.example.morozovhints.L101.presentation.shopItemActivity.ShopItemViewModel
+import com.example.morozovhints.L101_itemlist_pg.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_pg.presentation.mainActivity.ShopListMainActivity
+import com.example.morozovhints.L101_itemlist_pg.presentation.shopItemActivity.ShopItemViewModel
 import com.example.morozovhints.R
 import com.google.android.material.textfield.TextInputLayout
 
@@ -182,7 +182,7 @@ class ShopItemFragment() : Fragment() {
         }
         //а кнопку будет редактировать все.
         buttonSave.setOnClickListener {
-            //TODO ? to text. cause java class not nullable
+
             viewModel.editShopItem(etName.text?.toString(), etCount.text?.toString().toString())
         }
     }

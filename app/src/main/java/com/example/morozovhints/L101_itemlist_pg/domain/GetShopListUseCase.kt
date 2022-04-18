@@ -1,4 +1,4 @@
-package com.example.morozovhints.L101.domain
+package com.example.morozovhints.L101_itemlist_pg.domain
 
 import androidx.lifecycle.LiveData
 

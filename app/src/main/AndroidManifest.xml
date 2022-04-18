@@ -3,6 +3,7 @@
     package="com.example.morozovhints">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".l130.MainActivityService"
+            android:exported="false" />
+        <service android:name=".l130.MyService"/>
+        <service android:name=".l130.MyForeGroundService"/>
+        <service android:name=".l130.MyIntentService"/>
         <activity
             android:name=".l120.MainActivityAsync"
             android:exported="false" />
@@ -26,14 +33,14 @@
             android:name=".L102.presentation.FragmentStudyMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L101.presentation.shopItemActivity.ShopItemActivity"
+            android:name=".L101_itemlist_pg.presentation.shopItemActivity.ShopItemActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".main.TestZoneActivity"
             android:exported="false" />
         <activity
-            android:name=".L101.presentation.mainActivity.ShopListMainActivity"
+            android:name=".L101_itemlist_pg.presentation.mainActivity.ShopListMainActivity"
             android:exported="false" />
         <activity
             android:name=".L091.AddNewUserActivity"

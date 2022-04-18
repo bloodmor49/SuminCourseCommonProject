@@ -1,7 +1,7 @@
-package com.example.morozovhints.L101.presentation.mainActivity
+package com.example.morozovhints.L101_itemlist_pg.presentation.mainActivity
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.morozovhints.L101.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_pg.domain.ShopItem
 
 class ShopItemDiffCallback : DiffUtil.ItemCallback<ShopItem>() {
 

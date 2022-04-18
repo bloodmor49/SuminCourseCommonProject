@@ -1,4 +1,4 @@
-package com.example.morozovhints.L101.presentation.mainActivity
+package com.example.morozovhints.L101_itemlist_pg.presentation.mainActivity
 
 import android.view.View
 import android.widget.TextView

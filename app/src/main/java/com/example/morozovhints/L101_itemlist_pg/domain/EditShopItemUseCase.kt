@@ -1,7 +1,7 @@
-package com.example.morozovhints.L101.domain
+package com.example.morozovhints.L101_itemlist_pg.domain
 
 class EditShopItemUseCase (private val shopListRepository: ShopListRepository){
-    fun editShopItem(shopItem: ShopItem){
+    suspend fun editShopItem(shopItem: ShopItem){
         shopListRepository.editShopItem(shopItem)
     }
 }

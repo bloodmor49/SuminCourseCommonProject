@@ -1,7 +1,7 @@
 //
 //СТАРАЯ ВЕРСИЯ АКТВИТИ. ИСПОЛЬЗУЕТСЯ ДЛЯ СРАВНЕНИЯ С ФРАГМЕНТОМ ФУНКЦИЙ.
 //
- package com.example.morozovhints.L101.presentation.shopItemActivity
+ package com.example.morozovhints.L101_itemlist_pg.presentation.shopItemActivity
 //
 //import android.content.Context
 //import android.content.Intent
@@ -126,7 +126,7 @@ class XShopItemActivity : AppCompatActivity() {
 //            etCount.setText(it.count.toString())
 //        }
 //        buttonSave.setOnClickListener {
-//            //TODO ? to text. cause java class not nullable
+
 //            viewModel.editShopItem(etName.text?.toString(), etCount.text?.toString().toString())
 //        }
 //    }

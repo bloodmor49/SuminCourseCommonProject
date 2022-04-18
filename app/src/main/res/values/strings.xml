@@ -130,7 +130,7 @@
     <string name="name">Name:</string>
     <string name="Save">Сохранить</string>
     <string name="ErrorInput">Ошибка ввода</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="game_rules"><![CDATA[
 Перед вами будет три фигуры, две снизу, одна сверху. В двух из них будут числа.
 Необходимо, чтобы сумма чисел из нижних фигур была равна числу в верхней фигуре,
@@ -139,7 +139,7 @@
     <string name="LoadItem">Загрузить предмет</string>
     <string name="inputID">Введите id</string>
     <string name="RulesAccepted">Понятно</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ChooseDifficult">Выберите уровень сложности:</string>
     <string name="TestLevel">Тестовый</string>
@@ -161,4 +161,11 @@
     <string name="weather">Погода:</string>
     <string name="Download">Загрузить</string>
 
+    <string name="service">Service</string>
+    <string name="foreground_service">Foreground Service</string>
+    <string name="intent_service">Intent Service</string>
+    <string name="job_dispatcher">Job Dispatcher</string>
+    <string name="job_intent_service">Job Intent Service</string>
+    <string name="alarm_manager">Alarm Manager</string>
+    <string name="work_manager">Work Manager</string>
 </resources>
