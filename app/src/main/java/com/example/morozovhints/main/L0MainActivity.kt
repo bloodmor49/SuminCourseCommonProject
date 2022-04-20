@@ -123,7 +123,7 @@ class L0MainActivity : AppCompatActivity() {
         listOfLessons.add(LessonInfo("L12.0",
             "Многопоточноесть - Callback, AsyncTask,Handler,Looper,Coroutines,Scope."))
         listOfLessons.add(LessonInfo("L13.0",
-            "Сервисы - Service."))
+            "Сервисы - Services + Android JetPack (WorkManager)."))
     }
 
     fun testZoneActivity(view: View) {

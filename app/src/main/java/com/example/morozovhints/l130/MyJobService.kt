@@ -5,7 +5,9 @@ import android.app.job.JobParameters
 import android.app.job.JobService
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.IBinder
+import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import kotlinx.coroutines.*
@@ -24,6 +26,10 @@ import kotlinx.coroutines.*
  *      onStopJob - когда сервис остановлен. Например когда wifi отключился.
  * Если мы сами остановили сервис, то onStopJob не вызовется, так как им рулит система.
  *
+ * При работе с апи > 26:
+ * 
+ * Если запустить несколько сервисов при помощи метода Shcedule, то работать будет только последний.
+ * Метод enqueue же запустит последний прерванный сервис.
  */
 class MyJobService : JobService() {
 
@@ -43,14 +49,28 @@ class MyJobService : JobService() {
 
     override fun onStartJob(params: JobParameters?): Boolean {
         log("onStartCommand")
-        coroutineScope.launch {
-            for (i in 0..100) {
-                delay(1000)
-                log("Timer: $i")
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            coroutineScope.launch {
+//                 1) Достаем сервис первый из очереди.
+                var workItem = params?.dequeueWork()
+//                 2) Выполняем код до тех пор, пока в очереди есть ещё объекты.
+                while (workItem != null) {
+//                  3) Получаем значение page из намерения.
+                    val page = workItem.intent.getIntExtra(PAGE, 0)
+                    for (i in 0..100) {
+                        delay(1000)
+                        log("Timer: $i Page: $page")
+                    }
+                    //4) Конкретно один серви из очереди завершил работу. (Не все сервисы)
+                    params?.completeWork(workItem)
+                    //5) Достаем новый объект сервиса из очереди.
+                    workItem = params?.dequeueWork()
+                    //6) Завершаем работу, когда больше нет сервисов в очереди.
+                    jobFinished(params, false)
+                }
             }
-            // что делать когда закончится работа? jobfinished - параметры, нужно ли запланировать
-            // выполнение сервиса заного в определенное время?
-            jobFinished(params,true)
+
         }
         return true
     }
@@ -63,5 +83,24 @@ class MyJobService : JobService() {
 
     private fun log(message: String) {
         Log.d("service_tag", "My service: $message")
+    }
+
+    companion object {
+        const val JOB_ID = 10
+        const val PAGE = "page"
+
+        //Bundle объект ключ - значение. Для schedule, где прошлые сервисы удаляются.
+        fun newBundle(pageNum: Int): PersistableBundle {
+            return PersistableBundle().apply {
+                putInt(PAGE, pageNum)
+            }
+        }
+
+        //Для enqueue, где прошлые сервисы удаляются.
+        fun newIntent(pageNum: Int): Intent {
+            return Intent().apply {
+                putExtra(PAGE, pageNum)
+            }
+        }
     }
 }
