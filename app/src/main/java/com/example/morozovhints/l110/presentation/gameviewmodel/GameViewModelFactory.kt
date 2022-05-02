@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.morozovhints.l110.domain.entity.Level
 
-class GameViewModelFactory(val level: Level,
-val application: Application) : ViewModelProvider.Factory {
+class GameViewModelFactory(
+    val level: Level,
+    val application: Application,
+) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(GameViewModel::class.java)) {

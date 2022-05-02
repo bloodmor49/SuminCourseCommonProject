@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:name=".l140_dagger2.ex2_dagger2.L140Application"
         android:allowBackup="true"
         android:icon="@drawable/logo_okabe"
         android:label="@string/app_name"
@@ -17,21 +18,33 @@
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".l130.MainActivityService"
-            android:exported="false" />
-        <service android:name=".l130.MyService"/>
-        <service android:name=".l130.MyForeGroundService"/>
-        <service android:name=".l130.MyIntentService"/>
-        <service android:name=".l130.MyIntentServiceForJobLower26"/>
-        <service android:name=".l130.MyJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
-        <service android:name=".l130.MyJobIntentService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
-        <activity
-            android:name=".l120.MainActivityAsync"
+            android:name=".l140_dagger2.ex2_dagger2.presentation.MainActivity2Dagger2"
             android:exported="false" />
         <activity
-            android:name=".l111.MainActivityDBinTr"
+            android:name=".l140_dagger2.ex2_dagger2.presentation.MainActivityDagger2"
+            android:exported="false" />
+        <activity
+            android:name=".l140_dagger2.ex1.MainActivityDependencies"
+            android:exported="false" />
+        <activity
+            android:name=".l130_services.MainActivityService"
+            android:exported="false" />
+        <service android:name=".l130_services.MyService" />
+        <service android:name=".l130_services.MyForeGroundService" />
+        <service android:name=".l130_services.MyIntentService" />
+        <service android:name=".l130_services.MyIntentServiceForJobLower26" />
+        <service
+            android:name=".l130_services.MyJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".l130_services.MyJobIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <activity
+            android:name=".l120_async_methods.MainActivityAsync"
+            android:exported="false" />
+        <activity
+            android:name=".l111_fragments_training.MainActivityDBinTr"
             android:exported="false" />
         <activity
             android:name=".l110.presentation.MainActivityGame"
@@ -51,70 +64,70 @@
             android:name=".L101_itemlist_pg.presentation.mainActivity.ShopListMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L091.AddNewUserActivity"
+            android:name=".L091_firebase.AddNewUserActivity"
             android:exported="false" />
         <activity
-            android:name=".L091.ListOfUsersMainActivity"
+            android:name=".L091_firebase.ListOfUsersMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L083.VIEW.screens.EmployerListActivity"
+            android:name=".L083_retrofit_gson.VIEW.screens.EmployerListActivity"
             android:exported="false" />
         <activity
             android:name=".L082.screens.employers.EmployerListActivity"
             android:exported="false" />
         <activity
-            android:name=".L081.EmployersMainActivity"
+            android:name=".L081_training_jun_task_retrofit_json.EmployersMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L072.AddNoteActivity"
+            android:name=".L072_sqlite_room.AddNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".L072.ViewsMainActivity"
+            android:name=".L072_sqlite_room.ViewsMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L071.L7GameResultActivity"
+            android:name=".L071_shared_preferences.L7GameResultActivity"
             android:exported="false" />
         <activity
-            android:name=".L071.L7DataStoreMainActivity"
+            android:name=".L071_shared_preferences.L7DataStoreMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L06.L6GuessStarActivity"
+            android:name=".L06_json_download.L6WeatherActivity"
             android:exported="false" />
         <activity
-            android:name=".L06.L6JSONProjectActivity"
+            android:name=".L06_json_download.L6JSONProjectActivity"
             android:exported="false" />
         <activity
-            android:name=".L05.L5addSeekBarActivity"
+            android:name=".L05_xml_training.L5addSeekBarActivity"
             android:exported="false" />
         <activity
-            android:name=".L05.L5CupDescriptionActivity"
+            android:name=".L05_xml_training.L5CupDescriptionActivity"
             android:exported="false" />
         <activity
-            android:name=".L05.L5CupActivity"
+            android:name=".L05_xml_training.L5CupActivity"
             android:exported="false" />
         <activity
-            android:name=".L05.L5ShopMainActivity"
+            android:name=".L05_xml_training.L5ShopMainActivity"
             android:exported="true" />
         <activity
-            android:name=".L04.L4OrderDetailsActivity"
+            android:name=".L04_xml_training.L4OrderDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".L04.L4CreateOrderActivity"
+            android:name=".L04_xml_training.L4CreateOrderActivity"
             android:exported="true" />
         <activity
-            android:name=".L04.L4MainLoginActivity"
+            android:name=".L04_xml_training.L4MainLoginActivity"
             android:exported="true" />
         <activity
-            android:name=".L03.L3MainTimerActivity"
+            android:name=".L03_rotate_save_info.L3MainTimerActivity"
             android:exported="true" />
         <activity
-            android:name=".L02.L2MainCreateMessageActivity"
+            android:name=".L02_intents_training.L2MainCreateMessageActivity"
             android:exported="true" />
         <activity
-            android:name=".L01.L1MainColorSpinnerActivity"
+            android:name=".L01_spinner_xml_training.L1MainColorSpinnerActivity"
             android:exported="true" />
         <activity
-            android:name=".L02.L2ActivityRecievedMessage"
+            android:name=".L02_intents_training.L2ActivityRecievedMessage"
             android:exported="true" />
         <activity
             android:name=".main.L0MainActivity"

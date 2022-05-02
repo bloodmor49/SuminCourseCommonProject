@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L04.L4CreateOrderActivity"
+    tools:context=".L04_xml_training.L4CreateOrderActivity"
     android:background="@color/cardview_light_background">
     
     <TextView

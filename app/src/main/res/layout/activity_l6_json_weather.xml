@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L06.L6GuessStarActivity">
+    tools:context=".L06_json_download.L6WeatherActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

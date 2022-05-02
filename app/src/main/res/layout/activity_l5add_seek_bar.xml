@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".L05.L5addSeekBarActivity">
+    tools:context=".L05_xml_training.L5addSeekBarActivity">
 
     <SeekBar
         android:id="@+id/seekBarMulTable"

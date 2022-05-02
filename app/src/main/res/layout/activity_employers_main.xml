@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L081.EmployersMainActivity">
+    tools:context=".L081_training_jun_task_retrofit_json.EmployersMainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEmployers"

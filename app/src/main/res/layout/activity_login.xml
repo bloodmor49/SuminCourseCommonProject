@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".L04.L4MainLoginActivity">
+    tools:context=".L04_xml_training.L4MainLoginActivity">
 
 
     <ImageView

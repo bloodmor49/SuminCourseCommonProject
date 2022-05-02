@@ -168,4 +168,5 @@
     <string name="job_intent_service">Job Intent Service</string>
     <string name="alarm_manager">Alarm Manager</string>
     <string name="work_manager">Work Manager</string>
+    <string name="tv_mad2">tv_mad2</string>
 </resources>

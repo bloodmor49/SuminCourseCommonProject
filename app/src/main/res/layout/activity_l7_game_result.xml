@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L071.L7GameResultActivity"
+    tools:context=".L071_shared_preferences.L7GameResultActivity"
     android:orientation="vertical"
     android:gravity="center">
 

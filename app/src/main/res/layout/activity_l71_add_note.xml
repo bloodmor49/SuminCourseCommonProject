@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L072.AddNoteActivity">
+    tools:context=".L072_sqlite_room.AddNoteActivity">
 
     <EditText
         android:id="@+id/editTextTitle"

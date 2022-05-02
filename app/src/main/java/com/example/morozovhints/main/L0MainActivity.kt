@@ -6,24 +6,25 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.morozovhints.L01.L1MainColorSpinnerActivity
-import com.example.morozovhints.L02.L2MainCreateMessageActivity
-import com.example.morozovhints.L03.L3MainTimerActivity
-import com.example.morozovhints.L04.L4MainLoginActivity
-import com.example.morozovhints.L05.L5ShopMainActivity
-import com.example.morozovhints.L06.L6JSONProjectActivity
-import com.example.morozovhints.L071.L7DataStoreMainActivity
-import com.example.morozovhints.L072.ViewsMainActivity
-import com.example.morozovhints.L081.EmployersMainActivity
+import com.example.morozovhints.L01_spinner_xml_training.L1MainColorSpinnerActivity
+import com.example.morozovhints.L02_intents_training.L2MainCreateMessageActivity
+import com.example.morozovhints.L03_rotate_save_info.L3MainTimerActivity
+import com.example.morozovhints.L04_xml_training.L4MainLoginActivity
+import com.example.morozovhints.L05_xml_training.L5ShopMainActivity
+import com.example.morozovhints.L06_json_download.L6JSONProjectActivity
+import com.example.morozovhints.L071_shared_preferences.L7DataStoreMainActivity
+import com.example.morozovhints.L072_sqlite_room.ViewsMainActivity
+import com.example.morozovhints.L081_training_jun_task_retrofit_json.EmployersMainActivity
 import com.example.morozovhints.L082.screens.employers.EmployerListActivity
-import com.example.morozovhints.L091.ListOfUsersMainActivity
+import com.example.morozovhints.L091_firebase.ListOfUsersMainActivity
 import com.example.morozovhints.L101_itemlist_pg.presentation.mainActivity.ShopListMainActivity
 import com.example.morozovhints.L102.presentation.FragmentStudyMainActivity
-import com.example.morozovhints.l111.MainActivityDBinTr
+import com.example.morozovhints.l111_fragments_training.MainActivityDBinTr
 import com.example.morozovhints.R
 import com.example.morozovhints.l110.presentation.MainActivityGame
-import com.example.morozovhints.l120.MainActivityAsync
-import com.example.morozovhints.l130.MainActivityService
+import com.example.morozovhints.l120_async_methods.MainActivityAsync
+import com.example.morozovhints.l130_services.MainActivityService
+import com.example.morozovhints.l140_dagger2.ex2_dagger2.presentation.MainActivityDagger2
 
 class L0MainActivity : AppCompatActivity() {
 
@@ -70,7 +71,7 @@ class L0MainActivity : AppCompatActivity() {
             8 -> startActivity(Intent(this, EmployersMainActivity::class.java))
             9 -> startActivity(Intent(this, EmployerListActivity::class.java))
             10 -> startActivity(Intent(this,
-                com.example.morozovhints.L083.VIEW.screens.EmployerListActivity::class.java))
+                com.example.morozovhints.L083_retrofit_gson.VIEW.screens.EmployerListActivity::class.java))
             11 -> startActivity(Intent(this, ListOfUsersMainActivity::class.java))
             12 -> startActivity(Intent(this, ShopListMainActivity::class.java))
             13 -> startActivity(Intent(this, FragmentStudyMainActivity::class.java))
@@ -78,6 +79,7 @@ class L0MainActivity : AppCompatActivity() {
             15 -> startActivity(Intent(this, MainActivityDBinTr::class.java))
             16 -> startActivity(Intent(this, MainActivityAsync::class.java))
             17 -> startActivity(Intent(this, MainActivityService::class.java))
+            18 -> startActivity(Intent(this, MainActivityDagger2::class.java))
         }
     }
 
@@ -124,6 +126,8 @@ class L0MainActivity : AppCompatActivity() {
             "Многопоточноесть - Callback, AsyncTask,Handler,Looper,Coroutines,Scope."))
         listOfLessons.add(LessonInfo("L13.0",
             "Сервисы - Services + Android JetPack (WorkManager)."))
+        listOfLessons.add(LessonInfo("L14.0",
+            "Инъекция зависимостей - Dagger2."))
     }
 
     fun testZoneActivity(view: View) {

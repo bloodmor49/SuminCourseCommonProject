@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L01.L1MainColorSpinnerActivity">
+    tools:context=".L01_spinner_xml_training.L1MainColorSpinnerActivity">
 
     <Button
         android:id="@+id/buttonColorDescr"
