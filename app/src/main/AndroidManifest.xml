@@ -17,6 +17,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
+        <service
+            android:name=".l150_broadcast_receiver.MyService"
+            android:enabled="true"
+            android:exported="false" />
+        <activity
+            android:name=".l150_broadcast_receiver.MainActivityBroadcast"
+            android:exported="false" />
+
+        <receiver
+            android:name=".l150_broadcast_receiver.MyReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".l140_dagger2.ex2_dagger2.presentation.MainActivity2Dagger2"
             android:exported="false" />
@@ -29,6 +46,7 @@
         <activity
             android:name=".l130_services.MainActivityService"
             android:exported="false" />
+
         <service android:name=".l130_services.MyService" />
         <service android:name=".l130_services.MyForeGroundService" />
         <service android:name=".l130_services.MyIntentService" />

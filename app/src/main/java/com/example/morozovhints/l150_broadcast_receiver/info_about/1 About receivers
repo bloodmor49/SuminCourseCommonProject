@@ -1,0 +1,78 @@
+
+///////////////////////////// 1. BroadCast receiver /////////////////////////////////
+
+Один из четырех компонентов андроид.
+Они нужны тогда, когда происходят события типа разрядки батареи, звонка и тд.
+В каждый из этих моментов андроид отправляет сообщения.
+Если нам нужно на них реагировать, то создается ресивер - получатель этих сообщений.
+Мы можем подписаться на них и реагировать.
+Работает на главном потоке.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+1. Сначала создаем receiver:
+
+   class MyReceiver : BroadcastReceiver()
+
+2. Там переопределяем fun onReceive, где выбираем необходимый action, на который нужно реагировать:
+    (все сообщения подобного рода - это действия, которые мы получаем из намерений.)
+
+        val action = intent?.action
+        when (action) {
+            Intent.ACTION_AIRPLANE_MODE_CHANGED -> {
+                Toast.makeText(context, "Airpline mode on", Toast.LENGTH_LONG).show()
+            }
+        }
+
+3. В активити необходимо создать экземпляр нашего ресивера:
+
+    private val receiver = MyReceiver()
+
+4. Далее регистрируем ресивер в onCreate и передаем ему фильтр сообщений (чтобы не на всё
+   реагировал) и сам получатель. Способ регистрации называется динамической регистрацией ресивера -
+   динамическое, так как в момент работы программы, наиболее частый способ.:
+
+   val intentFilter = IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+   registerReceiver(receiver,intentFilter)
+
+5. Отписываемся от ресивера в методе обратном регистрации (т.к. утечка памяти из за контекста)
+   (OnCreate -> onDestroy, onStart -> onStop и т.д.):
+
+   unregisterReceiver(receiver)
+
+/////////////////////////////////Несколько сообщений (actions)/////////////////////////////////////
+
+Когда нужно работать с несколькими сообщениями, то:
+
+1. Добавляем в ресивер ещё один action:
+
+        Intent.ACTION_BATTERY_LOW -> {
+        Toast.makeText(context, "ACTION_BATTERY_LOW", Toast.LENGTH_LONG).show()}
+
+2. В activity добавляем новый фильтр через addAction:
+
+    val intentFilter = IntentFilter().apply {
+            addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+            addAction(Intent.ACTION_BATTERY_LOW)}
+
+/////////////////////////////////Проверка состояния////////////////////////////////////////////////
+    Мы можем получить состояние буля о действии.
+
+            Intent.ACTION_BATTERY_LOW -> {
+            val state = intent.getBooleanExtra("state",false)}
+
+/////////////////////////////////Статическая регистрация////////////////////////////////////////////
+    О динамической регистрации писалось в первом пункте. Есть также статическая регистрация в манифесте.
+    Отличие в том, что в данном случае не нужно вызывать register/unregister receiver.
+    Приложение будет обрабатывать сообщения даже если не запущено. Метод не используется на практике,
+    так как с апи выше 26 не реагирует на действия и не обрабатывается большинство.
+
+            <receiver android:name=".l150_broadcast_receiver.MyReceiver"
+                        android:exported="true">
+                        <intent-filter>
+                            <action android:name="android.intent.action.BATTERY_LOW"/>
+                            <action android:name="android.intent.action.AIRPLANE_MODE"/>
+                        </intent-filter>
+                    </receiver>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////

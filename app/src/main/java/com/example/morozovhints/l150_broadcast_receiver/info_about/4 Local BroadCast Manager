@@ -1,0 +1,30 @@
+
+///////////////////////////// 4. Local BroadCast Manager /////////////////////////////////
+
+Существует проблема, что зная тег интента, его данные может получить любой бродкаст ресивер,
+так как sendBroadcast отправляет интер по системе андроид, а не тупо приложения. Ну и если
+у двух разных приложений совпадают теги вещания, то можно случайно получить чужие данные.
+
+Если нельзя, чтобы интенты утекали за пределы приложения и получались, то нужен Local BroadCast Manager.
+
+//////////////////////////////////Как работать (на основе п.3)?/////////////////////////////
+
+У нас есть сервис с загрузкой данных в прогресс бар. Нам нужно, чтобы в другом приложении не
+перехватывалось вещание.
+
+1. Создаем Local BroadCast Manager в активити. Он также привязывается к конкретному контексту.:
+
+    private val localBroadcastManager by lazy{ LocalBroadcastManager.getInstance(this) }
+
+2. Также в активити привязываем регистрацию и создания вещания к этому менеджеру.
+
+    localBroadcastManager.sendBroadcast(intent)
+    localBroadcastManager.registerReceiver(receiver,intentFilter)
+    localBroadcastManager.unregisterReceiver(receiver)
+
+3. Проделываем аналогичное в сервисе.
+
+    private val localBroadcastManager by lazy{ LocalBroadcastManager.getInstance(this) }
+    localBroadcastManager.sendBroadcast(this)
+
+////////////////////////////////////////////////////////////////////////////////////////////

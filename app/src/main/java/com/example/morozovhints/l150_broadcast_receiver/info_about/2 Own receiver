@@ -1,0 +1,28 @@
+
+///////////////////////////// 2. Own receiver /////////////////////////////////
+
+Мы можем также работать с нашими собственными ресиверами, до этого работали с существующими.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+В примере мы создаем событие - клик на кнопку. Создается ресивер - action_clicked.
+
+1. Создаем кнопку в xml.
+
+2. Создаем константу - имя для нашего сообщения (action) в ресивере:
+
+        companion object { const val ACTION_CLICKED = "clicked"}
+
+3. Выводим что делать при возникновении события в ресивере:
+
+        ACTION_CLICKED -> { Toast.makeText(context, "ACTION_CLICKED", Toast.LENGTH_LONG).show() }
+
+4. В активити прикрепляем создание сообщения при нажатии на кнопку:
+
+        findViewById<Button>(R.id.buttonReceiver).setOnClickListener {
+            val intent = Intent(MyReceiver.ACTION_CLICKED)
+            sendBroadcast(intent)}
+
+5. Добавляем в фильтр и делаем регистрацию, отписку как в about receivers:
+
+        addAction(MyReceiver.ACTION_CLICKED)
+

@@ -1,0 +1,54 @@
+
+///////////////////////////// 3. Data Transaction /////////////////////////////////
+
+Передача данных откуда то в ресивер. Например из сервиса. Через интент.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+В примере у нас есть фоновый сервис с потоком, который "типа" загружает данные с интервалом в секунду.
+Ресивер удобно использовать для отображения количества загруженных данных.
+
+1.1 Создаем сервис. Там иммитируем загрузку. В намерение каждую секунду отправляем процент загрузки в интент.
+    Не забываем добавить сервис в манифест.
+
+        thread {
+            for (i in 1..10) {
+                            Thread.sleep(1000)
+                            Intent("loaded").apply {
+                                putExtra("percent",i*10)
+                            }}}
+
+1.2 Запускаем сервис в активити:
+
+        Intent(this,MyService::class.java).apply { startService(this) }
+
+2. Запускаем сообщение в вещание:
+
+        sendBroadcast(intent)
+
+3. Получаем данные из интента в ресивере:
+
+        when (action) {
+            "loaded" -> {
+                val percent = intent.getIntExtra("percent",0)
+                Toast.makeText(context, "$percent %", Toast.LENGTH_LONG).show()
+            }
+
+4. Выполняем все операции по регистрации и фильтрам в активити:
+
+        val intentFilter = IntentFilter().apply { addAction("loaded") }
+
+//////////////////////////////////Как работать (progress bar)?////////////////////////////////////
+У ресивера нет доступа к вью. Поэтому если это нужно, то создается анонимный класс в самой активити.
+Это как дополнение к прошлому пункту.
+
+1. Создаем ресивер в виде анонимного класса в активити и привязываем бар:
+
+private lateinit var progressBar : ProgressBar
+
+    private val progressBarReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == "loaded"){
+                val percent = intent.getIntExtra("percent",0)
+                progressBar.progress = percent}}}
+
+
