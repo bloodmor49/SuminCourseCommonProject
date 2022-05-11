@@ -5,6 +5,8 @@ import com.example.morozovhints.l140_dagger2.ex2_dagger2.di.ApplicationScope
 import com.example.morozovhints.l140_dagger2.ex2_dagger2.di.modules.DataModule
 import com.example.morozovhints.l140_dagger2.ex2_dagger2.di.modules.DomainModule
 import com.example.morozovhints.l140_dagger2.ex2_dagger2.di.modules.ViewModelModule
+import com.example.morozovhints.l140_dagger2.ex2_dagger2.presentation.MainActivity2Dagger2
+import com.example.morozovhints.l140_dagger2.ex2_dagger2.presentation.MainActivityDagger2
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -33,7 +35,6 @@ interface ApplicationComponent {
 
 //    fun inject(activity: MainActivityDagger2)
 //    fun inject(activity: MainActivity2Dagger2)
-
 
     //Наш кастомный билдер, чтобы не вызывать его в активити.
     //Мы об этом говорим даггеру.

@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".l110.presentation.fragments.ChooseLevelFragment">
+        tools:context=".l110_jetpack.presentation.fragments.ChooseLevelFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

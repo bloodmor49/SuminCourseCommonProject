@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L102.presentation.FragmentStudyMainActivity">
+    tools:context=".L102_fragment_training.presentation.FragmentStudyMainActivity">
 
     <Button
         android:id="@+id/buttonLoadItem"
@@ -20,7 +20,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_first_container"
-        android:name="com.example.morozovhints.L102.presentation.FragmentFirst"
+        android:name="com.example.morozovhints.L102_fragment_training.presentation.FragmentFirst"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
@@ -66,7 +66,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_second_container"
-        android:name="com.example.morozovhints.L102.presentation.FragmentSecond"
+        android:name="com.example.morozovhints.L102_fragment_training.presentation.FragmentSecond"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

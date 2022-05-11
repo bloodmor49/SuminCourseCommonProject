@@ -5,7 +5,7 @@
 
         <variable
             name="gameviewmodel"
-            type="com.example.morozovhints.l110.presentation.gameviewmodel.GameViewModel" />
+            type="com.example.morozovhints.l110_jetpack.presentation.gameviewmodel.GameViewModel" />
 
     </data>
 
@@ -14,7 +14,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".l110.presentation.fragments.GameFragment">
+        tools:context=".l110_jetpack.presentation.fragments.GameFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

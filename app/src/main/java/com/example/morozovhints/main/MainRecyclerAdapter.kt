@@ -30,8 +30,6 @@ class MainRecyclerAdapter(private val listOfLessons: MutableList<LessonInfo>) :
         }
     }
 
-
-
 override fun getItemCount(): Int = listOfLessons.size
 
 class LessonsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

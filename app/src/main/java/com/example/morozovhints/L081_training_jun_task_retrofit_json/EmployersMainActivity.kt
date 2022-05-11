@@ -43,6 +43,7 @@ class EmployersMainActivity : AppCompatActivity() {
         //создаем запросы
         var apiService = apiFactory.getApiService()
 
+        //RX JAVA 3. Disposable - отписка от observe.
         //Общий Disposable, содержит все потоки Disposable
         compositeDisposable = CompositeDisposable()
 

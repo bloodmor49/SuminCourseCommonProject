@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".l140_dagger2.ex2_dagger2.L140Application"
+        android:name=".L101_itemlist_providers_cl.presentation.ShopApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo_okabe"
         android:label="@string/app_name"
@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
+        
+        <provider
+            android:authorities="com.example.morozovhints"
+            android:name=".L101_itemlist_providers_cl.data.ShopListProvider"
+            android:exported="true"/>
+
         <service
             android:name=".l150_broadcast_receiver.MyService"
             android:enabled="true"
@@ -62,24 +68,24 @@
             android:name=".l120_async_methods.MainActivityAsync"
             android:exported="false" />
         <activity
-            android:name=".l111_fragments_training.MainActivityDBinTr"
+            android:name=".l111_jetpack_training.MainActivityDBinTr"
             android:exported="false" />
         <activity
-            android:name=".l110.presentation.MainActivityGame"
+            android:name=".l110_jetpack.presentation.MainActivityGame"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".L102.presentation.FragmentStudyMainActivity"
+            android:name=".L102_fragment_training.presentation.FragmentStudyMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L101_itemlist_pg.presentation.shopItemActivity.ShopItemActivity"
+            android:name=".L101_itemlist_providers_cl.presentation.shopItemActivity.ShopItemActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".main.TestZoneActivity"
             android:exported="false" />
         <activity
-            android:name=".L101_itemlist_pg.presentation.mainActivity.ShopListMainActivity"
+            android:name=".L101_itemlist_providers_cl.presentation.mainActivity.ShopListMainActivity"
             android:exported="false" />
         <activity
             android:name=".L091_firebase.AddNewUserActivity"
@@ -91,7 +97,7 @@
             android:name=".L083_retrofit_gson.VIEW.screens.EmployerListActivity"
             android:exported="false" />
         <activity
-            android:name=".L082.screens.employers.EmployerListActivity"
+            android:name=".L082_MVP.screens.employers.EmployerListActivity"
             android:exported="false" />
         <activity
             android:name=".L081_training_jun_task_retrofit_json.EmployersMainActivity"

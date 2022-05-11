@@ -6,7 +6,7 @@
     app:startDestination="@id/welcomeFragment">
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.morozovhints.l110.presentation.fragments.WelcomeFragment"
+        android:name="com.example.morozovhints.l110_jetpack.presentation.fragments.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/chooseLevelFragment"
-        android:name="com.example.morozovhints.l110.presentation.fragments.ChooseLevelFragment"
+        android:name="com.example.morozovhints.l110_jetpack.presentation.fragments.ChooseLevelFragment"
         android:label="fragment_choose_level"
         tools:layout="@layout/fragment_choose_level" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.morozovhints.l110.presentation.fragments.GameFragment"
+        android:name="com.example.morozovhints.l110_jetpack.presentation.fragments.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
@@ -34,15 +34,15 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="level"
-            app:argType="com.example.morozovhints.l110.domain.entity.Level" />
+            app:argType="com.example.morozovhints.l110_jetpack.domain.entity.Level" />
     </fragment>
     <fragment
         android:id="@+id/gameFinishedFragment"
-        android:name="com.example.morozovhints.l110.presentation.fragments.GameFinishedFragment"
+        android:name="com.example.morozovhints.l110_jetpack.presentation.fragments.GameFinishedFragment"
         android:label="fragment_game_finished"
         tools:layout="@layout/fragment_game_finished" >
         <argument
             android:name="gameResult"
-            app:argType="com.example.morozovhints.l110.domain.entity.GameResult" />
+            app:argType="com.example.morozovhints.l110_jetpack.domain.entity.GameResult" />
     </fragment>
 </navigation>

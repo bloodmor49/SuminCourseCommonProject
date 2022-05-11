@@ -6,14 +6,14 @@
     <data>
         <variable
             name="l111Data"
-            type="com.example.morozovhints.l111_fragments_training.L111Data" />
+            type="com.example.morozovhints.l111_jetpack_training.L111Data" />
     </data>
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".l111_fragments_training.L111Fragment2">
+    tools:context=".l111_jetpack_training.L111Fragment2">
 
 
     <TextView

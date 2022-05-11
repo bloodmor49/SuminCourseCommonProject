@@ -1,0 +1,65 @@
+
+///////////////////////////// 3. Загрузка данных и курсор /////////////////////////////////
+
+Курсор Cursor - объект базы данных, интерфейс, который позволяет читать данные, которые вернул запрос.
+Что - то вроде итератора. Или мышки.
+
+Например мы выполнили какой - то запрос. Вернулся объект курсор.
+Мы можем вызвать у него метод moveToNext и считать данные по этой позиции.
+
+Для списка всех записей вернется курсор, который будет указывать по позиции -1 (никуда).
+Далее мы вызываем метод moveToNext и курсор попробует сдвинуться вперед, индекс будет 0 -> true.
+Таким образом мы можем двигаться по столбцам и строкам. И т.д.
+
+Подробнее в интерфейсе Cursor.
+
+///////////////////////////// Общий принцип /////////////////////////////////
+
+1. Создаем доступ к базе данных через inject и делаем компонет.
+
+     @Inject
+     lateinit var shopListDao: ShopListDao
+
+     private val component by lazy {(context as ShopApplication).component}
+
+2. В методе onCreate делаем inject и передаем текущий провайдер.
+
+    component.inject(this)
+
+3. Room и DAO позволяют работать с курсором! В Дао добавляем метод курсора:
+
+    В ShopListDao:
+
+       @Query("SELECT * FROM shop_items")
+        fun getShopListCursor(): Cursor
+
+4. Правим метод query в провайдере - матчере.
+Это позволит при успешном matcher-e выдать курсор в ответ из дб:
+
+    return when (code) {
+                GET_SHOP_ITEMS_QUERY -> {shopListDao.getShopListCursor()}
+
+
+5. В мейн активити с помощью курсора перебираем всю информацию и получаем шоп айтем.
+Не забыть перевести в другой поток!
+
+while (cursor?.moveToNext() == true) {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+                val count = cursor.getInt(cursor.getColumnIndexOrThrow("count"))
+                val enabled = cursor.getInt(cursor.getColumnIndexOrThrow("enabled")) > 0
+                val shopItem = ShopItem(
+                    id = id,
+                    name = name,
+                    count = count,
+                    enabled = enabled
+                )
+            }
+
+6. Закрываем курсор - cursor?.close()
+
+
+
+
+
+

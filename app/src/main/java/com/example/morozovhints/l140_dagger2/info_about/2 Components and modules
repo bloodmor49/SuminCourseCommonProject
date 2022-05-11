@@ -1,0 +1,96 @@
+
+///////////////////////////// 2. Components and modules ////////////////////////////////////////////
+
+Dagger должен знать как создавать все объекты которые он должен внедрять.
+Для того чтоб перечислить все классы которые мы внедряем (Inject) используется аннотация Component,
+которая объявляется для интерфейса (DaggerComponent). Т.е. в компоненте мы объясняем, что
+мы создаем объект.
+
+@Component
+interface ApplicationComponent {}
+
+Пример функций по созданию активити:
+
+В КОМПОНЕНТЕ.
+
+      Создаем методы по инъекции активити:
+
+      fun inject(activity: ShopListMainActivity)
+      fun inject(fragment: ShopItemFragment)
+
+      Создаем метод по работе с вью моделью.
+        @Component.Factory
+        interface Factory {
+            fun create(
+                @BindsInstance application: Application,
+            ): AppComponent
+
+В АКТИВИТИ.
+
+    Вводим фактори.
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    Создаем компонент.
+    private val component by lazy {
+        (application as ShopApplication).component
+    }
+
+    Вводим активити.
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        component.inject(this)
+
+///////////////////////////////МОдули//////////////////////////////////////////////////////////
+
+Бывают такие случаи когда dagger не понимает наши намерения.
+На пример у нашего класса Car есть поле типа (интерфейс) Driver, который наследуется классом Ivanov.
+При попытке внедрить поле с типом интерфейс вы получите ошибку
+«cannot be provided without an @Provides-annotated methods». Так как мы не можем внедрить конструктор
+в интерфейс.Для решения этой проблемы dagger предлагает использовать Модули.
+Модули обеспечивают dagger дополнительной информацией которые он не может получить самостоятельно.
+В качестве модули можно использовать интерфейсы или объекты (object).
+
+Создаем модуль:
+
+@Module
+interface DataModule {
+
+У нас есть интерфейс, а нам нужна его реализация. Делаем привязку интерфейса к его реализации, чтобы
+внедрять именно реализацию.
+
+    @Binds
+    fun bindShopListRepository(impl: ShopListRepositoryImpl): ShopListRepository
+
+    или
+
+    @Provides
+    fun bindShopListRepository(impl:ShopListRepositoryImpl):ShopListRepository {
+            return impl
+        }
+
+Здесь мы работаем с объектом (синглтон). Нам нужно его создать, но даггер не знает как, поэтому
+используем метод @Provides, в котором описываем каким образом создается шоплистдао.
+
+    companion object {
+        @Provides
+        fun provideShopListDao(application: Application): ShopListDAO{
+            return AppDataBase.getInstance(application).shopListDao()
+        }
+    }
+}
+Каждый модуль нужен для работы со своим классом. Один с датой, другой с интернетом и тд.
+Потом следует обяательно включить эти модули в компонент.
+
+@Component(modules = [DataModule::class, ViewModelModule::class])
+
+
+
+
+
+
+
+
+
+
+

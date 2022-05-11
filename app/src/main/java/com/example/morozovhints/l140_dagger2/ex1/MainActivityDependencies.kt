@@ -1,6 +1,11 @@
 package com.example.morozovhints.l140_dagger2.ex1
 
 import android.app.Activity
+import com.example.morozovhints.l140_dagger2.ex1.di.DaggerComponentDagger
+import com.example.morozovhints.l140_dagger2.ex1.notSimpleParts.Computer
+import com.example.morozovhints.l140_dagger2.ex1.simpleParts.Keyboard
+import com.example.morozovhints.l140_dagger2.ex1.simpleParts.Monitor
+import com.example.morozovhints.l140_dagger2.ex1.simpleParts.Mouse
 import javax.inject.Inject
 
 /**

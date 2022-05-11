@@ -55,4 +55,8 @@ class L7GameResultActivity : AppCompatActivity() {
         textViewResult.text =
             "Результат игры\n Правильных ответов: $rightAnswers\nЛучший результат - $bestResult"
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

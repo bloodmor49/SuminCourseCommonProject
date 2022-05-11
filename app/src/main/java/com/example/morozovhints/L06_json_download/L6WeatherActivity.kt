@@ -24,9 +24,9 @@ import java.util.concurrent.ExecutionException
 class L6WeatherActivity : AppCompatActivity() {
 
     private lateinit var setCityText: String
-    private lateinit var textViewCityWeather : TextView
-    private lateinit var buttonJsonStart : Button
-    private lateinit var editTextTextSetCity : EditText
+    private lateinit var textViewCityWeather: TextView
+    private lateinit var buttonJsonStart: Button
+    private lateinit var editTextTextSetCity: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +38,11 @@ class L6WeatherActivity : AppCompatActivity() {
 
     }
 
-
     fun getCityWeather(view: View) {
 
         setCityText = editTextTextSetCity.text.trim().toString()
-        var toJSONText = "https://api.openweathermap.org/data/2.5/weather?q=$setCityText&appid=423a45c52d416f5bd33027a110393520&units=metric&lang=ru"
+        var toJSONText =
+            "https://api.openweathermap.org/data/2.5/weather?q=$setCityText&appid=423a45c52d416f5bd33027a110393520&units=metric&lang=ru"
         var task = DownloadContentTask()
         try {
             var result = task.execute(toJSONText).get()
@@ -56,13 +56,13 @@ class L6WeatherActivity : AppCompatActivity() {
 
             var main = jsonObject.getJSONObject("main")
             var temp = main.getString("temp")
-            Log.i("URL","Температура - $temp С`")
+            Log.i("URL", "Температура - $temp С`")
 
 
             var jsonArray = jsonObject.getJSONArray("weather")
             var weather = jsonArray.getJSONObject(0)
             var weatherDes = weather.getString("description")
-            Log.i("URL","Описание погоды - $weatherDes")
+            Log.i("URL", "Описание погоды - $weatherDes")
 
 
             textViewCityWeather.text =
@@ -70,18 +70,19 @@ class L6WeatherActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
             when {
-                    (e is ExecutionException) ||
-                    (e is InterruptedException) ||
-                    (e is JSONException) ->
-                    {e.printStackTrace()
-                    var toast: Toast = Toast.makeText(this,"Неправильное название города", Toast.LENGTH_LONG)
-                    toast.show()}
+                (e is ExecutionException) ||
+                        (e is InterruptedException) ||
+                        (e is JSONException) -> {
+                    e.printStackTrace()
+                    var toast: Toast =
+                        Toast.makeText(this, "Неправильное название города", Toast.LENGTH_LONG)
+                    toast.show()
+                }
             }
         }
     }
 
-
-private class DownloadContentTask : AsyncTask<String,Void,String>(){
+    private class DownloadContentTask : AsyncTask<String, Void, String>() {
         override fun doInBackground(vararg params: String?): String {
             var result = StringBuilder()
             try {
