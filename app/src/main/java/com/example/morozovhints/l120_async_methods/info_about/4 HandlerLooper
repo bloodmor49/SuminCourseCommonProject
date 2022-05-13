@@ -1,0 +1,97 @@
+
+///////////////////////////// 4. HandlerLooper /////////////////////////////////
+
+LOOPER - это очередь, бесконечный цикл приема сообщений.
+Handler берет сообщение или задачу и добавляет её в Looper.
+Handler.post - перенаправление выполнения задач в другой поток.
+Использование лупера - мы при создании Handler в конструкторе указываем лупер какого потока, который
+нас интересует. Например Looper.GetMainLooper() -> мы ссылаемся на очередь главного потока.
+
+Работа идет через создание handler. Он создается непонятно в каком потоке.
+Работая из НЕглавного потока приводит к крашу. т.е. неявное использование может привести к проблемам.
+Вместо этого правильно указывать лупер, на котором будет работать хейндлер.
+
+Какие у хэндлера и колбэков проблемы?
+1. CallBack HELL - матрешка.
+2. ГЛАВНЫЙ ПОТОК: Работа с view тОлько из главного потока.
+3. УТЕЧКА ПАМЯТИ: При переворотах экрана уничтожается старая активити, в новой стартует загрузка.
+НО ЗАВЕРШАЕТСЯ ЗАГРУЗКА В ТОЙ АКТИВИТИ, КОТОРАЯ УЖЕ БЫЛА УНИЧТОЖЕНА. Сборщик мусора не собирает их,
+Так как коллбек держит ссылки на уничтоженные активити. Это связано с тем, что у потоков нет жизн.
+цикла. Потоки живут до тех пор, пока не завершат поставленную задачу или работу.
+Короче получается, что активити умерла, а вот поток жив, здоров. Это не круто.
+
+Для решения этой проблемы в андроиде были придуманы AsyncTask. Но они тоже устарели.
+Для котлина лучший вариант - это корутины.
+
+///////////////////////////// Общий принцип работы /////////////////////////////////
+
+Есть устаревший и современный. Начнем с устаревшего.
+
+1. Создаем в активити хэндлер:
+
+    private val handler = Handler()
+
+2. Создаем загрузку города через thread/handler.post. Задача добавляется в очередь данного потока.
+Так как обработчик создан в главном потоке, то и метод run будет в нем вызван:
+
+        private fun loadCityByHandler(callback: (String) -> Unit) {
+             thread {
+                 Thread.sleep(5000)
+                 handler.post { callback.invoke("Королев") }}}
+
+3. Создаем загрузку погоды через thread/handler.post. Также делаем через пост, слип, пост.:
+
+    private fun loadWeatherByHandler(city: String, callback: (String) -> Unit) {
+            thread {
+                handler.post {
+                    Toast.makeText(context, "Загрузка погоды...$city", Toast.LENGTH_LONG).show()
+                }
+                Thread.sleep(5000)
+                handler.post {callback.invoke("Дождь")}}}
+
+4. Создаем функцию, которая будет работать с этими методами.
+Опять матрешка. Видно, что формируется матрешка callback hell:
+
+    private fun loadDataByHandler() {
+            viewBinding.progressBarOfDownloading.isVisible = true
+            viewBinding.btnDownload.isEnabled = false
+            loadCityByHandler { city: String ->
+                viewBinding.tvCitySet.text = city
+                loadWeatherByHandler(city) { weather: String ->
+                    viewBinding.tvWeatherSet.text = weather
+                    viewBinding.progressBarOfDownloading.isVisible = false
+                    viewBinding.btnDownload.isEnabled = true } }}
+
+А теперь современный метод работы с хэндлером.
+
+1. Создаем новый хэндлер, как анонимный класс Handler.
+В нем переопределяем метод, где работаем с сообщениями.
+
+    private val handler = object: Handler() {
+            override fun handleMessage(msg: Message) {
+                super.handleMessage(msg)
+                println("HANDLE_MSG $msg")}}
+
+2.  Обрабатываем город. В нем создаем хэндлер и отправляем его в лупер на runnable методы.
+Ссылаемся на главный поток.
+
+    private fun loadCityByHandlerNew(callback: (String) -> Unit) {
+               thread {
+                   Thread.sleep(5000)
+                   Handler(Looper.getMainLooper()).post {
+                       callback.invoke("Королев")
+                   }}}
+
+3. Аналогично с погодой. Сначала выкладываем в главный поток пост, потом усыпляем и отпр. во вью.
+
+    private fun loadWeatherByHandlerNew(city: String, callback: (String) -> Unit) {
+            thread {
+                Handler(Looper.getMainLooper()).post {
+                    Toast.makeText(context, "Загрузка погоды...$city", Toast.LENGTH_LONG).show()
+                }
+                Thread.sleep(5000)
+                Handler(Looper.getMainLooper()).post {
+                    callback.invoke("Дождь")}}}
+
+4. Аналогично старому способу.
+

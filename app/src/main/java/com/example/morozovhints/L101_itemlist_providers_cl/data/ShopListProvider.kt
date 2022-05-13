@@ -6,6 +6,7 @@ import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.ShopApplication
 import javax.inject.Inject
 
@@ -18,7 +19,8 @@ class ShopListProvider: ContentProvider() {
         (context as ShopApplication).component
     }
 
-
+    @Inject
+    lateinit var shopListMapper: ShopListMapper
 
     private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH).apply {
         addURI("com.example.morozovhints","shopItems",GET_SHOP_ITEMS_QUERY)
@@ -43,7 +45,6 @@ class ShopListProvider: ContentProvider() {
     ): Cursor? {
         //работаем с матчером. Проверка запросов.
         val code = uriMatcher.match(uri)
-
         Log.i("myProvider","query: $uri, code: $code")
         return when (code) {
             GET_SHOP_ITEMS_QUERY -> {
@@ -58,11 +59,29 @@ class ShopListProvider: ContentProvider() {
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        TODO("Not yet implemented")
+        when (uriMatcher.match(uri)) {
+            GET_SHOP_ITEMS_QUERY -> {
+                if (values == null) return null
+                val id = values.getAsInteger("id")
+                val name = values.getAsString("name")
+                val count = values.getAsInteger("count")
+                val enabled = values.getAsBoolean("enabled")
+                val shopItem = ShopItem(id, name, count, enabled)
+                shopListDao.addShopItemNoAsync(shopListMapper.mapEntityToDbModel(shopItem))
+            }
+
+        }
+        return null
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        when (uriMatcher.match(uri)) {
+            GET_SHOP_ITEMS_QUERY -> {
+                val id = selectionArgs?.get(0)?.toInt() ?: -1
+                return shopListDao.deleteShopItemNoAsync(id)
+            }
+        }
+        return 0
     }
 
     override fun update(

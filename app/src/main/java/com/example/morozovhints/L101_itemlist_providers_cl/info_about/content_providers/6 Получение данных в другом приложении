@@ -1,0 +1,40 @@
+
+///////////////////////////// 6. Получение данных в другом приложении.//////////////////////////////
+
+Вся суть провайдера в том, что разные приложения шарятся друг с другом.
+Он не нужен, если нет необходимости брать данные или передавать их между приложениями.
+С 11 версии необходимо указывать в манифесте авторитис.
+
+///////////////////////////// Общий принцип /////////////////////////////////
+
+1. Добавляем в манифесте наш провайдер:
+
+        <queries>
+            <provider android:authorities="com.example.morozovhints" />
+        <queries>
+
+2. В другом приложении создаем contentResolver и получаем список аналогшично методу query.
+
+thread {
+            val cursor = contentResolver.query(
+                Uri.parse("content://com.example.morozovhints/shopItems"),
+                null,
+                null,
+                null,
+                null,
+                null
+            )
+
+            while (cursor?.moveToNext() == true) {
+                Log.i("myProvider", "Cursor: ${cursor.columnNames}")
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val name = cursor.getString(cursor.getColumnIndexOrThrow("name"))
+                val count = cursor.getInt(cursor.getColumnIndexOrThrow("count"))
+                val enabled = cursor.getInt(cursor.getColumnIndexOrThrow("enabled")) > 0
+
+                //здесь можно создать ShopItem и залить в него данные.
+                Log.i("myProvider", "Cursor: $shopItem")
+            }
+            cursor?.close()
+        }
+

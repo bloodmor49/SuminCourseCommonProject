@@ -54,6 +54,7 @@ class ShopListMainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFini
             }
         }
 
+        // получаем список предметов через contentProvider.
         thread {
             val cursor = contentResolver.query(
                 Uri.parse("content://com.example.morozovhints/shopItems"),
@@ -123,7 +124,16 @@ class ShopListMainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFini
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = shopListAdapter.currentList[viewHolder.adapterPosition]
-                viewModel.deleteShopItem(item)
+
+                //с помощью viewModel
+//                viewModel.deleteShopItem(item)
+                thread {
+                    contentResolver?.delete(
+                        Uri.parse("content://com.example.morozovhints/shopItems"),
+                        null,
+                        arrayOf(item.id.toString())
+                    )
+                }
             }
         }
         val itemTouchHelper = ItemTouchHelper(simpleCallback)

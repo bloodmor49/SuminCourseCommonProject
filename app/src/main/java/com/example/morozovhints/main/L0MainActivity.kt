@@ -26,6 +26,7 @@ import com.example.morozovhints.l120_async_methods.MainActivityAsync
 import com.example.morozovhints.l130_services.MainActivityService
 import com.example.morozovhints.l140_dagger2.ex2_dagger2.presentation.MainActivityDagger2
 import com.example.morozovhints.l150_broadcast_receiver.MainActivityBroadcast
+import com.example.morozovhints.l160_content_providers_contacts.ContactsMainActivity
 
 class L0MainActivity : AppCompatActivity() {
 
@@ -82,6 +83,7 @@ class L0MainActivity : AppCompatActivity() {
             17 -> startActivity(Intent(this, MainActivityService::class.java))
             18 -> startActivity(Intent(this, MainActivityDagger2::class.java))
             19 -> startActivity(Intent(this, MainActivityBroadcast::class.java))
+            20 -> startActivity(Intent(this, ContactsMainActivity::class.java))
         }
     }
 
@@ -116,7 +118,8 @@ class L0MainActivity : AppCompatActivity() {
             "Firebase FireCloud (загрузка,выгрузка,observable) - список пользователей"))
         listOfLessons.add(LessonInfo("L10.1",
             "Clean Architecture - Data,Domain,Presentation, " +
-                    "RecyclerView Advanced (DiffUtil, ListAdapter, Pool), Fragments, MVVM - список товаров с firebase"))
+                    "RecyclerView Advanced (DiffUtil, ListAdapter, Pool), " +
+                    "Fragments, MVVM, contentProvider - список товаров с firebase"))
         listOfLessons.add(LessonInfo("L10.2",
             "Fragments simple - тренировка."))
         listOfLessons.add(LessonInfo("L11.0",
@@ -125,13 +128,15 @@ class L0MainActivity : AppCompatActivity() {
                     "safeArgs - мат. игра"))
         listOfLessons.add(LessonInfo("L11.1", "Android JETPACK Navigation - тренировка."))
         listOfLessons.add(LessonInfo("L12.0",
-            "Многопоточноесть - Callback, AsyncTask,Handler,Looper,Coroutines,Scope."))
+            "Многопоточноесть - Callback, AsyncTask,Handler,Looper,Coroutines Basics,Scope."))
         listOfLessons.add(LessonInfo("L13.0",
             "Сервисы - Services + Android JetPack (WorkManager)."))
         listOfLessons.add(LessonInfo("L14.0",
             "Инъекция зависимостей - Dagger2."))
         listOfLessons.add(LessonInfo("L15.0",
             "BroadCast receivers"))
+        listOfLessons.add(LessonInfo("L16.0",
+            "Content Provider - получение контактов из телефона."))
     }
 
     fun testZoneActivity(view: View) {

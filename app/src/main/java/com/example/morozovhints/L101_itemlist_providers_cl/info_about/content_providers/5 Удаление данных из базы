@@ -1,0 +1,42 @@
+
+///////////////////////////// 5. Удаление данных из базы /////////////////////////////////
+
+Для удаления данных из базы необходимо переопределить метод delete контент провайдера.
+Стоит обратить внимание на selection и selectionArgs.
+
+Если бы мы делали дб сами, то на примере shopItem было бы так:
+
+Selection - id = ?, name = ?
+SelectionArgs - 5, myName
+
+Но работая с Room нас не волнует selection.
+
+///////////////////////////// Общий принцип /////////////////////////////////
+
+1. Проверяем в методе delete запрос uri соответствует существующему из URI MATCHER
+Также указываем, что если не удалось провести match, то возвращаем ноль:
+
+override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
+        when (uriMatcher.match(uri)) {
+            GET_SHOP_ITEMS_QUERY -> {
+                val id = selectionArgs?.get(0)?.toInt() ?: -1
+                return shopListDao.deleteShopItemNoAsync(id)
+            }
+        }
+        return 0
+    }
+
+2. Создаем в дб дао метод удаления данных. Здесь selection уже указан - это id =:shopItemId.
+
+     @Query("DELETE FROM shop_items WHERE id =:shopItemId")
+     fun deleteShopItemNoAsync(shopItemId: Int): Int
+
+5. Привязываем в активити удаление объектов. Например к свайпу. Обязательно в другом потоке:
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        val item = shopListAdapter.currentList[viewHolder.adapterPosition]
+                        thread {
+                            contentResolver?.delete(
+                                Uri.parse("content://com.example.morozovhints/shopItems"),
+                                null, //null так как используем Room.
+                                arrayOf(item.id.toString()) )}}

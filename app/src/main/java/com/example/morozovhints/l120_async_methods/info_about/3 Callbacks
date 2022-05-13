@@ -1,0 +1,52 @@
+
+///////////////////////////// 3. Callbacks /////////////////////////////////
+
+Делать через callbacks. Зачем нужен callback?
+Колбэк-функция или функция обратного вызова — функция, предназначенная для отложенного выполнения.
+Проще говоря, она должна быть выполнена после завершения работы другой функции.
+
+Проблема может быть в callback HELL  - матрешка из callback, так как при выполнении одного callback
+- его результат сразу перетекает в другой, тем самым создавая матрешку.
+По завершению первой ступени матрешки снова начинаем загрузка, но проблема в том,
+что вью можно запустить только из главного потока, поэтому матрешка приведет к крашу приложения.
+
+Работает с использованием thread - новые потоки.
+Пауза же реализуется с помощью Thread.sleep.
+По окончанию операции с потоком вызываем результат через callback.invoke("результат").
+
+Этот метод сработает не в андроид приложениях.
+
+///////////////////////////// Общий принцип работы /////////////////////////////////
+
+
+Пример в классе Callbacks. Иммитируем загрузку с паузами.
+
+1. Создаем загрузку города через thread/callback:
+
+     private fun loadCityByCallback(callback: (String) -> Unit) {
+            thread {
+                Thread.sleep(5000)
+                callback.invoke("Королев") } }
+
+2. Создаем загрузку погоды через thread/callback:
+
+    private fun loadWeatherByCallback(city: String, callback: (String) -> Unit) {
+            thread {
+                Toast.makeText(context, "Загрузка погоды...$city", Toast.LENGTH_LONG).show()
+                Thread.sleep(5000)
+                callback.invoke("Дождь")}}
+
+3. Создаем функцию, которая будет работать с этими методами.
+Видно, что формируется матрешка callback hell:
+
+    private fun loadDataByCallback() {
+            viewBinding.progressBarOfDownloading.isVisible = true
+            viewBinding.btnDownload.isEnabled = false
+            loadCityByCallback { city: String ->
+    //1         viewBinding.tvCitySet.text = city
+                loadWeatherByCallback(city) { weather: String ->
+    //2             viewBinding.tvWeatherSet.text = weather
+                    viewBinding.progressBarOfDownloading.isVisible = false
+    callback        viewBinding.btnDownload.isEnabled = true  } }
+    hell
+

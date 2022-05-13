@@ -1,6 +1,8 @@
 package com.example.morozovhints.L101_itemlist_providers_cl.presentation
 
+import android.content.ContentValues
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -17,6 +19,7 @@ import com.example.morozovhints.L101_itemlist_providers_cl.presentation.shopItem
 import com.example.morozovhints.R
 import com.google.android.material.textfield.TextInputLayout
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 /**
  * Класс фрагмента. Фрагмент является самостоятельным элементов.
@@ -51,7 +54,7 @@ class ShopItemFragment() : Fragment() {
     }
 
 
-    override fun onAttach(context: Context){
+    override fun onAttach(context: Context) {
 
         component.inject(this)
         super.onAttach(context)
@@ -81,7 +84,7 @@ class ShopItemFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this,viewModelFactory)[ShopItemViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[ShopItemViewModel::class.java]
         initViews(view)
         addTextChangeListeners()
         launchRightMode()
@@ -180,7 +183,21 @@ class ShopItemFragment() : Fragment() {
     private fun launchAddMode() {
         //никаких наблюдателей. тупо новый предмет и кнопка его добавляет в коллекцию.
         buttonSave.setOnClickListener {
-            viewModel.addShopItem(etName.text.toString(), etCount.text.toString())
+//            Вставка в бд с помощью вьюмодели.
+//            viewModel.addShopItem(etName.text.toString(), etCount.text.toString())
+
+//            Вставка в бд с помощью контент провайдера.
+            thread {
+                context?.contentResolver?.insert(
+                    Uri.parse("content://com.example.morozovhints/shopItems"),
+                    ContentValues().apply {
+                        put("id", 0)
+                        put("name", etName.text.toString())
+                        put("count", etCount.text.toString().toInt())
+                        put("enabled", true)
+                    }
+                )
+            }
         }
     }
 
@@ -227,7 +244,7 @@ class ShopItemFragment() : Fragment() {
         buttonSave = view.findViewById(R.id.buttonToSave)
     }
 
-    interface OnEditingFinishListener{
+    interface OnEditingFinishListener {
         fun onEditingFinished()
     }
 

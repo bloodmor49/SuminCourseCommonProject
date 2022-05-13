@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".L101_itemlist_providers_cl.presentation.ShopApplication"
@@ -17,16 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
-        
+        <activity
+            android:name=".l160_content_providers_contacts.ContactsMainActivity"
+            android:exported="false" />
+
         <provider
-            android:authorities="com.example.morozovhints"
             android:name=".L101_itemlist_providers_cl.data.ShopListProvider"
-            android:exported="true"/>
+            android:authorities="com.example.morozovhints"
+            android:exported="true" />
 
         <service
             android:name=".l150_broadcast_receiver.MyService"
             android:enabled="true"
             android:exported="false" />
+
         <activity
             android:name=".l150_broadcast_receiver.MainActivityBroadcast"
             android:exported="false" />

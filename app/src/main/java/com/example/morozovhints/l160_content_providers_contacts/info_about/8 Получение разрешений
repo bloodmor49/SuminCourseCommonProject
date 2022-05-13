@@ -1,0 +1,56 @@
+
+///////////////////////////// 8. Получение разрешения.//////////////////////////////
+
+Для получения доступа к системному приложению контактов нужно разрешение.
+Мы будем получать его с запросом у пользователя.
+Запрос разрешений занимает время, поэтому не выполняется синхронно.
+Запрос разрешений очень часто происходит.
+Большинство работ с разрешениями проходит по нижнему общему активити l160.
+
+///////////////////////////// Общий принцип /////////////////////////////////
+
+1. В манифесте прописываем разрешение на контакты:
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+2. В мейн активити cмотрим дано разрешение или нет:
+
+        val permissionGranted = ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+
+            if (permissionGranted) requestContacts()
+            else Log.i("myContacts", "noPermissionGranted")
+
+3. Мы запрашиваем у пользователя разрешение на чтение контактов, если оно не было дано.
+
+private fun requestPermissions() {
+           Log.i("myContacts", "noPermissionGranted")
+           ActivityCompat.requestPermissions(
+               this,
+               //массив со всеми разрешениями
+               arrayOf(android.Manifest.permission.READ_CONTACTS),
+               //код запроса
+               100
+           )
+       }
+
+4. Смотрим что пользователь ответил, а также в методе onRequestPermissionsResult даем разрешение:
+
+override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == 100 && grantResults.isNotEmpty()){
+            val permissionGranted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+            if (permissionGranted) requestContacts()
+            else Log.i("myContacts", "noPermissionGranted")
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+
+
+

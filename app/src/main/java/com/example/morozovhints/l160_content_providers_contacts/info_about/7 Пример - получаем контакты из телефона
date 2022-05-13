@@ -1,0 +1,58 @@
+
+///////////////////////////// 7. Пример - получаем контакты из телефона.//////////////////////////////
+
+Вся предыдущая информация про провайдеры в l101.
+
+В данном примере мы получим список контактов из системного приложения контакты.
+
+///////////////////////////// Общий принцип /////////////////////////////////
+
+1. Сначала создаем дата класс сущности контакта:
+
+    /**
+     * Сущность контакта телефонной книги.
+     */
+    data class Contact (
+        val id: Int,
+        val name: String
+    )
+
+2. В активити создаем курсор с записями контактов:
+
+private fun requestContacts() {
+        thread {
+            val cursor = contentResolver?.query(
+                ContactsContract.Contacts.CONTENT_URI,
+                null, null, null, null
+            )
+            cursor?.close()
+        }
+    }
+
+3. Получаем данные с помощью перебора курсором, пока тот не упрется в пустоту и формируем контакты:
+
+while (cursor?.moveToNext() == true) {
+                val id = cursor.getInt(
+                    cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID)
+                )
+                val name = cursor.getString(
+                    cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)
+                )
+                val contact = Contact(id,name)
+                Log.i("myContacts","Contact: $contact")
+            }
+
+4. В мейн активити запускаем данный метод с проверкой на разрешение.
+    Без разрешения будет приходить постоянно noPermissionGranted:
+
+    val permissionGranted = ActivityCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.READ_CONTACTS
+        ) == PackageManager.PERMISSION_GRANTED
+
+        if (permissionGranted) requestContacts()
+        else Log.i("myContacts", "noPermissionGranted")
+
+
+
+

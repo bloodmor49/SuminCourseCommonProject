@@ -1,0 +1,49 @@
+
+///////////////////////////// 4. Вставка данных в базу /////////////////////////////////
+
+Для вставки данных в базу неоюходимо переопределить метод insert контент провайдера.
+Проверяем URI, получаем значения из values и вставляем shopItem в базу.
+
+///////////////////////////// Общий принцип /////////////////////////////////
+
+1. Проверяем в методе insert запрос uri соответствует существующему из URI MATCHER:
+
+override fun insert(uri: Uri, values: ContentValues?): Uri? {
+        when (uriMatcher.match(uri)) {
+            GET_SHOP_ITEMS_QUERY -> {
+                to do
+            }
+        }
+        return null
+    }
+
+2. Получаем данные в провайдере и создаем новый shopItem (В to do). Ориентируемся на ключ.
+
+    if (values == null) return null
+                val id = values.getAsInteger("id")
+                val name = values.getAsString("name")
+                val count = values.getAsInteger("count")
+                val enabled = values.getAsBoolean("enabled")
+                val shopItem = ShopItem(id, name, count, enabled)
+
+3. Создаем в дб дао метод вставки данных.
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addShopItemNoAsync(shopItemDBModel: ShopItemDBModel
+
+4. Добавляем в провайдере (инсерт) метод вставки в базу объекта.
+    В данном случае делаем это через маппер.
+
+    shopListDao.addShopItemNoAsync(shopListMapper.mapEntityToDbModel(shopItem))
+
+5. Привязываем в активити добавление новых объектов. Например к кнопке. Обязательно в другом потоке:
+
+        buttonSave.setOnClickListener {
+            thread {
+                context?.contentResolver?.insert(
+                    Uri.parse("content://com.example.morozovhints/shopItems"),
+                    ContentValues().apply {
+                        put("id", 0)
+                        put("name", etName.text.toString())
+                        put("count", etCount.text.toString().toInt())
+                        put("enabled", true) } )  } }
