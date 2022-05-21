@@ -1,12 +1,10 @@
 package com.example.morozovhints.L101_itemlist_providers_cl.presentation.shopItemActivity
 
-import android.app.Application
 import androidx.lifecycle.*
-import com.example.morozovhints.L101_itemlist_providers_cl.data.ShopListRepositoryImpl
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.AddShopItemUseCase
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.EditShopItemUseCase
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.GetShopItemUseCase
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.usecases.AddShopItemUseCase
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.usecases.EditShopItemUseCase
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.usecases.GetShopItemUseCase
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -48,7 +46,6 @@ class ShopItemViewModel @Inject constructor(
             val item = getShopItemUseCase.getShopItem(shopItemId)
             _shopItem.value = item
         }
-
     }
 
     fun addShopItem(inputName: String?, inputCount: String?) {

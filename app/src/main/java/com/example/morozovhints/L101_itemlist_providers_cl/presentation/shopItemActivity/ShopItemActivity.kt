@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.ShopItemFragment
 import com.example.morozovhints.R
 

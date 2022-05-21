@@ -1,6 +1,6 @@
 package com.example.morozovhints.L101_itemlist_providers_cl.data
 
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import javax.inject.Inject
 
 /**

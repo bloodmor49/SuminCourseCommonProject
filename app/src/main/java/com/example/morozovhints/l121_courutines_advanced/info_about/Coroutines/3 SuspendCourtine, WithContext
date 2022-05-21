@@ -1,0 +1,49 @@
+
+///////////////////////////// 3. SuspendCoroutine /////////////////////////////////
+
+Когда мы выполняем какую - то функцию с корутинами и суспендим её, то это всё равно выполняется на
+главном потоке. Поэтому существует несколько способов как, например, отображать экран загрузки и
+параллельно выполнять операцию в другом потоке.
+
+WithContext - метод, который используется для переключения потоков.
+Называется так, потому что переключает не только поток, но и контекст.
+///////////////////////////// Общий принцип работы /////////////////////////////////
+
+1 способ:
+Создаем метод с коллбэком. Мы можем превратить его в суспендкорутину через suspendCoroutine.
+Все вычисления в другом потоке. Вместо коллбека continuation.
+В итоге мы добавляем результат в continuation. Теперь программа остановит свою работу без
+блокировки главного потока, пока не будет выполнен расчёт.
+
+kotlin.Result имеет два параметра - success, failure. Ну дальше понятно.
+
+ 1.1 private suspend fun factorial(n: Long): String {
+        return suspendCoroutine {
+            thread {
+                var result = BigInteger.ONE
+                for (i in 1..n) result = result.multiply(BigInteger.valueOf(i))
+                it.resumeWith(kotlin.Result.success(result.toString()))
+            }
+        }
+    }
+ 2.1 Дальше через корутин фактори запускаем всё.
+ viewModelScope.launch {
+                 val number = value.toLong()
+                 val result = factorial(number)
+                 delay(1000)
+                 _state.value = Result(result)
+             }
+
+2 способ:
+ Не парить себе мозги и использовать Dispatcher с пулом потоков. Как раз здесь применяется withContext.
+
+     private suspend fun factorial(n: Long): String {
+             return withContext(Dispatchers.Default) {
+                 var result = BigInteger.ONE
+                 for (i in 1..n) result = result.multiply(BigInteger.valueOf(i))
+                 result.toString()
+             }
+         }
+
+
+

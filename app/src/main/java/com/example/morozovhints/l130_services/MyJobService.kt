@@ -9,23 +9,8 @@ import android.util.Log
 import kotlinx.coroutines.*
 
 
-///////////////////////////////////СОБЕСЕДОВАНИЕ//////////////////////////////
-//TODO() Сервисы: Какие значения может возвращаться метод onStartCommand.
-
 /**
- * JobService - наследник JobService. Переопределяются 2 метода.
- * Не нужен метод onStartCommand - его операции проводятся в onStartJob.
- *      onStartJob - вып-ся на главном потоке.
- * Код в нем может быть синхронным. Возвращает: выполняется ли все ещё работа или нет.
- * return true - сервис все ещё выполняется, мы его выключим сами.
- * return false - сервис не выполняется, сам завершит работу.
- *      onStopJob - когда сервис остановлен. Например когда wifi отключился.
- * Если мы сами остановили сервис, то onStopJob не вызовется, так как им рулит система.
- *
- * При работе с апи > 26:
- * 
- * Если запустить несколько сервисов при помощи метода Shcedule, то работать будет только последний.
- * Метод enqueue же запустит последний прерванный сервис.
+ * JobService - наследник JobService.
  */
 class MyJobService : JobService() {
 
@@ -36,7 +21,6 @@ class MyJobService : JobService() {
         log("onCreate")
     }
 
-    //Умирает
     override fun onDestroy() {
         super.onDestroy()
         coroutineScope.cancel()
@@ -45,24 +29,17 @@ class MyJobService : JobService() {
 
     override fun onStartJob(params: JobParameters?): Boolean {
         log("onStartCommand")
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             coroutineScope.launch {
-//                 1) Достаем сервис первый из очереди.
                 var workItem = params?.dequeueWork()
-//                 2) Выполняем код до тех пор, пока в очереди есть ещё объекты.
                 while (workItem != null) {
-//                  3) Получаем значение page из намерения.
                     val page = workItem.intent.getIntExtra(PAGE, 0)
                     for (i in 0..100) {
                         delay(1000)
                         log("Timer: $i Page: $page")
                     }
-                    //4) Конкретно один серви из очереди завершил работу. (Не все сервисы)
                     params?.completeWork(workItem)
-                    //5) Достаем новый объект сервиса из очереди.
                     workItem = params?.dequeueWork()
-                    //6) Завершаем работу, когда больше нет сервисов в очереди.
                     jobFinished(params, false)
                 }
             }
@@ -71,7 +48,6 @@ class MyJobService : JobService() {
         return true
     }
 
-    //когда
     override fun onStopJob(params: JobParameters?): Boolean {
         log("onStopJob")
         return true
@@ -85,14 +61,12 @@ class MyJobService : JobService() {
         const val JOB_ID = 10
         const val PAGE = "page"
 
-        //Bundle объект ключ - значение. Для schedule, где прошлые сервисы удаляются.
         fun newBundle(pageNum: Int): PersistableBundle {
             return PersistableBundle().apply {
                 putInt(PAGE, pageNum)
             }
         }
 
-        //Для enqueue, где прошлые сервисы удаляются.
         fun newIntent(pageNum: Int): Intent {
             return Intent().apply {
                 putExtra(PAGE, pageNum)

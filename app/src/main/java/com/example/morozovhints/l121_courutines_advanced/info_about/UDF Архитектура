@@ -1,0 +1,99 @@
+
+///////////////////////////// 5. UDF Архитектура /////////////////////////////////
+
+Для определения состояния экрана этого проекта факторил, нам нужно смотреть на кучу факторов:
+ошибка, старый факториал, загрузка и тд.
+
+Это состояние изначально расбросано в несколько лайфдат. Куда удобнее было бы все это засунуть в
+одну лайвдату. Для этого имеет смысл сделать отдельный класс.
+
+В этом суть UDF Архитектурного подхода - весь state должен храниться в одной лайф дате или классе.
+Однако необходимо использовать спец. класс sealed. Это связано с тем, что иногда нам нужен только
+один фактор из стейта, а не все. Например отображение факториала - нам нужен только факториал.
+
+Sealed определяет, что мы обработали все состояния. Если нет, то он будет ругаться. Фактически это enum.
+
+///////////////////////////// Общий принцип работы /////////////////////////////////
+
+1. Создаем общий класс для лайфдаты. В нем все переменные - факторы состояния:
+
+    class State(val isError: Boolean, val isInProgress: Boolean, val factorial: String )
+
+2. Заменяем все лайфдаты во вьюмодели на одну от state. Это stateful viewmodel:
+
+            private val _error = MutableLiveData<Boolean>()
+            val error: LiveData<Boolean>
+                get() = _error
+
+                        ...
+
+            private val _progress = MutableLiveData<Boolean>()
+            val progress: LiveData<Boolean>
+                get() = _progress
+
+                        НА
+
+            private val _state = MutableLiveData<State>()
+            val state: LiveData<State>
+                get() = _state
+
+3. Далее просто работаем с конструктором нашего State:
+
+    fun calculate(value: String?) {
+            _state.value = State(isInProgress = true)
+            if (value.isNullOrBlank()) {
+                _state.value = State(isError = true)
+                return }
+            viewModelScope.launch {
+                val number = value.toLong()
+                _state.value = State(isInProgress = false)
+                _state.value = State(factorial = number.toString()) } }
+
+4. Observe-им нашу вьюмодель со стейтом в активити:
+
+ private fun observeViewModel() {
+        viewModel.state.observe(this) {
+            if (it.isError) { Toast.makeText(this, "Ошибка", Toast.LENGTH_LONG).show()}
+
+            if (it.isInProgress) {
+                binding.progressBarLoading.visibility = View.VISIBLE
+                binding.buttonCalculate.isEnabled = false}
+            else {
+                binding.progressBarLoading.visibility = View.INVISIBLE
+                binding.buttonCalculate.isEnabled = true }
+
+            binding.textViewFactorial.text = it.factorial }}}
+
+
+///////////////////////////// Расширение через отдельные состояния /////////////////////////////////
+
+1. Чтобы каждый раз не работать со всем стейтом, мы создаем каждому фактору наследников от стейта.
+Ещё суть в том, что класс должен быть sealed, иначе если в активити, например, будет отсутствовать
+обработка какого - либо состояния, то обычный открытый класс нам об этом ничего не скажет.
+Sealed = ENum, но для классов.:
+
+      sealed class State()
+
+//object так как нет полей.
+      object Error : State()
+      object Progress : State()
+      class Result(val factorial: String) : State()
+
+2. Переделываем вьюмодель. Теперь каждое состояние соотвествует не конструктору стейта, а отдельному классу:
+
+    _state.value = Progress()
+    _state.value = Error()
+    _state.value = Result(number.toString())
+
+3. И меняем обсервер. Теперь мы просто смотрим на то, какое конкретное у нас состояние:
+
+     private fun observeViewModel() {
+            viewModel.state.observe(this) {
+                binding.progressBarLoading.visibility = View.GONE
+                binding.buttonCalculate.isEnabled = true
+                when (it) {
+                    is Error -> Toast.makeText(this, "Ошибка", Toast.LENGTH_LONG).show()
+                    is Progress -> {
+                        binding.progressBarLoading.visibility = View.VISIBLE
+                        binding.buttonCalculate.isEnabled = false}
+                    is Result -> binding.textViewFactorial.text = it.factorial } }}

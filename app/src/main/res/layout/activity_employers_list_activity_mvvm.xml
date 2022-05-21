@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".L083_retrofit_gson.VIEW.screens.EmployerListActivity">
+    tools:context=".L083_retrofit_gson_MVVM.VIEW.screens.EmployerListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewEmployersMVC"

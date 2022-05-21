@@ -1,0 +1,86 @@
+
+///////////////////////////// 6. Job Intent Services /////////////////////////////////
+
+WorkManager - сервис Worker.
+Единственный метод - doWork.
+Он сразу выполняется в другом потоке, поэтому не нужно использовать корутины.
+
+Результат в doWork может быть следующим:
+
+ 1. Success - все ок и сервис завершил работу.
+ 2. Failure - завершился с ошибкой и не будет перезапущен.
+ 3. Retry - завершился с ошибкой и будет перезапущен.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+Пример, если нам нужно загружать разные данные и мы можем прерываться.
+
+1. Создаем наш сервис.
+
+    class MyWorker(
+        context: Context, - где выполняется.
+        private val workerParameters: WorkerParameters, - параметры воркера.
+    ) : Worker(context, workerParameters) {
+
+
+2. Переопределяем метод doWork:
+
+     override fun doWork(): Result {
+         val page = workerParameters.inputData.getInt(PAGE, 0) ?: 0
+         for (i in 1..10) {
+             Thread.sleep(1000)
+             log("Timer: $i Page: $page")
+         }
+         return Result.success()
+     }
+
+3. Создаем сервис из companion object:
+
+    fun makeRequest(page: Int): OneTimeWorkRequest {
+        return OneTimeWorkRequestBuilder<MyWorker>()
+
+// создаем объект data
+
+            .setInputData(workDataOf(PAGE to page))
+
+// устанавливаем ограничения (работает во время зарядки)
+
+            .setConstraints(makeConstraints())
+            .build()}
+
+//Constraints - условия до запуска сервиса. Какое должно быть состояние, чтобы всё запустить.
+
+    private fun makeConstraints(): Constraints {
+        return Constraints.Builder()
+
+// если работает от зарядки
+            .setRequiresDeviceIdle(true)
+            .build()}
+
+4. Далее в самой активити :
+
+    viewbinding.workManager.setOnClickListener {
+
+// создаем нашего воркера.
+
+        val workManager = WorkManager.getInstance()
+
+// enqueue - все воркеры безымянны и начинают выполнение друг за другом. ОЧЕРЕДЬ ОПЯТЬ
+// enqueue Unique Work - принимает имя воркера. На каждый воркер с именем свои условия.
+// таким образом, мы можем контролировать что делать со старым воркером, если мы создали новый.
+// в данном случае мы старый перезаписываем на новый.
+
+        workManager.enqueueUniqueWork(
+
+// Какое имя воркера
+
+            MyWorker.WORK_NAME,
+
+// Че делать с воркером, если он уже есть. Replace - воркер заменен. Keep - старый игнор.
+
+            ExistingWorkPolicy.REPLACE,
+
+// Запрос на выполнение работы, в который передаются все параметры и ограничения. Проще делать в воркере.
+
+            MyWorker.makeRequest(page++))}
+

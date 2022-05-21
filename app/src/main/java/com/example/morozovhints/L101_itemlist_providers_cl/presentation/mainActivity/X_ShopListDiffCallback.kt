@@ -1,7 +1,7 @@
 package com.example.morozovhints.L101_itemlist_providers_cl.presentation.mainActivity
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 
 /**
  * Callback - сравнивает списки после удаления элемент и работает как грамотная замена

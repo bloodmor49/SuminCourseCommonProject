@@ -30,7 +30,6 @@ abstract class NotesDatabase : RoomDatabase() {
                 db = instance
                 return instance
             }
-
         }
     }
 

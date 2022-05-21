@@ -1,0 +1,64 @@
+
+///////////////////////////// 4. Coroutine Scope Context /////////////////////////////////
+
+При использовании корутин очень удобно переключать потоки.
+
+По поводу withContext и viewModelScope - реализация интерфейса CoroutineScope.
+CoroutineScope - интерфейс, который предоставляет CoroutineContext
+CoroutineContext состоит из 4 элементов:
+
+1) Поток dispatchers - где выполняется корутина.
+2) Job -
+3) Exception Handler - обработчик ошибок.
+4) CoroutineName - название корутины.
+
+Т.е. при выводе мы будем иметь информацию этих 4 пунктов.
+
+Любой из методов есть корутин контекст. То есть можно что угодно из этого в контекст отправлять,
+а не только поток (обычно диспатчер). ЧТобы передавать различные параметры мы ставим +
+
+withContext(Dispatchers.IO + job()){...}
+
+Нельзя передать одинаковые элементы. Только один диспатчер, например. Сочитания неважны.
+Узнать контекст скоупа можно с помощью coroutineContext
+
+///////////////////////////// Общий принцип работы /////////////////////////////////
+
+
+1. Создаем наш скоуп:
+
+    private val coroutrinScope =
+        CoroutineScope(Dispatchers.Main + CoroutineName("MyCoroutrinScope"))
+
+2. Запускаем процессы в нашем скоупе:
+
+    coroutinScope.launch{ ... }
+
+3. Вырубаем наш скоуп:
+
+    override fun onCleared() {
+            super.onCleared()
+            coroutineScope.cancel()
+        }
+
+
+ДОП.
+
+В рамках 1 скоупа мы можем много раз переключать потоки:
+*** В launch также можно передать dispatchers.
+
+viewModelScope.launch() {
+            val number = value.toLong()
+
+//переключаемся на поток фона для расчёта факториала
+
+            withContext(Dispatchers.Default) {
+                val result = factorial(number)
+
+//переключаемся на поток главный для работы с UI.
+
+                withContext(Dispatchers.Main) {
+                    delay(1000)
+                    _state.value = Result(result)
+                }}}
+

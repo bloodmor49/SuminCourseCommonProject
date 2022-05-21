@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.SERVICE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -18,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".l121_courutines_advanced.MainActivityFactorial"
+            android:exported="false" />
         <activity
             android:name=".l160_content_providers_contacts.ContactsMainActivity"
             android:exported="false" />
@@ -44,6 +48,7 @@
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".l130_services.MyAlarmReceiver" />
 
         <activity
             android:name=".l140_dagger2.ex2_dagger2.presentation.MainActivity2Dagger2"
@@ -99,10 +104,10 @@
             android:name=".L091_firebase.ListOfUsersMainActivity"
             android:exported="false" />
         <activity
-            android:name=".L083_retrofit_gson.VIEW.screens.EmployerListActivity"
+            android:name=".L083_retrofit_gson_MVVM.VIEW.screens.EmployerListActivity"
             android:exported="false" />
         <activity
-            android:name=".L082_MVP.screens.employers.EmployerListActivity"
+            android:name=".L082_retrofit_gson_MVP.screens.employers.EmployerListActivity"
             android:exported="false" />
         <activity
             android:name=".L081_training_jun_task_retrofit_json.EmployersMainActivity"

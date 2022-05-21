@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.ShopApplication
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.ShopItemFragment
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.ViewModelFactory
@@ -20,8 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import javax.inject.Inject
 import kotlin.concurrent.thread
 
-class ShopListMainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListener {
-
+class   ShopListMainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var shopListAdapter: ShopListAdapter
@@ -36,9 +35,7 @@ class ShopListMainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFini
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         component.inject(this)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_list_main)
         shopItemContainer = findViewById(R.id.shop_item_container)
@@ -82,7 +79,6 @@ class ShopListMainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFini
             cursor?.close()
         }
     }
-
 
     private fun setUpViewModel() {
         //Задаем viewModel

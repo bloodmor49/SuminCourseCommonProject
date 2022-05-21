@@ -1,0 +1,48 @@
+
+///////////////////////////// 4. Intent service /////////////////////////////////
+
+ Проблемы обычных сервисов (симпл,foreground):
+ 1) они работают (onStartCommand) !!в главном потоке!!, поэтому нужны асинхронные процессы.
+ 2) остановка вручную (stopSelf,stopService)
+ 3) при запуске несколько раз будет куча сервисов параллельно. (нужно контроллировать вручную)
+
+ Решение - IntentService. Он устарел, но в нем решены все эти три проблемы.
+
+При наследовании нужно указать имя сервиса. Нужно переопределить onHandleIntent -
+код выполняется НЕ в главном потоке. (вместо onStartCommand в главном потоке).
+Не нужно использовать корутины. Не нужен onBind. Не нужен onDestroy.
+Сразу после выполнения метода - сервис сразу сам останавливается.
+Все сервисы выполняются друг за другом, если вызвать несколько раз.
+Запускать можно как обычный, так и форграунд сервис.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+1. Создаем наш сервис.
+class MyService : IntentService(NAME)
+
+2. Переопределяем методы onCreate и onHandleIntent:
+
+ override fun onCreate() {
+        super.onCreate()
+
+        //Аналог START_REDELIVER_INTENT если true (если убьют, то интент будет пересоздан и не null)
+        setIntentRedelivery(true)
+
+        createNotificationChannel()
+
+        startForeground(NOTIFICATION_ID,createNotification())}
+
+    override fun onHandleIntent(intent: Intent?) {
+    for (i in 1..10) {
+                Thread.sleep(1000)
+                log("Timer: $i")}}
+
+3. Создаем newIntent в companion object как у обычных сервисов.
+
+4-5. Работа с уведомлениями как у foreground services.
+
+6. Далее в самой активити вызываем этот сервис и останавливаем из активити:
+
+        viewbinding.intentService.setOnClickListener {
+            ContextCompat.startForegroundService(this,MyIntentService.newIntent(this))
+        }

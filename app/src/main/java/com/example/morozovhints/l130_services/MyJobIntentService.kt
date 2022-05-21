@@ -6,14 +6,8 @@ import android.util.Log
 import androidx.core.app.JobIntentService
 
 
-///////////////////////////////////СОБЕСЕДОВАНИЕ//////////////////////////////
-//TODO() Сервисы: Какие значения может возвращаться метод onStartCommand.
-
 /**
- * Job Intent Service - наследуется от JobIntentService.
- * Представляет из себя под капотом совокупность JobService (апи >26) и IntentService (апи <26).
- * Но минусы - здесь нет schedule. Т.е. нельзя планировать ничего по условиям.
- * Было лучшим до появления WorkManager.
+ * Job Intent Service
  */
 class MyJobIntentService : JobIntentService() {
 

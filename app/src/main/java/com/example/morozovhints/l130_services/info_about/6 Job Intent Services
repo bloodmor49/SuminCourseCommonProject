@@ -1,0 +1,48 @@
+
+///////////////////////////// 6. Job Intent Services /////////////////////////////////
+
+Job Intent Service - наследуется от JobIntentService.
+Представляет из себя под капотом совокупность JobService (апи >26) и IntentService (апи <26).
+Но минусы - здесь нет schedule. Т.е. нельзя планировать ничего по условиям.
+Было лучшим до появления WorkManager.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+Пример, если нам нужно загружать разные данные и мы можем прерываться.
+
+1. Создаем наш сервис.
+class MyJobIntentService : JobIntentService()
+
+2. Переопределяем метод onhandelWork:
+ override fun onHandleWork(intent: Intent) {
+        log("onHandleWork")
+        val page = intent.getIntExtra(PAGE, 0) ?: 0
+        for (i in 1..10) {
+            Thread.sleep(1000)
+            log("Timer: $i Page: $page")
+        }
+    }
+3. Создаем сервис из companion object:
+
+        //запуск сервиса сразу или добавляем в очередь
+fun enqueue(context: Context,page: Int) {
+            enqueueWork(
+                context,
+                MyJobIntentService::class.java,
+                JOB_ID,
+                newIntent(context,page)
+            )
+        }
+
+        private fun newIntent(context: Context, page: Int): Intent {
+            return Intent(context, MyJobIntentService::class.java).apply {
+                putExtra(PAGE, page)
+            }
+        }
+
+4. Далее в самой активити :
+
+          viewbinding.jobIntentService.setOnClickListener {
+                      MyJobIntentService.enqueue(this, page++)
+                  }
+

@@ -9,7 +9,7 @@ import com.example.morozovhints.L072_sqlite_room.RoomDB.NotesDatabase
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    var database = NotesDatabase.getInstance(application)
+    val database = NotesDatabase.getInstance(application)
 
     private var notes = database?.notesDao()?.getAllNotes()
 
@@ -18,42 +18,42 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun insertNote(note: Note) {
-        InsertTask().execute(note)
+        database?.let { InsertTask(it).execute(note) }
     }
 
     fun deleteNote(note: Note) {
-        DeleteTask().execute(note)
+        database?.let { DeleteTask(it).execute(note) }
     }
 
     fun deleteAllNotes() {
-        DeleteAllTask().execute()
+        database?.let { DeleteAllTask(it).execute() }
     }
 
     @Suppress("DEPRECATION")
-    inner class InsertTask : AsyncTask<Note, Void, Void>() {
+    class InsertTask(val database : NotesDatabase) : AsyncTask<Note, Void, Void>() {
         override fun doInBackground(vararg params: Note?): Void? {
             if (params.isNotEmpty()) {
-                params[0]?.let { database?.notesDao()?.insertNote(it) }
+                params[0]?.let { database.notesDao().insertNote(it) }
             }
             return null
         }
     }
 
     @Suppress("DEPRECATION")
-    inner class DeleteTask : AsyncTask<Note, Void, Void>() {
+    class DeleteTask(val database : NotesDatabase) : AsyncTask<Note, Void, Void>() {
         override fun doInBackground(vararg params: Note?): Void? {
             if (params.isNotEmpty()) {
-                params[0]?.let { database?.notesDao()?.deleteNote(it) }
+                params[0]?.let { database.notesDao().deleteNote(it) }
             }
             return null
         }
     }
 
     @Suppress("DEPRECATION")
-    inner class DeleteAllTask : AsyncTask<Void, Void, Void>() {
+    class DeleteAllTask(val database : NotesDatabase) : AsyncTask<Void, Void, Void>() {
         override fun doInBackground(vararg params: Void?): Void? {
             if (params.isNotEmpty()) {
-                params[0]?.let { database?.notesDao()?.deleteAllNotes() }
+                params[0]?.let { database.notesDao().deleteAllNotes() }
             }
         return null
         }

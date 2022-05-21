@@ -1,29 +1,25 @@
 package com.example.morozovhints.l130_services
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.app.job.JobWorkItem
 import android.content.ComponentName
+import android.content.ServiceConnection
 import android.os.Build
 import android.os.Bundle
+import android.os.IBinder
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.work.ExistingWorkPolicy
 import androidx.work.WorkManager
 import com.example.morozovhints.databinding.ActivityMainServiceBinding
+import java.util.*
 
-//
-// Проблемы обычных сервисов (симпл,foreground):
-// 1) они работают (onStartCommand) в главном потоке
-// 2) остановка вручную (stopSelf,stopService)
-// 3) при запуске несколько раз будет куча сервисов параллельно. (нужно контроллировать вручную)
-//
-// Решение - IntentService. Он устарел, но в нем решены все эти три проблемы.
-//
-// JobService,JobSheduler - сервисы, которые выполняются при определенных условиях.
-// Например скачать что - то только при подключении к wifi либо при зарядке телефона.
-//
+
 // В связи с тем, что существуют две условные версии относительно 26, то используется
 // JobIntentService - комбинация предыдущих. В зависимости от версии он применяет Интент Сервис
 // или ДжобСервис. Однако так невозможно осуществить действия по условиям как jobScheduler.
@@ -41,98 +37,119 @@ class MainActivityService : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewbinding.root)
+
+        /////////////////////// КЛАССИЧЕСКИЙ СЕРВИС ///////////////////////////
+
         viewbinding.simpleService.setOnClickListener {
-            Toast.makeText(this,"Click",Toast.LENGTH_LONG).show()
-            startService(MyService.newIntent(this,25))
+            Toast.makeText(this, "Click", Toast.LENGTH_LONG).show()
+            startService(MyService.newIntent(this, 25))
         }
-//      Останов сервиса СНАРУЖИ.
         viewbinding.simpleService.setOnLongClickListener {
-            stopService(MyService.newIntent(this,0))
+            stopService(MyService.newIntent(this, 0))
         }
+
+        /////////////////////// FOREGROUND SERVICE ///////////////////////////
+
         viewbinding.foregroundService.setOnClickListener {
-//      Мы обещаем, что покажем уведомление пользователю. Это делается внутри сервиса.
-            ContextCompat.startForegroundService(this,MyForeGroundService.newIntent(this))
+            ContextCompat.startForegroundService(this, MyForeGroundService.newIntent(this))
         }
         viewbinding.foregroundService.setOnLongClickListener {
-            Toast.makeText(this,"Stop service",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Stop service", Toast.LENGTH_LONG).show()
             stopService(MyForeGroundService.newIntent(this))
         }
+
+        /////////////////////// INTENT SERVICE ///////////////////////////
+
         viewbinding.intentService.setOnClickListener {
-            ContextCompat.startForegroundService(this,MyIntentService.newIntent(this))
+            ContextCompat.startForegroundService(this, MyIntentService.newIntent(this))
         }
+
+        /////////////////////// JOB SERVICE ///////////////////////////
+
         viewbinding.jobScheduler.setOnClickListener {
-//          Запуск сервиса job -
-//          1) даем имя и привязываем к классу сервиса, передаем контекст.
-            val componentName = ComponentName(this,MyJobService::class.java)
-//          2) создаем информацию о сервисе и ограничения - когда работает, какой ID и так далее.
-            val jobInfo = JobInfo.Builder(MyJobService.JOB_ID,componentName)
-                //передача данных в сервис. Для sheduler.
+            val componentName = ComponentName(this, MyJobService::class.java)
+            val jobInfo = JobInfo.Builder(MyJobService.JOB_ID, componentName)
 //                .setExtras(MyJobService.newBundle(page++))
-//             работает при зарядке
                 .setRequiresCharging(true)
-//             работает при работе вай фай
 //                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
-//             включается при включении телефона
 //                .setPersisted(true)
-//             как часто включается.
 //                .setPeriodic()
                 .build()
-//          3) запускаем созданный сервис.
             val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
-//            schedule удаляет предыдущий сервис.
-//            jobScheduler.schedule(jobInfo)
-//            enqueue же продолжает сервис с точки удаления прошлого сервиса, так как работают очереди.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val intent = MyJobService.newIntent(page++)
-//              Добавляем сервис в очередь.
                 jobScheduler.enqueue(jobInfo, JobWorkItem(intent))
             } else {
-                val intent = MyIntentServiceForJobLower26.newIntent(this,page++)
+                val intent = MyIntentServiceForJobLower26.newIntent(this, page++)
                 startService(intent)
             }
 
-            //такой сервис будет перезапущен при восстановлении условий его работы.
-            //и начинает работать с самого начала.
-
+            /////////////////////// JOB INTENT SERVICE ///////////////////////////
 
             viewbinding.jobIntentService.setOnClickListener {
                 MyJobIntentService.enqueue(this, page++)
             }
 
+            /////////////////////// WORKMANAGER SERVICE ///////////////////////////
+
             viewbinding.workManager.setOnClickListener {
                 val workManager = WorkManager.getInstance()
-                //enqueue - все воркеры безымянны и начинают выполнение друг за другом.
-                //enqueue Unique Work - принимает имя воркера. На каждый воркер с именем свои условия.
                 workManager.enqueueUniqueWork(
-                    // Какое имя воркера
                     MyWorker.WORK_NAME,
-                    // Че делать с воркером, если он уже есть.Replace - воркер заменен. Keep - старый игнор.
                     ExistingWorkPolicy.REPLACE,
-                    // Запрос на выполнение работы, в который передаются все параметры и ограничения.
-                    // Проще делать в воркере.
                     MyWorker.makeRequest(page++)
                 )
             }
+
+            /////////////////////// ALARM MANAGER ///////////////////////////
+
+            viewbinding.alarmManager.setOnClickListener {
+                //Создаем аларм менеджер
+                val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+                //Создаем календарь.
+                val calendar = Calendar.getInstance()
+                //Добавляем в него выполнение задачи через 30 сек.
+                calendar.add(Calendar.SECOND, 30)
+                //Создаем намерение.
+                val intent = MyAlarmReceiver.newIntent(this)
+                //Создаем обертку над интендом для получения вещания.
+                val pendingIntent = PendingIntent.getBroadcast(this, 100, intent, 0)
+                //Запускаем сервис. В нем указывае работу, время, операцию после срабатывания.
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+//                alarmManager.cancel(pendingIntent)
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
+    private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            val binder = (service as? MyForeGroundService.LocalBinder) ?: return
+            val foregroundService = binder.getService()
+            foregroundService.onProgressChanged = { progress ->
+                viewbinding.progressBarLoading.progress = progress
+            }
+        }
 
+        override fun onServiceDisconnected(name: ComponentName?) {
+            Log.i("ServiceForeground", "$name disconnected")
+        }
+    }
 
+    override fun onStart() {
+        super.onStart()
+
+//      Подписываемся на наш Foreground Service.
+        bindService(
+            MyForeGroundService.newIntent(this),
+            serviceConnection,
+            0
+        )
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+//      отписываемся от сервиса.
+        unbindService(serviceConnection)
+    }
 }

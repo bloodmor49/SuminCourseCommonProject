@@ -6,7 +6,7 @@ import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 import android.util.Log
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.ShopApplication
 import javax.inject.Inject
 

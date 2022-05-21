@@ -1,10 +1,10 @@
 package com.example.morozovhints.L101_itemlist_providers_cl.presentation.mainActivity
 
 import androidx.lifecycle.ViewModel
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.DeleteShopItemUseCase
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.EditShopItemUseCase
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.GetShopListUseCase
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.usecases.DeleteShopItemUseCase
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.usecases.EditShopItemUseCase
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.usecases.GetShopListUseCase
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -22,15 +22,8 @@ class MainViewModel @Inject constructor(
     private val editShopItemUseCase : EditShopItemUseCase
 ) : ViewModel() {
 
-    //корутины должны входить в состав объектов с ЖЦ. Т.е. в scope. Мы можем создать свой scope.
-    //сorutine context показывает где это происходит.
-    //Dispatchers - где выполняются корутины. какой поток.
-    // Main - главный поток.
-    // IO - поток для чтения и записи.
-    // Default - сложные вычисления потоки макс производительности как исходя из числа ядер.
     private val scope = CoroutineScope(Dispatchers.IO)
 
-    //создаем просматриваемый список предметов
     val shopList = getShopListUseCase.getShopList()
 
     fun deleteShopItem(shopItem: ShopItem) {

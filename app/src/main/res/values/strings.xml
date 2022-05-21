@@ -169,4 +169,6 @@
     <string name="alarm_manager">Alarm Manager</string>
     <string name="work_manager">Work Manager</string>
     <string name="tv_mad2">tv_mad2</string>
+
+    <string name="calculate">Calculate</string>
 </resources>

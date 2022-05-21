@@ -1,0 +1,52 @@
+
+///////////////////////////// 3. Foreground service - progress bar/////////////////////////////////
+
+Допустим мы хотим отображать прогресс бар, в котором будет указано сколько процентов мы загрузили.
+Как это сделать?
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+1. меняем функцию createNotification в createNotificationBuilder.
+Каждый раз, когда мы будем обновлять прогресс бар, мы билдим уведомление, поэтому здесь это не нужно.
+
+ private fun createNotificationBuilder(): NotificationCompat.Builder {
+        return NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("ForGroundService ")
+            .setContentText("Текст уведомления ForGroundService")
+            .setSmallIcon(R.drawable.logo_okabe)
+//          здесь же указываем первичный прогрессбар
+            .setProgress(100, 0, false)
+//          Это чтобы не пищала каждый раз.
+            .setOnlyAlertOnce(true) }
+
+2. Переносим менеджер и билдер в глобалы:
+
+ private val notificationManager by lazy {
+        getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+    }
+
+    private val notificationBuilder by lazy {
+        createNotificationBuilder()
+    }
+
+3. Переопределяем тело рабочего цикла сервиса:
+
+override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        log("onStartCommand")
+        coroutineScope.launch {
+            for (i in 1..100 step 5) {
+                delay(1000)
+
+//              именно тут у нас постоянно обновляется прогресс бар и уведомления каждый раз
+                создаются новые.
+
+                val notification = notificationBuilder
+                    .setProgress(100, i, false)
+                    .build()
+
+//              мы не должны забывать уведомлять о том, к какой службе это привязано.
+
+                notificationManager.notify(NOTIFICATION_ID,notification)
+
+                log("Timer: $i")
+            } stopSelf() }return START_STICKY}

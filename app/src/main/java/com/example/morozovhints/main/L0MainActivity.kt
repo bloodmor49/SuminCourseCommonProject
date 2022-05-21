@@ -15,14 +15,15 @@ import com.example.morozovhints.L06_json_download.L6JSONProjectActivity
 import com.example.morozovhints.L071_shared_preferences.L7DataStoreMainActivity
 import com.example.morozovhints.L072_sqlite_room.ViewsMainActivity
 import com.example.morozovhints.L081_training_jun_task_retrofit_json.EmployersMainActivity
-import com.example.morozovhints.L082_MVP.screens.employers.EmployerListActivity
+import com.example.morozovhints.L082_retrofit_gson_MVP.screens.employers.EmployerListActivity
 import com.example.morozovhints.L091_firebase.ListOfUsersMainActivity
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.mainActivity.ShopListMainActivity
 import com.example.morozovhints.L102_fragment_training.presentation.FragmentStudyMainActivity
-import com.example.morozovhints.l111_jetpack_training.MainActivityDBinTr
 import com.example.morozovhints.R
 import com.example.morozovhints.l110_jetpack.presentation.MainActivityGame
+import com.example.morozovhints.l111_jetpack_training.MainActivityDBinTr
 import com.example.morozovhints.l120_async_methods.MainActivityAsync
+import com.example.morozovhints.l121_courutines_advanced.MainActivityFactorial
 import com.example.morozovhints.l130_services.MainActivityService
 import com.example.morozovhints.l140_dagger2.ex2_dagger2.presentation.MainActivityDagger2
 import com.example.morozovhints.l150_broadcast_receiver.MainActivityBroadcast
@@ -73,17 +74,18 @@ class L0MainActivity : AppCompatActivity() {
             8 -> startActivity(Intent(this, EmployersMainActivity::class.java))
             9 -> startActivity(Intent(this, EmployerListActivity::class.java))
             10 -> startActivity(Intent(this,
-                com.example.morozovhints.L083_retrofit_gson.VIEW.screens.EmployerListActivity::class.java))
+                com.example.morozovhints.L083_retrofit_gson_MVVM.VIEW.screens.EmployerListActivity::class.java))
             11 -> startActivity(Intent(this, ListOfUsersMainActivity::class.java))
             12 -> startActivity(Intent(this, ShopListMainActivity::class.java))
             13 -> startActivity(Intent(this, FragmentStudyMainActivity::class.java))
             14 -> startActivity(Intent(this, MainActivityGame::class.java))
             15 -> startActivity(Intent(this, MainActivityDBinTr::class.java))
             16 -> startActivity(Intent(this, MainActivityAsync::class.java))
-            17 -> startActivity(Intent(this, MainActivityService::class.java))
-            18 -> startActivity(Intent(this, MainActivityDagger2::class.java))
-            19 -> startActivity(Intent(this, MainActivityBroadcast::class.java))
-            20 -> startActivity(Intent(this, ContactsMainActivity::class.java))
+            17 -> startActivity(Intent(this, MainActivityFactorial::class.java))
+            18 -> startActivity(Intent(this, MainActivityService::class.java))
+            19 -> startActivity(Intent(this, MainActivityDagger2::class.java))
+            20 -> startActivity(Intent(this, MainActivityBroadcast::class.java))
+            21 -> startActivity(Intent(this, ContactsMainActivity::class.java))
         }
     }
 
@@ -129,6 +131,8 @@ class L0MainActivity : AppCompatActivity() {
         listOfLessons.add(LessonInfo("L11.1", "Android JETPACK Navigation - тренировка."))
         listOfLessons.add(LessonInfo("L12.0",
             "Многопоточноесть - Callback, AsyncTask,Handler,Looper,Coroutines Basics,Scope."))
+        listOfLessons.add(LessonInfo("L12.1",
+            "Многопоточноесть - Coroutines advanced - Factorial"))
         listOfLessons.add(LessonInfo("L13.0",
             "Сервисы - Services + Android JetPack (WorkManager)."))
         listOfLessons.add(LessonInfo("L14.0",

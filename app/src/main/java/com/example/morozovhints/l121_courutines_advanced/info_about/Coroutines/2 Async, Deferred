@@ -1,0 +1,34 @@
+
+///////////////////////////// 2. Async, Deferred /////////////////////////////////
+
+Допустим мы должны получать какие - то значения после завершения корутины.
+lifecycleScope.launch не позволяет это сделать.
+
+ASYNC
+
+lifecycleScope.async - данный билдер позволяет работать с данными в плане их возвращения.
+На выводе - объект Deffered, метод параметризирован, его метод await возвращает нужный параметр.
+Т.е. если мы указали deferred<String>, то на выходе будет строка после окончания работы потока.
+
+///////////////////////////// Общий принцип работы /////////////////////////////////
+
+1. Работаем с загрузкой погоды. Вместо метода launch -> async. weather -> строка на вывод:
+                val defferedWeather: Deferred<String> = lifecycleScope.async {
+                                val weather = loadWeather()
+                                viewBinding.tvWeatherSet.text = weather
+                                //на вывод
+                                weather
+                                }
+
+
+2. В финальном потоке мы создаем погоду из нашего Async. Метод .await() = .join(), но для ASYNC.
+Таким образом получаем погоду, как результат выполнения загрузки погоды.
+
+lifecycleScope.launch {
+                val weather = defferedWeather.await()
+                Toast.makeText(
+                    this@MainActivityAsync,
+                    "Погода...$weather",
+                    Toast.LENGTH_LONG
+                ).show()
+            }

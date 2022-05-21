@@ -1,0 +1,82 @@
+
+///////////////////////////// 3.2 OnBind/////////////////////////////////
+
+Допустим у сервиса есть прогрессбар.
+Что, если мы хотим получить этот прогресс бар (значения) из сервиса в активити?
+
+Для этого у сервисов переопределен метод onBind. На выводе у него интерфейс iBinder.
+Нам нужно создать наш собственный байндер, наследник байндера, туда добавляем методы.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+1. Устанавливаем в сервисе слушатель изменения прогресса:
+
+        var onProgressChanged: ((Int) -> Unit)? = null
+
+        override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        ...
+        onProgressChanged?.invoke(i)
+        }
+
+2. Создаем интерфейс Localbinder. Он нужен, чтобы была ссылка на сервис (возвр. экземпляр):
+
+        inner class LocalBinder: Binder(){
+            fun getService() = this@MyForeGroundService
+        }
+
+3. В методе onBind:
+
+    override fun onBind(intent: Intent?): IBinder? {
+        //Как только мы подпишемся, будет создан экземпляр LocalBinder
+        return LocalBinder()
+    }
+
+4. Переопределяем в активити подсоедннение и отсоединение от сервиса:
+
+
+private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+
+//      При подсоединении сервиса к нему прилетает объект Binder.
+//      Это тот самый объект из метода onBind. Приводим его к типу LocalBinder.
+
+            val binder = (service as? MyForeGroundService.LocalBinder) ?: return
+
+//      Из LocalBinder получаем наш ForeGroundService.
+
+            val foregroundService = binder.getService()
+
+//      Теперь в активити есть доступ к сервису. Теперь мы его стартуем.
+
+            foregroundService.onProgressChanged = { progress ->
+                viewbinding.progressBarLoading.progress = progress
+            }
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            Log.i("ServiceForeground", "$name disconnected")
+        }
+    }
+
+5.  Теперь мы стартуем сервис. Во время старта мы подписываемся на наш сервис, от которого хотим
+получать данные.
+
+    override fun onStart() {
+               super.onStart()
+
+       //      Подписываемся на наш Foreground Service.
+
+               bindService(
+                   MyForeGroundService.newIntent(this),
+                   serviceConnection,
+                   0
+               )
+           }
+
+           override fun onStop() {
+               super.onStop()
+
+       //      отписываемся от сервиса, чтобы не обновлять прогресс бар при офф.
+               unbindService(serviceConnection)
+
+           }

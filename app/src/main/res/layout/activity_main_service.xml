@@ -25,6 +25,17 @@
         android:text="@string/foreground_service"
         />
 
+    <ProgressBar
+        android:id="@+id/progressBarLoading"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_margin="16dp"
+        android:max="100"
+        android:progress="0"
+        tools:progress="30"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <Button
         android:id="@+id/intent_service"
 

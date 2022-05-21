@@ -1,0 +1,59 @@
+
+///////////////////////////// 3. Foreground service /////////////////////////////////
+
+ForeGround Service - для андроидов выше 26 версии необходимо использовать для постоянного
+ уведомления пользователя о том, что сервис активен, иначе не будет работать.
+ Этот сервис (его уведомление) нельзя смахнуть или убрать.
+ В методе onCreate должен быть метод старта уведомления и пуска Foreground.
+ Данный метод при запуске ОБЯЗАН вызвать внутри сервиса startForeground, иначе приложение упадет.
+
+ Проблемы обычных сервисов (симпл,foreground):
+ 1) они работают (onStartCommand) !!в главном потоке!!, поэтому нужны асинхронные процессы.
+ 2) остановка вручную (stopSelf,stopService)
+ 3) при запуске несколько раз будет куча сервисов параллельно. (нужно контроллировать вручную)
+
+ Решение - IntentService. Он устарел, но в нем решены все эти три проблемы.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+1...3. Создаем наш сервис. Методы работы и вызов интента на сервис аналогичный классическим, так
+что пункты 1,2,3 как и у обычных сервисов:
+class MyService : ForeGroundService() и переопределяем основные методы.
+
+4. Далее идет особенность foreground сервиса - мы работаем с уведомлениями.
+Создаем канал для уведомления через менеджер уведомлений. Здесь нужно провести проверку на апи
+андроида с версией 26:
+
+    private fun createNotificationChannel(){
+    // 1) Создаем менеджер уведомлений.           имя сервиса             приводим к менеджеру
+            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+    // 2) Это нужно для апи >= 26. В низших версиях не нужно.
+    // Фактически в новых версиях каждое уведомление должно привязываться к каналу.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+    // формируем канал уведомления
+                val notificationChannel = NotificationChannel(CHANNEL_ID,CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT)
+    // создаем канал
+                notificationManager.createNotificationChannel(notificationChannel)}}
+
+5. Далее необходимо создать само уведомление:
+
+      private fun createNotification():Notification{
+            return NotificationCompat.Builder(this, CHANNEL_ID)
+            // Здесь указываем параметры.
+                .setContentTitle("ForGroundService ")
+                .setContentText("Текст уведомления ForGroundService")
+                .setSmallIcon(R.drawable.logo_okabe)
+                .build()}
+
+
+6. Далее в самой активити вызываем этот сервис и останавливаем из активити:
+
+        viewbinding.foregroundService.setOnClickListener {
+//      Мы обещаем, что покажем уведомление пользователю. Это делается внутри сервиса.
+            ContextCompat.startForegroundService(this,MyForeGroundService.newIntent(this))
+        }
+        viewbinding.foregroundService.setOnLongClickListener {
+            Toast.makeText(this,"Stop service",Toast.LENGTH_LONG).show()
+            stopService(MyForeGroundService.newIntent(this))
+        }

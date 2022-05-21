@@ -13,8 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
-import com.example.morozovhints.L101_itemlist_providers_cl.presentation.mainActivity.ShopListMainActivity
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import com.example.morozovhints.L101_itemlist_providers_cl.presentation.shopItemActivity.ShopItemViewModel
 import com.example.morozovhints.R
 import com.google.android.material.textfield.TextInputLayout

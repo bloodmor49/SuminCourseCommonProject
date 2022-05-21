@@ -2,7 +2,7 @@ package com.example.morozovhints.L101_itemlist_providers_cl.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopItem
+import com.example.morozovhints.L101_itemlist_providers_cl.domain.entities.ShopItem
 import com.example.morozovhints.L101_itemlist_providers_cl.domain.ShopListRepository
 import javax.inject.Inject
 
@@ -31,7 +31,6 @@ class ShopListRepositoryImpl @Inject constructor(
     override suspend fun getShopItem(shopItemId: Int): ShopItem {
         val dbModel = shopListDao.getShopItem(shopItemId)
         return shopListMapper.mapDbModelToEntity(dbModel)
-
     }
 
 

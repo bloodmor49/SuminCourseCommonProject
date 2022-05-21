@@ -1,0 +1,137 @@
+
+///////////////////////////// 5. Job services /////////////////////////////////
+
+JobService - наследник JobService. Переопределяются 2 метода.
+
+JobService,JobSheduler - сервисы, которые выполняются при определенных условиях.
+ЧТО ДОЛЖНО БЫТЬ СДЕЛАНО
+И КОГДА.
+ Например скачать что - то только при подключении к wifi либо при зарядке телефона.
+
+Не нужен метод onStartCommand - его операции проводятся в onStartJob (вып. в глав. потоке)
+Код в нем может быть синхронным. Возвращает: выполняется ли все ещё работа или нет.
+  return true - сервис все ещё выполняется, мы его выключим сами.
+  return false - сервис не выполняется, сам завершит работу.
+
+OnStopJob - что будем делатЬ, когда сервис остановлен. Например когда wifi отключился.
+Если мы САМИ остановили сервис, то onStopJob не вызовется, так как им рулит система.
+
+При работе с апи > 26:
+
+  Если запустить несколько сервисов при помощи метода Schedule, то работать будет только последний.
+  Метод enqueue же запустит последний прерванный сервис.
+
+  Работать желательно с корутинами.
+
+//////////////////////////////////Как работать (простейший пример)?/////////////////////////////
+
+Пример, если нам нужно загружать разные данные и мы можем прерываться.
+
+1. Создаем наш сервис.
+class MyJobService : JobService() {
+   private val coroutineScope = CoroutineScope(Dispatchers.Main)
+
+2. Переопределяем метод onStarJob:
+
+override fun onStartJob(params: JobParameters?): Boolean {
+
+//  Не забываем учитывать версию андроида.
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            coroutineScope.launch {
+
+//  1) Достаем сервис из очереди.
+
+                var workItem = params?.dequeueWork() - все сервисы в очереди под беск. циклом.
+
+//  2) Выполняем код до тех пор, пока в очереди есть ещё объекты.
+
+                while (workItem != null) {
+
+//  3) Получаем значение page (ну мы работаем с загрузкой страницы) из намерения.
+
+                    val page = workItem.intent.getIntExtra(PAGE, 0)
+                    for (i in 0..100) {
+                        delay(1000)
+                        log("Timer: $i Page: $page")
+                    }
+
+//4) Конкретно один сервис из очереди завершил работу. (Не все сервисы)
+
+                    params?.completeWork(workItem)
+
+//5) Достаем новый объект сервиса из очереди.
+
+                    workItem = params?.dequeueWork()
+
+//6) Завершаем работу, когда больше нет сервисов в очереди.
+
+                    jobFinished(params, false) }}}
+        return true}
+
+3. Переопределяем метод onStopJob:
+
+    override fun onStopJob(params: JobParameters?): Boolean {return true}
+
+4. Создаем сервис из companion object:
+
+//Bundle объект ключ - значение. Для schedule, где прошлые сервисы удаляются.
+        fun newBundle(pageNum: Int): PersistableBundle {
+            return PersistableBundle().apply {
+                putInt(PAGE, pageNum)} }
+
+//Для enqueue, где прошлые сервисы удаляются.
+        fun newIntent(pageNum: Int): Intent {
+            return Intent().apply {
+                putExtra(PAGE, pageNum)}}
+
+5. Далее в самой активити :
+
+        viewbinding.jobScheduler.setOnClickListener {
+
+// Запуск сервиса job - три объекта.
+
+// 1) componentName - даем имя и привязываем к классу сервиса.
+
+            val componentName = ComponentName(this,MyJobService::class.java)
+
+// 2) jobInfo - создаем информацию о сервисе и ограничения (условия) - когда работает, какой ID и так далее.
+
+            val jobInfo = JobInfo.Builder(MyJobService.JOB_ID,componentName)
+
+// передача данных в сервис. Для sheduler.
+//                .setExtras(MyJobService.newBundle(page++))
+
+// работает при зарядке
+                .setRequiresCharging(true)
+// работает при работе вай фай
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+// включается при включении телефона, когда тот выключен при включении.
+//              .setPersisted(true)
+// как часто включается.
+//              .setPeriodic()
+
+                .build()
+
+// 3) jobScheduler - когда запускается созданный сервис.
+
+            val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
+
+// schedule удаляет предыдущий сервис.
+//          jobScheduler.schedule(jobInfo)
+
+// enqueue же продолжает сервис с точки удаления прошлого сервиса, так как работают очереди.
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val intent = MyJobService.newIntent(page++)
+
+// jobScheduler - Добавляем сервис в очередь сервисов.
+
+                jobScheduler.enqueue(jobInfo, JobWorkItem(intent))
+            } else {
+                val intent = MyIntentServiceForJobLower26.newIntent(this,page++)
+                startService(intent)
+            }
+
+// такой сервис будет перезапущен при восстановлении условий его работы.
+// и начинает работать с самого начала.

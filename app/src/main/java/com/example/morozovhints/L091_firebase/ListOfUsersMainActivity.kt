@@ -20,7 +20,6 @@ class ListOfUsersMainActivity : AppCompatActivity() {
     private lateinit var floatingActionButton: FloatingActionButton
     private var db : FirebaseFirestore? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_firebase_main)
