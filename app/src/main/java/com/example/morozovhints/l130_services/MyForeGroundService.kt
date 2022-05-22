@@ -1,6 +1,5 @@
 package com.example.morozovhints.l130_services
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
@@ -46,7 +45,7 @@ class MyForeGroundService : Service() {
                 val notification = notificationBuilder
                     .setProgress(100, i, false)
                     .build()
-                notificationManager.notify(NOTIFICATION_ID,notification)
+                notificationManager.notify(NOTIFICATION_ID, notification)
                 onProgressChanged?.invoke(i)
                 log("Timer: $i")
             }
@@ -72,7 +71,6 @@ class MyForeGroundService : Service() {
     }
 
     private fun createNotificationChannel() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
                 CHANNEL_ID,
@@ -98,7 +96,7 @@ class MyForeGroundService : Service() {
 //        notificationManager.notify(1, notification)
 //    }
 
-    inner class LocalBinder: Binder(){
+    inner class LocalBinder : Binder() {
         fun getService() = this@MyForeGroundService
     }
 

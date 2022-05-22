@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.morozovhints.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -31,6 +32,14 @@ class ListOfUsersMainActivity : AppCompatActivity() {
         usersAdapter = UsersAdapter()
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = usersAdapter
+
+        testRealtimeFirestore()
+    }
+
+    private fun testRealtimeFirestore() {
+        val database = Firebase.database
+        val preference = database.reference.child("message")
+        preference.setValue("NewMessage")
     }
 
     fun onClickAddUser(view: View) {
